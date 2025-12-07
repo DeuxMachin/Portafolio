@@ -39,13 +39,20 @@ export function ProjectsSection() {
               style={{ animationDelay: `${index * 100}ms` } as React.CSSProperties}
             >
               {/* Project Image */}
-              <div className="relative h-48 bg-[#2E333D] -mx-6 -mt-6 mb-4 overflow-hidden">
-                {/* Placeholder pattern */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-6xl opacity-20">
-                    {project.featured ? '⭐' : '📁'}
+              <div className="relative h-48 bg-[#2E333D] -mx-6 -mt-6 mb-4 overflow-hidden flex items-center justify-center">
+                {project.imageUrl ? (
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center w-full h-full">
+                    <div className="text-6xl opacity-20">
+                      {project.featured ? '⭐' : '📁'}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Overlay on hover */}
                 <div className="absolute inset-0 bg-[#1A1D23]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">

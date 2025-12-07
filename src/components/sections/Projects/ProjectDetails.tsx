@@ -11,22 +11,22 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
   const projectFeatures = isMiPortalVentas ? [
     {
       title: 'Liderazgo Scrum',
-      description: 'Como Scrum Master, gestioné el proceso completo de desarrollo, facilitando ceremonias, removiendo impedimentos y asegurando la entrega incremental de valor.',
+      description: 'Guié al equipo con ceremonias cortas y claras, quitando bloqueos rápido y manteniendo foco en entregables cortos.',
       color: '#A8E6CF'
     },
     {
       title: 'Arquitectura Técnica',
-      description: 'Definí la stack tecnológica (Next.js + Supabase) y establecí patrones de desarrollo que permitieron escalabilidad y mantenibilidad del código.',
+      description: 'Elegí Next.js + Supabase y documenté decisiones para que el equipo pudiera moverse rápido sin perder calidad.',
       color: '#FFCCCB'
     },
     {
       title: 'Gestión de Requisitos',
-      description: 'Coordiné con stakeholders del sector construcción para traducir necesidades de negocio en funcionalidades técnicas priorizadas.',
+      description: 'Traducí lo que pedían obra a obra en historias accionables y priorizadas con los dueños.',
       color: '#FFD1DC'
     },
     {
       title: 'Calidad y Testing',
-      description: 'Implementé procesos de testing y code review que aseguraron la estabilidad del producto antes del despliegue en producción.',
+      description: 'Introduje revisiones cortas y pruebas básicas antes de subir a producción para evitar sorpresas.',
       color: '#E6E6FA'
     }
   ] : [
@@ -55,22 +55,22 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
   const developmentProcess = isMiPortalVentas ? [
     {
       title: 'Análisis y Planificación',
-      description: 'Realicé el análisis de requisitos con stakeholders, definí la arquitectura técnica y establecí la roadmap del proyecto bajo metodología Scrum.',
+      description: 'Escuché a los equipos de venta y obra, levanté lo esencial y armé una hoja de ruta sencilla pero clara.',
       color: '#A8E6CF'
     },
     {
       title: 'Coordinación del Equipo',
-      description: 'Lideré las ceremonias Scrum (planning, daily, review, retrospective), facilitando la comunicación y removiendo impedimentos técnicos.',
+      description: 'Mantuvimos dailies breves y plannings acotados; mi foco fue desatorar al equipo y comunicar avances con stakeholders.',
       color: '#FFCCCB'
     },
     {
       title: 'Supervisión Técnica',
-      description: 'Acompañé el desarrollo de funcionalidades críticas, revisé código, aseguré buenas prácticas y validé la implementación de la lógica de negocio.',
+      description: 'Revisé las piezas críticas, validé que la lógica de negocio calzara con lo que pedían y mantuve el código legible.',
       color: '#FFD1DC'
     },
     {
       title: 'Despliegue y Optimización',
-      description: 'Coordiné el despliegue en Vercel, configuré el CI/CD básico y aseguré que el producto cumpliera con los criterios de aceptación definidos.',
+      description: 'Coordiné el deploy en Vercel con chequeos mínimos de calidad y monitoreé el arranque para ajustar rápido.',
       color: '#E6E6FA'
     }
   ] : [
@@ -166,19 +166,19 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="p-3 bg-gray-800/30 rounded-lg border border-gray-700">
               <h5 className="font-medium text-[#A8E6CF] text-sm mb-1">Liderazgo Técnico</h5>
-              <p className="text-xs text-gray-400">Selección y definición de stack tecnológico apropiada para el proyecto</p>
+              <p className="text-xs text-gray-400">Tomé decisiones de stack y dejé guías simples para que el equipo avanzara sin fricción.</p>
             </div>
             <div className="p-3 bg-gray-800/30 rounded-lg border border-gray-700">
               <h5 className="font-medium text-[#FFCCCB] text-sm mb-1">Gestión Ágil</h5>
-              <p className="text-xs text-gray-400">Facilitación de ceremonias Scrum y gestión de backlog del producto</p>
+              <p className="text-xs text-gray-400">Facilité ceremonias cortas, prioricé backlog y mantuve a todos informados.</p>
             </div>
             <div className="p-3 bg-gray-800/30 rounded-lg border border-gray-700">
               <h5 className="font-medium text-[#FFD1DC] text-sm mb-1">Análisis de Requisitos</h5>
-              <p className="text-xs text-gray-400">Traducción de necesidades de negocio a especificaciones técnicas</p>
+              <p className="text-xs text-gray-400">Escuché a ventas y obra, y convertí sus pedidos en historias claras.</p>
             </div>
             <div className="p-3 bg-gray-800/30 rounded-lg border border-gray-700">
               <h5 className="font-medium text-[#E6E6FA] text-sm mb-1">Calidad de Código</h5>
-              <p className="text-xs text-gray-400">Implementación de revisiones de código y estándares de calidad</p>
+              <p className="text-xs text-gray-400">Propuse revisiones rápidas y checklists sencillos antes de desplegar.</p>
             </div>
           </div>
         </div>
@@ -199,20 +199,17 @@ export function ProjectDetails({ project }: ProjectDetailsProps) {
         </div>
       </div>
 
-      {/* Galería de Imágenes (placeholder para futura implementación) */}
+      {/* Galería de Imágenes */}
       <div className="space-y-3">
         <h4 className="text-lg font-semibold text-[#FFD1DC]">Capturas del Proyecto</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[1, 2].map((index) => (
-            <div key={index} className="aspect-video bg-gray-800 rounded-xl flex items-center justify-center">
-              <div className="text-center text-gray-500">
-                <svg className="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                </svg>
-                <p className="text-sm">Captura {index}</p>
-              </div>
-            </div>
-          ))}
+          <div className="aspect-video bg-gray-800 rounded-xl overflow-hidden border border-gray-700">
+            <img
+              src="/images/MiPortalVentas/ImagenDashboard.png"
+              alt="Dashboard MiPortalVentas"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </div>
 

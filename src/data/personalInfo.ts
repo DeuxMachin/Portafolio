@@ -3,17 +3,19 @@ import type { PersonalInfo } from '../types';
 export const personalInfo: PersonalInfo = {
   name: 'Edward Mathias Contreras',
   title: 'Ingeniero Civil en Informática',
-  email: 'edward.contreras@email.com',
+  email: 'Mathias.contreras.a@gmail.com',
   location: 'Chile',
-  bio: `Soy un apasionado Ingeniero Civil en Informática con experiencia en desarrollo de software y soluciones tecnológicas innovadoras. Me especializo en crear aplicaciones web modernas y escalables, combinando las mejores prácticas de ingeniería con un enfoque centrado en el usuario.
+  bio: `Soy Ingeniero Civil en Informática con experiencia en desarrollo de software y soluciones tecnológicas. Me especializo en crear aplicaciones web modernas y escalables, combinando buenas prácticas de ingeniería con un enfoque centrado en el usuario.
 
-Mi formación me ha permitido desarrollar habilidades tanto técnicas como analíticas, lo que me permite abordar problemas complejos desde múltiples perspectivas. Disfruto trabajando en equipos colaborativos y aprendiendo constantemente nuevas tecnologías.`,
+Hoy me muevo como full stack, y también disfruto bastante la ciencia de datos y el ML; paso harto tiempo con estos temas y me siento cómodo en Python para experimentarlos en proyectos reales.
+
+Mi formación me ha permitido desarrollar habilidades tanto técnicas como analíticas, lo que me permite abordar problemas complejos desde múltiples perspectivas. Disfruto trabajar en equipos colaborativos y seguir aprendiendo tecnologías que sumen.`,
   avatarUrl: '/avatar.jpg',
-  resumeUrl: '/cv.pdf',
+  resumeUrl: '/pdfs/CV.pdf',
   socialLinks: [
     {
       name: 'GitHub',
-      url: 'https://github.com/edwardcontreras',
+      url: 'https://github.com/DeuxMachin',
       icon: 'github',
     },
     {

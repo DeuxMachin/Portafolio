@@ -70,13 +70,14 @@ export function AboutSection() {
             </div>
 
             {/* Download CV Button */}
-            <Button
-              variant="primary"
-              icon={<DownloadIcon size={18} />}
-              className="mb-8"
-            >
-              Descargar CV
-            </Button>
+            <a href={personalInfo.resumeUrl} download target="_blank" rel="noreferrer" className="inline-block mb-8">
+              <Button
+                variant="primary"
+                icon={<DownloadIcon size={18} />}
+              >
+                Descargar CV
+              </Button>
+            </a>
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

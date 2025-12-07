@@ -5,9 +5,9 @@ export const projects: Project[] = [
     id: 1,
     title: 'MiPortalVentas - Dashboard',
     description:
-      'Dashboard web desarrollado bajo metodología Scrum para gestión integral de ventas en el sector construcción. Como Scrum Master, lideré el proceso de desarrollo desde la planificación hasta el despliegue, coordinando con el equipo técnico para implementar funcionalidades clave como gestión de cotizaciones, seguimiento de obras y control de clientes potenciales. El proyecto destaca por su enfoque en eficiencia operativa y automatización de procesos comerciales.',
+      'Dashboard web para la gestión integral de ventas en el sector construcción. Muchas empresas de construcción tenían un problema común: seguimiento manual, cotizaciones desperdigadas y poca visibilidad del estado de cada obra. Como Scrum Master y responsable del diseño técnico, lideré la creación de un dashboard que resolviera esto y ofreciera un flujo de trabajo claro y centralizado.',
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Vercel'],
-    imageUrl: '/projects/miportalventas.png',
+    imageUrl: '/images/MiPortalVentas/logo.png',
     githubUrl: 'https://github.com/DeuxMachin/CotizacionesInsumos',
     liveUrl: 'https://miportalventas.vercel.app',
     featured: true,

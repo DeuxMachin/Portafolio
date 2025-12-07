@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Card } from '../../ui/Card';
 import { Button } from '../../ui/Button';
 import { MailIcon, GitHubIcon, LinkedInIcon, LocationIcon } from '../../ui/Icons';
@@ -12,6 +13,9 @@ export function ContactSection() {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>(
+    { type: null, message: '' }
+  );
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,17 +26,40 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatus({ type: null, message: '' });
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    // In a real app, you would send this to your backend
-    console.log('Form submitted:', formData);
+    if (!serviceId || !templateId || !publicKey) {
+      setIsSubmitting(false);
+      setStatus({ type: 'error', message: 'Configura las claves de EmailJS para enviar el mensaje.' });
+      return;
+    }
 
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
-    alert('¡Mensaje enviado con éxito!');
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        reply_to: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: personalInfo.email,
+        to_name: personalInfo.name,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setStatus({ type: 'success', message: '¡Mensaje enviado con éxito!' });
+    } catch (error: any) {
+      console.error('EmailJS error', error);
+      const detail = error?.text || error?.message || 'Revisa los IDs/plantilla y vuelve a intentar.';
+      setStatus({ type: 'error', message: `No se pudo enviar el mensaje. ${detail}` });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -133,6 +160,18 @@ export function ContactSection() {
               <h3 className="text-xl font-bold text-[#F8F9FA] mb-6">
                 Envíame un mensaje
               </h3>
+
+              {status.type && (
+                <div
+                  className={`mb-4 rounded-xl px-4 py-3 text-sm border ${
+                    status.type === 'success'
+                      ? 'bg-[#A8E6CF]/10 border-[#A8E6CF]/50 text-[#A8E6CF]'
+                      : 'bg-[#F5C6D6]/10 border-[#F5C6D6]/50 text-[#F5C6D6]'
+                  }`}
+                >
+                  {status.message}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name */}
