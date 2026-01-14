@@ -1,76 +1,156 @@
-import type { FormEventHandler } from 'react'
+import { useState, type FormEventHandler } from 'react'
 
 type ContactSectionProps = {
   onSubmit: FormEventHandler<HTMLFormElement>
 }
 
 export function ContactSection({ onSubmit }: ContactSectionProps) {
+  const [focusedField, setFocusedField] = useState<string | null>(null)
+
   return (
-    <section id="contact" className="py-24 bg-black relative border-t border-slate-800">
-      <div
-        className="absolute inset-0 opacity-20 pointer-events-none"
-        style={{
-          backgroundImage: 'radial-gradient(#38bdf8 1px, transparent 1px)',
-          backgroundSize: '30px 30px',
-        }}
-      ></div>
+    <section id="contact" className="py-20 relative overflow-hidden bg-slate-950">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-tech-accent/5 rounded-full blur-[150px]"></div>
+      </div>
 
-      <div className="max-w-5xl mx-auto px-4 relative z-10">
-        <div className="glass-panel p-1 rounded-xl relative">
-          <div className="corner-deco top-left"></div>
-          <div className="corner-deco bottom-right"></div>
+      <div className="max-w-4xl mx-auto px-4 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 mb-6">
+            <i className="fa-solid fa-envelope text-tech-accent text-sm"></i>
+            <span className="text-sm font-medium text-slate-300 tracking-wide">Contacto</span>
+          </div>
 
-          <div className="bg-slate-900/90 rounded-lg p-8 md:p-12 relative overflow-hidden">
-            <div className="flex items-center justify-between mb-12 border-b border-slate-700 pb-6">
-              <div>
-                <h3 className="text-tech-accent font-mono text-xs tracking-[0.3em] mb-2">CANAL SEGURO</h3>
-                <h2 className="text-3xl font-black text-white">
-                  ENLACE <span className="text-white/50">NEURAL</span>
-                </h2>
-              </div>
-              <div className="hidden md:block text-right">
-                <div className="text-xs font-mono text-slate-500">SIGNAL_STRENGTH</div>
-                <div className="flex gap-1 justify-end mt-1">
-                  <div className="w-1 h-4 bg-tech-accent"></div>
-                  <div className="w-1 h-4 bg-tech-accent"></div>
-                  <div className="w-1 h-4 bg-tech-accent"></div>
-                  <div className="w-1 h-4 bg-tech-accent/50"></div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            ¿Tienes un proyecto en <span className=" bg-clip-text from-tech-accent to-purple-400">mente</span>?
+          </h2>
+          <p className="text-slate-400 max-w-md mx-auto">
+            Cuéntame sobre tu idea y trabajemos juntos para hacerla realidad.
+          </p>
+        </div>
+
+        {/* Form Container */}
+        <div className="relative">
+          {/* Glow effect */}
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-tech-accent/20 via-purple-500/20 to-tech-accent/20 rounded-2xl blur-xl opacity-10"></div>
+
+          <div className="relative bg-slate-900/90 backdrop-blur-sm border border-slate-800 rounded-2xl p-8 md:p-10">
+            <form onSubmit={onSubmit} className="space-y-6">
+              {/* Name & Email Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                    <i className="fa-solid fa-user text-slate-500 text-xs"></i>
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Tu nombre"
+                    onFocus={() => setFocusedField('name')}
+                    onBlur={() => setFocusedField(null)}
+                    className={`w-full px-4 py-3 bg-slate-800/50 border rounded-xl text-white placeholder-slate-500 text-sm transition-all duration-300 outline-none ${focusedField === 'name'
+                      ? 'border-tech-accent ring-2 ring-tech-accent/20'
+                      : 'border-slate-700 hover:border-slate-600'
+                      }`}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                    <i className="fa-solid fa-at text-slate-500 text-xs"></i>
+                    Correo electrónico
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="correo@ejemplo.com"
+                    onFocus={() => setFocusedField('email')}
+                    onBlur={() => setFocusedField(null)}
+                    className={`w-full px-4 py-3 bg-slate-800/50 border rounded-xl text-white placeholder-slate-500 text-sm transition-all duration-300 outline-none ${focusedField === 'email'
+                      ? 'border-tech-accent ring-2 ring-tech-accent/20'
+                      : 'border-slate-700 hover:border-slate-600'
+                      }`}
+                  />
                 </div>
               </div>
-            </div>
 
-            <form onSubmit={onSubmit} className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="cyber-input-group">
-                  <label className="cyber-label">IDENTIDAD_ORIGEN</label>
-                  <input type="text" className="cyber-input" placeholder="Tu Nombre / Alias" />
-                </div>
-                <div className="cyber-input-group">
-                  <label className="cyber-label">FRECUENCIA_RETORNO</label>
-                  <input type="email" className="cyber-input" placeholder="correo@ejemplo.com" />
-                </div>
+              {/* Subject */}
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                  <i className="fa-solid fa-tag text-slate-500 text-xs"></i>
+                  Asunto
+                </label>
+                <select
+                  onFocus={() => setFocusedField('subject')}
+                  onBlur={() => setFocusedField(null)}
+                  className={`w-full px-4 py-3 bg-slate-800/50 border rounded-xl text-white text-sm transition-all duration-300 outline-none appearance-none cursor-pointer ${focusedField === 'subject'
+                    ? 'border-tech-accent ring-2 ring-tech-accent/20'
+                    : 'border-slate-700 hover:border-slate-600'
+                    }`}
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="work">Oportunidad laboral</option>
+                  <option value="project">Proyecto freelance</option>
+                  <option value="collab">Colaboración</option>
+                  <option value="question">Consulta técnica</option>
+                  <option value="other">Otro</option>
+                </select>
               </div>
 
-              <div className="cyber-input-group">
-                <label className="cyber-label">DATOS_TRANSMISIÓN</label>
-                <textarea rows={4} className="cyber-input" placeholder="Inicializando mensaje..."></textarea>
+              {/* Message */}
+              <div className="space-y-2">
+                <label className="flex items-center gap-2 text-sm font-medium text-slate-300">
+                  <i className="fa-solid fa-message text-slate-500 text-xs"></i>
+                  Mensaje
+                </label>
+                <textarea
+                  rows={5}
+                  placeholder="Cuéntame sobre tu proyecto o idea..."
+                  onFocus={() => setFocusedField('message')}
+                  onBlur={() => setFocusedField(null)}
+                  className={`w-full px-4 py-3 bg-slate-800/50 border rounded-xl text-white placeholder-slate-500 text-sm transition-all duration-300 outline-none resize-none ${focusedField === 'message'
+                    ? 'border-tech-accent ring-2 ring-tech-accent/20'
+                    : 'border-slate-700 hover:border-slate-600'
+                    }`}
+                ></textarea>
               </div>
 
-              <div className="flex justify-end items-center gap-6 pt-4">
-                <div className="text-[10px] font-mono text-slate-500 hidden md:block">
-                  ENCRYPTION_KEY: <span className="animate-pulse">XXXX-XXXX</span>
-                </div>
+              {/* Submit */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+                <p className="text-sm text-slate-500">
+                  Respondo en menos de 24 horas
+                </p>
+
                 <button
                   type="submit"
-                  className="group relative px-8 py-4 bg-tech-600 hover:bg-tech-500 text-white font-bold tracking-wider clip-path-polygon transition-all overflow-hidden"
+                  className="group flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-tech-accent to-cyan-400 rounded-xl font-semibold text-slate-900 transition-all duration-300 hover:shadow-lg hover:shadow-tech-accent/25 hover:scale-[1.02]"
                 >
-                  <div className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-shimmer"></div>
-                  <span className="relative flex items-center gap-3">
-                    TRANSMITIR DATOS <i className="fa-solid fa-paper-plane"></i>
-                  </span>
+                  <span>Enviar mensaje</span>
+                  <i className="fa-solid fa-paper-plane group-hover:translate-x-1 transition-transform"></i>
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="mt-12 text-center">
+          <p className="text-sm text-slate-500 mb-4">O encuéntrame en</p>
+          <div className="flex justify-center gap-4">
+            {[
+              { icon: 'fa-brands fa-github', label: 'GitHub', href: '#' },
+              { icon: 'fa-brands fa-linkedin', label: 'LinkedIn', href: '#' },
+              { icon: 'fa-brands fa-twitter', label: 'Twitter', href: '#' },
+            ].map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                aria-label={social.label}
+                className="flex items-center justify-center w-11 h-11 rounded-full bg-slate-800/50 border border-slate-700 text-slate-400 transition-all duration-300 hover:border-tech-accent hover:text-tech-accent hover:scale-110"
+              >
+                <i className={`${social.icon} text-lg`}></i>
+              </a>
+            ))}
           </div>
         </div>
       </div>
