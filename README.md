@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Portafolio (React + TypeScript + Vite + Tailwind)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portafolio web con enfoque UI “cyber/terminal”, construido con React 19, TypeScript, Vite y Tailwind.
 
-Currently, two official plugins are available:
+## Scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `pnpm dev`: entorno de desarrollo
+- `pnpm build`: build de producción (`tsc -b` + `vite build`)
+- `pnpm preview`: preview del build
+- `pnpm lint`: análisis estático
 
-## React Compiler
+## Arquitectura
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Se utiliza **Feature-Sliced Design (FSD)** como arquitectura de organización del frontend. El objetivo es evitar monolitos de UI y mantener separación explícita entre composición de páginas, widgets de UI y modelo (estado/datos).
 
-## Expanding the ESLint configuration
+Principios aplicados:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Capas (layers) por responsabilidad**: `app` (bootstrap), `pages` (composición por ruta/pantalla), `widgets` (secciones de UI reutilizables), `shared` (primitivas y utilidades cuando aplique).
+- **Slice-first**: el código se agrupa por “slice” (p. ej. `pages/portfolio`) con `model` (tipos, estado, datos) y `ui` (componentes).
+- **Flujo de dependencias**: `app` → `pages` → `widgets` → `shared`. Los `model` se consumen desde `pages` y se inyectan a `widgets` vía props.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Estructura relevante:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  app/
+    App.tsx
+  pages/
+    portfolio/
+      model/
+        about.ts
+        projects.ts
+        techStack.ts
+        types.ts
+        usePortfolioState.ts
+      ui/
+        PortfolioPage.tsx
+  widgets/
+    gate/ui/Gate.tsx
+    navbar/ui/Navbar.tsx
+    hero/ui/HeroSection.tsx
+    about/ui/AboutSection.tsx
+    tech-stack/ui/TechStackSection.tsx
+    projects/ui/ProjectsSection.tsx
+    contact/ui/ContactSection.tsx
+    footer/ui/Footer.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Convenciones
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `model/` contiene tipos, estado local (hooks) y data estática que describe el portafolio.
+- `ui/` contiene componentes presentacionales; no deben duplicar data que ya vive en `model/`.
+- Las secciones se implementan como `widgets` para mantener `pages` enfocadas en composición (layout y wiring).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## CV (PDF)
+
+- El botón “Descargar CV” apunta a `/cv.pdf`.
+- Coloca tu archivo en `public/cv.pdf` para que Vite lo sirva como asset estático en dev/build.
+
