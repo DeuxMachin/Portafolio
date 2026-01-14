@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+/* Estilos Base y Scrollbar */
+body {
+	overflow-x: hidden;
+	background-color: #050b14;
+}
+
+#root {
+	min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #334155;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #475569;
+}
+
+/* --- EFECTOS EXÓTICOS HERO --- */
+.perspective-container {
+	perspective: 1000px;
+	overflow: hidden;
+}
+
+.cyber-grid {
+	background-image:
+		linear-gradient(rgba(56, 189, 248, 0.3) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(56, 189, 248, 0.3) 1px, transparent 1px);
+	background-size: 40px 40px;
+	width: 200%;
+	height: 100%;
+	position: absolute;
+	bottom: -50%;
+	left: -50%;
+	transform-origin: bottom;
+	transform: rotateX(60deg);
+	mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 60%);
+	-webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 60%);
+	z-index: 0;
+	animation: gridFlow 10s linear infinite;
+}
+
+.text-stroke {
+	-webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+	color: transparent;
+}
+
+.text-stroke-accent {
+	-webkit-text-stroke: 1px #38bdf8;
+	color: transparent;
+}
+
+/* --- NUEVOS ESTILOS PARA PROYECTOS Y CONTACTO --- */
+.cyber-card {
+	background: rgba(10, 15, 30, 0.7);
+	border: 1px solid rgba(56, 189, 248, 0.3);
+	clip-path: polygon(0 0, 100% 0, 100% 85%, 92% 100%, 0 100%);
+	position: relative;
+	transition: all 0.3s ease;
+}
+
+.cyber-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.cyber-card:hover {
+	border-color: #38bdf8;
+	box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+	transform: translateY(-5px);
+}
+
+.cyber-card:hover::before {
+	opacity: 1;
+}
+
+.scan-line {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(to bottom, transparent, rgba(56, 189, 248, 0.4), transparent);
+	opacity: 0.3;
+	pointer-events: none;
+}
+
+/* Cyber Input (Contacto) */
+.cyber-input-group {
+	position: relative;
+	margin-bottom: 2rem;
+}
+
+.cyber-input {
+	width: 100%;
+	background: rgba(5, 11, 20, 0.6);
+	border: none;
+	border-bottom: 2px solid #1e293b;
+	padding: 1rem;
+	color: #fff;
+	font-family: 'JetBrains Mono', monospace;
+	transition: all 0.3s;
+}
+
+.cyber-input:focus {
+	outline: none;
+	background: rgba(56, 189, 248, 0.1);
+	border-bottom-color: #38bdf8;
+}
+
+.cyber-label {
+	position: absolute;
+	left: 0;
+	top: -1.5rem;
+	font-size: 0.75rem;
+	color: #38bdf8;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.corner-deco {
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border: 2px solid #38bdf8;
+	transition: all 0.3s;
+	pointer-events: none;
+}
+
+.top-left {
+	top: -2px;
+	left: -2px;
+	border-right: none;
+	border-bottom: none;
+}
+
+.bottom-right {
+	bottom: -2px;
+	right: -2px;
+	border-left: none;
+	border-top: none;
+}
+
+/* --- CLASES DE UTILIDAD VISTA --- */
+.glass-panel {
+	background: rgba(15, 23, 42, 0.6);
+	backdrop-filter: blur(12px);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fade-in-up {
+	animation: fadeInUp 0.8s ease-out forwards;
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* --- ANIMACIONES DE LA PUERTA --- */
+#gate-container {
+	transition: visibility 0s 1.5s, z-index 0s 1.5s;
+}
+
+.door-panel {
+	transition: transform 1.2s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.door-open .left-panel {
+	transform: translateX(-100%);
+}
+
+.door-open .right-panel {
+	transform: translateX(100%);
+}
+
+.door-open .lock-mechanism {
+	opacity: 0;
+	transform: scale(1.5);
+}
+
+.lock-mechanism {
+	transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Cuando abre la puerta, ocultar el overlay para permitir interacción */
+#gate-container.door-open {
+	visibility: hidden;
+	pointer-events: none;
+}
+
+/* --- MODO TERMINAL --- */
+body.terminal-mode {
+	background-color: #000000;
+	color: #00ff00;
+}
+
+.terminal-mode .cyber-grid {
+	background-image:
+		linear-gradient(rgba(0, 255, 0, 0.2) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(0, 255, 0, 0.2) 1px, transparent 1px);
+}
+
+.terminal-mode .cyber-card {
+	background: #001100;
+	border: 1px solid #00ff00;
+	clip-path: none;
+}
+
+.terminal-mode .cyber-input {
+	background: #000;
+	border-bottom: 2px solid #00ff00;
+	color: #00ff00;
+}
+
+.terminal-mode .text-stroke {
+	-webkit-text-stroke: 1px #00ff00;
+}
+
+.terminal-mode .text-stroke-accent {
+	-webkit-text-stroke: 1px #00ff00;
+}
+
+/* --- STACK --- */
+.tech-item.active .tech-name {
+	width: auto;
+	opacity: 1;
+	padding: 0 0.5rem;
+}
+
+.tech-item.active {
+	background-color: rgba(30, 41, 59, 0.8);
+	border-color: #38bdf8;
+}
+
+/* Utilidad usada en el HTML */
+.clip-path-polygon {
+	clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+}
+
+/* Keyframes extra usados por estilos/inline */
+@keyframes gridFlow {
+	0% {
+		transform: translateY(0) rotateX(60deg);
+	}
+	100% {
+		transform: translateY(40px) rotateX(60deg);
+	}
+}
+
+@keyframes scan {
+	0% {
+		transform: translateY(-10%);
+	}
+	100% {
+		transform: translateY(260px);
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
