@@ -10,6 +10,17 @@ import { projects } from '../model/projects'
 import { techStack } from '../model/techStack'
 import { usePortfolioState } from '../model/usePortfolioState'
 
+// Floating orbs component for ambient decoration
+function FloatingOrbs() {
+  return (
+    <>
+      <div className="floating-orb floating-orb-1" />
+      <div className="floating-orb floating-orb-2" />
+      <div className="floating-orb floating-orb-3" />
+    </>
+  )
+}
+
 export function PortfolioPage() {
   const {
     hasEntered,
@@ -27,6 +38,9 @@ export function PortfolioPage() {
     <>
       <Gate hasEntered={hasEntered} onEnter={enterSystem} />
 
+      {/* Floating ambient orbs */}
+      <FloatingOrbs />
+
       <div
         id="main-content"
         className={`min-h-screen transition-opacity duration-1000 delay-700 relative ${hasEntered ? 'opacity-100' : 'opacity-0'}`}
@@ -36,9 +50,9 @@ export function PortfolioPage() {
         <HeroSection />
         <AboutSection />
 
-        <TechStackSection techStack={techStack} activeTech={activeTech} onToggleTech={toggleTech} />
-
         <ProjectsSection projects={projects} projectView={projectView} onChangeView={setProjectView} />
+
+        <TechStackSection techStack={techStack} activeTech={activeTech} onToggleTech={toggleTech} />
 
         <ContactSection onSubmit={onSubmitContact} />
 

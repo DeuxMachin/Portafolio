@@ -1,13 +1,436 @@
 @import "tailwindcss";
 
+/* ============================================
+   🌌 COSMIC BACKGROUND SYSTEM
+   ============================================ */
+
 /* Estilos Base y Scrollbar */
 body {
 	overflow-x: hidden;
 	background-color: #050b14;
+	position: relative;
+}
+
+/* Aurora Boreal / Fondo Dinámico Principal */
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background:
+		/* Aurora Layer 1 */
+		radial-gradient(ellipse 80% 50% at 20% 40%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+		/* Aurora Layer 2 */
+		radial-gradient(ellipse 60% 40% at 80% 60%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+		/* Aurora Layer 3 - Neon Green */
+		radial-gradient(ellipse 70% 35% at 50% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+		/* Deep Space Gradient */
+		linear-gradient(180deg,
+			#050b14 0%,
+			#0a1628 25%,
+			#0f172a 50%,
+			#0a1628 75%,
+			#050b14 100%);
+	z-index: -3;
+	animation: auroraShift 20s ease-in-out infinite alternate;
+}
+
+/* Floating Particles Layer */
+body::after {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image:
+		/* Large Stars */
+		radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.9), transparent),
+		radial-gradient(2px 2px at 40% 70%, rgba(56, 189, 248, 0.8), transparent),
+		radial-gradient(2px 2px at 80% 40%, rgba(168, 85, 247, 0.7), transparent),
+		radial-gradient(1.5px 1.5px at 90% 20%, rgba(255, 255, 255, 0.8), transparent),
+		radial-gradient(1.5px 1.5px at 10% 80%, rgba(16, 185, 129, 0.8), transparent),
+		/* Medium Stars */
+		radial-gradient(1px 1px at 25% 15%, rgba(255, 255, 255, 0.6), transparent),
+		radial-gradient(1px 1px at 55% 55%, rgba(255, 255, 255, 0.5), transparent),
+		radial-gradient(1px 1px at 75% 85%, rgba(255, 255, 255, 0.6), transparent),
+		radial-gradient(1px 1px at 5% 50%, rgba(56, 189, 248, 0.5), transparent),
+		radial-gradient(1px 1px at 95% 60%, rgba(168, 85, 247, 0.5), transparent),
+		/* Small Stars */
+		radial-gradient(0.5px 0.5px at 15% 45%, rgba(255, 255, 255, 0.4), transparent),
+		radial-gradient(0.5px 0.5px at 35% 25%, rgba(255, 255, 255, 0.3), transparent),
+		radial-gradient(0.5px 0.5px at 65% 90%, rgba(255, 255, 255, 0.4), transparent),
+		radial-gradient(0.5px 0.5px at 85% 10%, rgba(255, 255, 255, 0.3), transparent),
+		radial-gradient(0.5px 0.5px at 45% 95%, rgba(255, 255, 255, 0.4), transparent);
+	z-index: -2;
+	animation: starsFloat 30s ease-in-out infinite;
+}
+
+/* Noise Texture Overlay */
+#root::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+	opacity: 0.02;
+	pointer-events: none;
+	z-index: 0;
 }
 
 #root {
 	min-height: 100vh;
+	position: relative;
+	z-index: 1;
+}
+
+/* Aurora Animation */
+@keyframes auroraShift {
+	0% {
+		background:
+			radial-gradient(ellipse 80% 50% at 20% 40%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+			radial-gradient(ellipse 60% 40% at 80% 60%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+			radial-gradient(ellipse 70% 35% at 50% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+			linear-gradient(180deg, #050b14 0%, #0a1628 25%, #0f172a 50%, #0a1628 75%, #050b14 100%);
+	}
+
+	50% {
+		background:
+			radial-gradient(ellipse 70% 60% at 40% 30%, rgba(56, 189, 248, 0.18) 0%, transparent 55%),
+			radial-gradient(ellipse 50% 50% at 70% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+			radial-gradient(ellipse 80% 40% at 30% 90%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
+			linear-gradient(180deg, #050b14 0%, #0a1628 25%, #0f172a 50%, #0a1628 75%, #050b14 100%);
+	}
+
+	100% {
+		background:
+			radial-gradient(ellipse 90% 45% at 60% 50%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+			radial-gradient(ellipse 55% 55% at 20% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 45%),
+			radial-gradient(ellipse 65% 30% at 70% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+			linear-gradient(180deg, #050b14 0%, #0a1628 25%, #0f172a 50%, #0a1628 75%, #050b14 100%);
+	}
+}
+
+/* Stars Floating Animation */
+@keyframes starsFloat {
+
+	0%,
+	100% {
+		transform: translateY(0) scale(1);
+		opacity: 1;
+	}
+
+	25% {
+		transform: translateY(-5px) scale(1.05);
+		opacity: 0.9;
+	}
+
+	50% {
+		transform: translateY(-10px) scale(1);
+		opacity: 0.95;
+	}
+
+	75% {
+		transform: translateY(-5px) scale(0.98);
+		opacity: 1;
+	}
+}
+
+/* Floating Orbs - decorative elements */
+.floating-orb {
+	position: fixed;
+	border-radius: 50%;
+	filter: blur(40px);
+	pointer-events: none;
+	z-index: -1;
+	animation: orbFloat 15s ease-in-out infinite;
+}
+
+.floating-orb-1 {
+	width: 300px;
+	height: 300px;
+	background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+	top: 10%;
+	left: 5%;
+	animation-delay: 0s;
+}
+
+.floating-orb-2 {
+	width: 400px;
+	height: 400px;
+	background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+	top: 50%;
+	right: 0%;
+	animation-delay: -5s;
+}
+
+.floating-orb-3 {
+	width: 250px;
+	height: 250px;
+	background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+	bottom: 10%;
+	left: 30%;
+	animation-delay: -10s;
+}
+
+@keyframes orbFloat {
+
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+	}
+
+	25% {
+		transform: translate(30px, -30px) scale(1.1);
+	}
+
+	50% {
+		transform: translate(-20px, -50px) scale(0.95);
+	}
+
+	75% {
+		transform: translate(-40px, -20px) scale(1.05);
+	}
+}
+
+/* ============================================
+   🚀 ENHANCED SUBMIT BUTTON ANIMATIONS
+   ============================================ */
+
+/* Submit button states */
+.submit-btn {
+	position: relative;
+	overflow: hidden;
+	transition: all 0.3s ease;
+}
+
+.submit-btn::before {
+	content: '';
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	right: -2px;
+	bottom: -2px;
+	background: linear-gradient(45deg, #38bdf8, #a855f7, #10b981, #38bdf8);
+	background-size: 400% 400%;
+	z-index: -1;
+	opacity: 0;
+	filter: blur(5px);
+	transition: opacity 0.3s ease;
+	animation: borderGlow 3s ease-in-out infinite;
+}
+
+.submit-btn:hover::before {
+	opacity: 1;
+}
+
+/* Loading state animations */
+.submit-loading {
+	pointer-events: none;
+}
+
+.submit-loading .btn-text {
+	opacity: 0;
+}
+
+.submit-loading::after {
+	content: '';
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border: 2px solid transparent;
+	border-top-color: #fff;
+	border-radius: 50%;
+	animation: submitSpin 0.8s linear infinite;
+}
+
+@keyframes submitSpin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes borderGlow {
+
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+}
+
+/* Success state */
+.submit-success {
+	background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+}
+
+.submit-success::after {
+	content: '✓';
+	position: absolute;
+	font-size: 1.5rem;
+	animation: checkBounce 0.5s ease-out;
+}
+
+@keyframes checkBounce {
+	0% {
+		transform: scale(0);
+	}
+
+	50% {
+		transform: scale(1.3);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+/* Particle burst effect for submit */
+.particle-burst {
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	pointer-events: none;
+	animation: particleBurst 0.8s ease-out forwards;
+}
+
+@keyframes particleBurst {
+	0% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translate(var(--tx), var(--ty)) scale(0);
+		opacity: 0;
+	}
+}
+
+/* Transmission progress bar */
+.transmission-progress {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 3px;
+	background: linear-gradient(90deg, #38bdf8, #a855f7, #10b981);
+	background-size: 200% 100%;
+	animation: transmitProgress 2s ease-in-out, progressShimmer 1s linear infinite;
+}
+
+@keyframes transmitProgress {
+	0% {
+		width: 0%;
+	}
+
+	30% {
+		width: 30%;
+	}
+
+	60% {
+		width: 70%;
+	}
+
+	100% {
+		width: 100%;
+	}
+}
+
+@keyframes progressShimmer {
+	0% {
+		background-position: 200% 0;
+	}
+
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+/* Audio visualizer bars */
+.audio-bar {
+	display: inline-block;
+	width: 3px;
+	background: linear-gradient(to top, #38bdf8, #a855f7);
+	margin: 0 1px;
+	animation: audioWave 0.4s ease-in-out infinite alternate;
+}
+
+.audio-bar:nth-child(1) {
+	height: 8px;
+	animation-delay: 0s;
+}
+
+.audio-bar:nth-child(2) {
+	height: 16px;
+	animation-delay: 0.1s;
+}
+
+.audio-bar:nth-child(3) {
+	height: 24px;
+	animation-delay: 0.2s;
+}
+
+.audio-bar:nth-child(4) {
+	height: 16px;
+	animation-delay: 0.3s;
+}
+
+.audio-bar:nth-child(5) {
+	height: 8px;
+	animation-delay: 0.4s;
+}
+
+@keyframes audioWave {
+	0% {
+		transform: scaleY(0.5);
+	}
+
+	100% {
+		transform: scaleY(1.5);
+	}
+}
+
+/* Matrix rain effect for terminal */
+.matrix-char {
+	position: absolute;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 14px;
+	color: #38bdf8;
+	opacity: 0;
+	animation: matrixFall 2s linear forwards;
+	text-shadow: 0 0 8px #38bdf8;
+}
+
+@keyframes matrixFall {
+	0% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+
+	10% {
+		opacity: 1;
+	}
+
+	90% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(100px);
+	}
+}
+
+/* Evita que el navbar fijo tape los encabezados al navegar por anclas */
+section[id] {
+	scroll-margin-top: 96px;
 }
 
 ::-webkit-scrollbar {
@@ -265,6 +688,7 @@ body.terminal-mode {
 	0% {
 		transform: translateY(0) rotateX(60deg);
 	}
+
 	100% {
 		transform: translateY(40px) rotateX(60deg);
 	}
@@ -274,6 +698,7 @@ body.terminal-mode {
 	0% {
 		transform: translateY(-10%);
 	}
+
 	100% {
 		transform: translateY(260px);
 	}
@@ -283,7 +708,61 @@ body.terminal-mode {
 	0% {
 		transform: translateX(-100%);
 	}
+
 	100% {
 		transform: translateX(100%);
+	}
+}
+
+/* Simple fadeIn animation */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Glow pulse for active elements */
+@keyframes glowPulse {
+
+	0%,
+	100% {
+		box-shadow: 0 0 5px rgba(56, 189, 248, 0.3);
+	}
+
+	50% {
+		box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+	}
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+/* Typing cursor blink */
+@keyframes cursorBlink {
+
+	0%,
+	50% {
+		opacity: 1;
+	}
+
+	51%,
+	100% {
+		opacity: 0;
 	}
 }

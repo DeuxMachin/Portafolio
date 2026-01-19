@@ -18,10 +18,13 @@ export function ProjectsSection({ projects, projectView, onChangeView }: Project
 
   const closeModal = () => setActiveProjectId(null)
 
+  const openProject = (id: string) => {
+    setCarouselIndex(0)
+    setActiveProjectId(id)
+  }
+
   useEffect(() => {
     if (!activeProject) return
-
-    setCarouselIndex(0)
 
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeModal()
@@ -50,143 +53,209 @@ export function ProjectsSection({ projects, projectView, onChangeView }: Project
       : 0
   const activeShot = activeScreenshots[safeCarouselIndex]
 
+  const getStarBlocks = (p: Project) => {
+    const situation = p.description
+
+    const process = p.details?.process
+    const lastProcessDescription = process?.length ? process[process.length - 1]?.description : undefined
+
+    const solution =
+      p.details?.features?.[0]?.description ??
+      process?.[0]?.description ??
+      p.details?.longDescription ??
+      'Diseñé e implementé una solución orientada a performance, mantenibilidad y despliegue rápido.'
+
+    const result =
+      lastProcessDescription ??
+      p.meta ??
+      'Mejora de la experiencia y del flujo de trabajo del usuario.'
+
+    return { situation, solution, result }
+  }
+
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-tech-900/20 to-transparent pointer-events-none"></div>
-      <div className="absolute top-20 right-20 text-[10rem] font-black text-white/5 font-mono select-none pointer-events-none">
-        LOGS
-      </div>
+    <section id="projects" className="py-20 relative overflow-hidden scroll-mt-24 bg-gradient-to-b from-tech-dark via-slate-950 to-tech-dark">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-tech-accent/20 rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none" />
+      <div
+        className="absolute bottom-0 right-1/4 w-96 h-96 bg-tech-neon/20 rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none"
+        style={{ animationDelay: '2s' }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-tech-accent/30 pb-4">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <i className="fa-solid fa-satellite-dish text-tech-accent animate-pulse"></i>
-              <h2 className="text-xs font-mono text-tech-accent tracking-widest uppercase">Base de Datos</h2>
-            </div>
-            <h2 className="text-4xl font-black text-white">
-              PROTOCOLOS{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-tech-accent to-white">ACTIVOS</span>
-            </h2>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+          <div className="max-w-2xl">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Proyectos Destacados</h2>
+            <p className="text-slate-400">
+              Casos de estudio donde convertí requerimientos reales en producto, cuidando diseño, performance y despliegue.
+            </p>
           </div>
 
-          <div className="flex gap-2 mt-4 md:mt-0 bg-slate-900/80 p-1 rounded border border-slate-700">
+          <div className="flex gap-2 bg-slate-900/60 p-1 rounded-full border border-white/10">
             <button
               type="button"
               onClick={() => onChangeView('grid')}
-              id="btn-grid"
-              className={`px-4 py-2 rounded text-xs font-mono font-bold transition-all flex items-center gap-2 ${
-                projectView === 'grid' ? 'bg-tech-600 text-white shadow-lg shadow-tech-500/20' : 'text-slate-400 hover:text-white'
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all flex items-center gap-2 ${
+                projectView === 'grid'
+                  ? 'bg-tech-accent/15 text-tech-accent border border-tech-accent/30'
+                  : 'text-slate-300 hover:text-white'
               }`}
             >
-              <i className="fa-solid fa-border-all"></i> GRID_VIEW
+              <i className="fa-solid fa-border-all text-xs" />
+              Grid
             </button>
             <button
               type="button"
               onClick={() => onChangeView('list')}
-              id="btn-list"
-              className={`px-4 py-2 rounded text-xs font-mono font-bold transition-all flex items-center gap-2 ${
-                projectView === 'list' ? 'bg-tech-600 text-white shadow-lg shadow-tech-500/20' : 'text-slate-400 hover:text-white'
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all flex items-center gap-2 ${
+                projectView === 'list'
+                  ? 'bg-tech-accent/15 text-tech-accent border border-tech-accent/30'
+                  : 'text-slate-300 hover:text-white'
               }`}
             >
-              <i className="fa-solid fa-list"></i> DATA_LIST
+              <i className="fa-solid fa-list text-xs" />
+              Lista
             </button>
           </div>
         </div>
 
         <div
-          id="projects-container"
           className={
             projectView === 'grid'
-              ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500'
-              : 'flex flex-col gap-4 transition-all duration-500 max-w-4xl mx-auto'
+              ? 'grid grid-cols-1 lg:grid-cols-2 gap-8'
+              : 'flex flex-col gap-6 max-w-5xl mx-auto'
           }
         >
           {projects.map((p) => {
-            const cardClass =
-              projectView === 'grid' ? 'project-card cyber-card group' : 'project-card cyber-card group flex items-center'
-            const contentClass =
-              projectView === 'grid'
-                ? 'p-6 relative'
-                : 'p-4 flex-1 flex items-center justify-between flex-wrap gap-4 relative'
-
             const canOpenDetails = Boolean(p.details)
             const previewImage = p.details?.screenshots?.[0]
+            const star = getStarBlocks(p)
 
             return (
-              <div key={p.id} className={cardClass}>
-                {projectView === 'grid' ? (
-                  <div className="project-image h-56 bg-slate-900 relative overflow-hidden border-b border-tech-accent/20">
-                    <div
-                      className="scan-line animate-scanline"
-                      style={p.scanDelay ? { animationDelay: p.scanDelay } : undefined}
-                    ></div>
-
-                    {previewImage ? (
-                      <img
-                        src={previewImage.src}
-                        alt={previewImage.alt}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-700 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-800 to-slate-900">
-                        <i
-                          className={`fa-solid ${p.icon} text-7xl text-slate-600 group-hover:text-tech-accent transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]`}
-                        ></i>
+              <article
+                key={p.id}
+                className="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-tech-accent/40 transition-colors group"
+              >
+                <div className="relative h-56 overflow-hidden border-b border-white/5">
+                  {previewImage ? (
+                    <img
+                      src={previewImage.src}
+                      alt={previewImage.alt}
+                      className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div className="w-full h-full relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-950 to-tech-dark">
+                      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#38bdf8 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-24 h-24 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                          <i className={`fa-solid ${p.icon} text-5xl text-slate-200 group-hover:text-tech-accent transition-colors duration-300`} />
+                        </div>
                       </div>
-                    )}
+                    </div>
+                  )}
 
-                    <div className="absolute top-0 left-0 p-3 w-full flex justify-between items-start z-20">
-                      <span className="bg-black/70 backdrop-blur text-[10px] font-mono px-2 py-1 text-tech-accent border border-tech-accent/50">
-                        ID: {p.id}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                  <div className="absolute top-3 left-3 flex items-center gap-2">
+                    <span className="bg-black/60 backdrop-blur text-[10px] font-mono px-2 py-1 text-slate-200 border border-white/10 rounded">
+                      {p.id}
+                    </span>
+                    <span
+                      className={`text-[10px] font-mono px-2 py-1 rounded border border-white/10 bg-black/40 ${p.overlayRightClass}`}
+                    >
+                      {p.overlayRightText}
+                    </span>
+                    {p.statusPing ? <span className="w-2 h-2 rounded-full bg-tech-accent animate-pulse" /> : null}
+                  </div>
+                </div>
+
+                <div className="p-7">
+                  <div className="flex justify-between items-start gap-4 mb-6">
+                    <div className="min-w-0">
+                      <h3 className="text-2xl font-bold text-white group-hover:text-tech-accent transition-colors truncate">
+                        {p.title}
+                      </h3>
+                      <p className="text-sm text-slate-500 mt-1 font-mono">{p.meta}</p>
+                    </div>
+
+                    <div className="flex gap-2">
+                      {p.links?.repoUrl ? (
+                        <a
+                          href={p.links.repoUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+                          aria-label="Ver repositorio"
+                          title="Ver código"
+                        >
+                          <i className="fa-brands fa-github" />
+                        </a>
+                      ) : null}
+                      {p.links?.liveUrl ? (
+                        <a
+                          href={p.links.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
+                          aria-label="Ver demo"
+                          title="Ver demo"
+                        >
+                          <i className="fa-solid fa-arrow-up-right-from-square" />
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 text-sm text-slate-300">
+                    <div>
+                      <strong className="text-tech-neon block mb-1 flex items-center gap-2">
+                        <i className="fa-solid fa-circle-exclamation text-[12px]" /> Desafío (Situación)
+                      </strong>
+                      <p className="text-slate-300 leading-relaxed">{star.situation}</p>
+                    </div>
+
+                    <div className="bg-slate-950/60 border-l-4 border-tech-accent rounded p-4">
+                      <strong className="text-tech-accent block mb-1 flex items-center gap-2 font-mono text-xs">
+                        <i className="fa-solid fa-code" /> Solución (Ingeniería)
+                      </strong>
+                      <p className="text-slate-300 leading-relaxed text-sm">{star.solution}</p>
+                    </div>
+
+                    <div>
+                      <strong className="text-blue-400 block mb-1 flex items-center gap-2">
+                        <i className="fa-solid fa-arrow-trend-up text-[12px]" /> Resultado (Impacto)
+                      </strong>
+                      <p className="text-slate-300 leading-relaxed">{star.result}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-7 flex flex-wrap gap-2">
+                    {p.tags.map((tag) => (
+                      <span
+                        key={`${p.id}-${tag.label}`}
+                        className="px-2 py-1 rounded text-xs bg-slate-950/30 border border-white/10 text-slate-300"
+                      >
+                        {tag.label}
                       </span>
-                      <div className="flex gap-1">
-                        {p.statusPing ? <div className="w-1 h-1 bg-tech-accent rounded-full animate-ping"></div> : null}
-                        <span className={p.overlayRightClass}>{p.overlayRightText}</span>
-                      </div>
-                    </div>
-                  </div>
-                ) : null}
-
-                <div className={contentClass}>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-tech-accent transition-colors">{p.title}</h3>
-                    <p className="text-slate-400 text-xs font-mono mb-4 leading-relaxed border-l-2 border-slate-700 pl-3">
-                      {p.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {p.tags.map((tag) => (
-                        <span key={`${p.id}-${tag.label}`} className={tag.className}>
-                          {tag.label}
-                        </span>
-                      ))}
-                    </div>
+                    ))}
                   </div>
 
-                  <div className="flex items-center justify-between mt-auto">
-                    <div className="text-[10px] text-slate-500 font-mono">{p.meta}</div>
+                  <div className="mt-7 flex items-center justify-between gap-4">
+                    <div className="text-xs text-slate-500 font-mono">{canOpenDetails ? 'Caso de estudio disponible' : 'Resumen'}</div>
                     {canOpenDetails ? (
                       <button
                         type="button"
-                        onClick={() => setActiveProjectId(p.id)}
-                        className="text-xs font-bold text-white bg-tech-600 hover:bg-tech-500 px-4 py-2 clip-path-polygon transition-all flex items-center gap-2"
+                        onClick={() => openProject(p.id)}
+                        className="bg-tech-accent/15 hover:bg-tech-accent/25 text-tech-accent border border-tech-accent/30 px-5 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2"
                       >
-                        ACCEDER <i className="fa-solid fa-chevron-right text-[10px]"></i>
+                        Ver detalle
+                        <i className="fa-solid fa-arrow-right" />
                       </button>
-                    ) : (
-                      <a
-                        href="#"
-                        className="text-xs font-bold text-white bg-tech-600 hover:bg-tech-500 px-4 py-2 clip-path-polygon transition-all flex items-center gap-2"
-                      >
-                        ACCEDER <i className="fa-solid fa-chevron-right text-[10px]"></i>
-                      </a>
-                    )}
+                    ) : null}
                   </div>
                 </div>
-              </div>
+              </article>
             )
           })}
         </div>
