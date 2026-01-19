@@ -70,7 +70,14 @@ export function HeroSection() {
             <div className="absolute inset-12 border border-purple-500/40 rounded-full animate-spin-reverse-slow"></div>
             <div className="absolute inset-0 rounded-full border-t-2 border-tech-accent opacity-50 animate-[spin_3s_linear_infinite]"></div>
             <div className="w-48 h-48 bg-slate-900 rounded-full border-4 border-tech-900 shadow-[0_0_50px_rgba(56,189,248,0.4)] flex items-center justify-center relative z-10 overflow-hidden group">
-              <i className="fa-solid fa-user-astronaut text-7xl text-slate-200 group-hover:text-tech-accent transition-colors duration-500 relative z-20"></i>
+              <i className="fa-solid fa-user-astronaut text-7xl text-slate-200/50 transition-colors duration-500 absolute inset-0 m-auto w-fit h-fit z-10"></i>
+              <img
+                src="/Perfil.webp"
+                alt="Foto de Edward Contreras"
+                className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-500 relative z-20"
+                decoding="async"
+                draggable={false}
+              />
               <div
                 className="absolute top-0 left-0 w-full h-1 bg-tech-accent/50 blur-sm"
                 style={{ animation: 'scan 2s linear infinite' }}

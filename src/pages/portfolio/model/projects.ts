@@ -126,39 +126,94 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'EL-02',
     statusPing: false,
-    icon: 'fa-graduation-cap',
-    title: 'Plataforma E-Learning',
+    icon: 'fa-cash-register',
+    id: 'POS-02',
+    title: 'Camelias POS - Punto de Venta (WPF)',
     description:
-      'Plataforma educativa con cursos interactivos, sistema de seguimiento de progreso, evaluaciones automatizadas y certificaciones para el aprendizaje online.',
+      'Sistema POS de escritorio en WPF (.NET 8) para ventas, inventario, boleta interna (no tributaria) y visualización de KPIs. Persistencia y consultas vía Supabase.',
     tags: [
-      { label: 'Vue.js', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Python', className: 'text-[10px] bg-slate-900 text-yellow-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Django', className: 'text-[10px] bg-slate-900 text-green-600 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'MongoDB', className: 'text-[10px] bg-slate-900 text-green-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'AWS', className: 'text-[10px] bg-slate-900 text-orange-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-    ],
-    meta: 'STATUS: Destacado',
-    overlayRightClass: 'text-[10px] font-mono text-green-500',
-    overlayRightText: 'ACTIVE',
-    scanDelay: '1s',
-  },
-  {
-    id: 'API-03',
-    statusPing: false,
-    icon: 'fa-code',
-    title: 'API REST Full-Stack',
-    description: 'Sistema backend robusto con arquitectura escalable, autenticación JWT, documentación automática y despliegue en la nube.',
-    tags: [
-      { label: 'Node.js', className: 'text-[10px] bg-slate-900 text-green-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'TypeScript', className: 'text-[10px] bg-slate-900 text-blue-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'WPF', className: 'text-[10px] bg-slate-900 text-slate-200 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: '.NET 8', className: 'text-[10px] bg-slate-900 text-purple-300 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'C#', className: 'text-[10px] bg-slate-900 text-purple-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Supabase', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
       { label: 'PostgreSQL', className: 'text-[10px] bg-slate-900 text-blue-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Docker', className: 'text-[10px] bg-slate-900 text-blue-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'ESC/POS', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
     ],
-    meta: 'STATUS: Production',
-    overlayRightClass: 'text-[10px] font-mono text-blue-400',
-    overlayRightText: 'DEPLOY',
-    scanDelay: '2s',
+    meta: 'STATUS: Proyecto personal (solo dev)',
+    overlayRightClass: 'text-[10px] font-mono text-tech-accent',
+    overlayRightText: 'DESKTOP',
+    scanDelay: '1s',
+    details: {
+      year: 2025,
+      longDescription:
+        'Camelias POS es un sistema de Punto de Venta desarrollado en WPF (.NET 8), diseñado y construido íntegramente por mí. Permite operar ventas (carrito, edición de ítems, cobro), controlar inventario (productos, precios, stock), generar una boleta interna (no tributaria) e imprimir ticket térmico 58mm mediante ESC/POS. La persistencia y consultas se realizan contra una base de datos en Supabase (PostgreSQL), además de incluir paneles de KPIs y exportación a CSV para respaldo.',
+      screenshots: [
+        { src: '/proyects/lascamelias/1.webp', alt: 'Camelias POS - Captura 1' },
+        { src: '/proyects/lascamelias/2.webp', alt: 'Camelias POS - Captura 2' },
+        { src: '/proyects/lascamelias/3.webp', alt: 'Camelias POS - Captura 3' },
+        { src: '/proyects/lascamelias/4.webp', alt: 'Camelias POS - Captura 4' },
+        { src: '/proyects/lascamelias/5.webp', alt: 'Camelias POS - Captura 5' },
+        { src: '/proyects/lascamelias/6.webp', alt: 'Camelias POS - Captura 6' },
+      ],
+      skills: [
+        {
+          title: 'Diseño y Desarrollo End-to-End',
+          description: 'Construcción completa del sistema: UI, lógica de negocio e integración de datos.',
+        },
+        {
+          title: 'Integración con Supabase',
+          description: 'Persistencia y consultas mediante PostgREST/RPC sobre PostgreSQL (Supabase).',
+        },
+        {
+          title: 'Impresión ESC/POS (58mm)',
+          description: 'Generación y envío directo del ticket térmico con detalle de compra.',
+        },
+        {
+          title: 'KPIs y Reportes',
+          description: 'Métricas de ventas y vistas para apoyar decisiones operativas.',
+        },
+      ],
+      features: [
+        {
+          title: 'Venta',
+          description: 'Armado de carrito, edición de ítems, cobro y registro de transacciones.',
+        },
+        {
+          title: 'Inventario',
+          description: 'Administración de productos, precios y stock.',
+        },
+        {
+          title: 'Boleta interna',
+          description: 'Generación e impresión de ticket térmico 58mm (no tributario).',
+        },
+        {
+          title: 'Número de Boleta en ticket',
+          description: 'El ticket muestra explícitamente el identificador interno de la venta para soporte y control.',
+        },
+        {
+          title: 'Exportación CSV',
+          description: 'Exportación de datos para respaldo y consulta rápida.',
+        },
+      ],
+      process: [
+        {
+          title: 'Definición de alcance',
+          description: 'Enfoqué el sistema en venta, inventario, boleta interna y reportes operativos.',
+        },
+        {
+          title: 'Implementación UI (WPF)',
+          description: 'Ventanas y controles para operación de caja, mantenimiento y reportes.',
+        },
+        {
+          title: 'Persistencia (Supabase)',
+          description: 'Repositorios y consultas para ventas, productos y métricas.',
+        },
+        {
+          title: 'Impresión',
+          description: 'Formateo y envío de ticket ESC/POS para impresoras 58mm.',
+        },
+      ],
+    },
   },
 ]
