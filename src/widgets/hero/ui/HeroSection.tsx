@@ -72,7 +72,7 @@ export function HeroSection() {
             {/* Social links */}
             <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
               <a
-                href="https://github.com/edwardcontreras"
+                href="https://github.com/DeuxMachin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
@@ -90,7 +90,7 @@ export function HeroSection() {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="mailto:edward@example.com"
+                href="mailto:mathias.contreras.a@gmail.com"
                 className="social-btn"
                 aria-label="Email"
               >

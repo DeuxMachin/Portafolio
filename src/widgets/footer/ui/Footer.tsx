@@ -2,7 +2,7 @@ import { Github, Linkedin, Twitter, Heart } from 'lucide-react'
 import { useI18n } from '../../../shared/i18n/I18nContext'
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/edwardcontreras', icon: Github },
+  { name: 'GitHub', href: 'https://github.com/DeuxMachin', icon: Github },
   { name: 'LinkedIn', href: 'https://linkedin.com/in/edwardcontreras', icon: Linkedin },
   { name: 'Twitter', href: 'https://twitter.com/edwardcontreras', icon: Twitter },
 ]

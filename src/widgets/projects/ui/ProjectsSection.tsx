@@ -142,11 +142,30 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent opacity-60" />
 
                     {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-gray-900 font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <div className="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setSelectedProject(project)
+                        }}
+                        className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-gray-900 font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-gray-100"
+                      >
                         {t.projects.viewDetails}
                         <ArrowRight className="w-4 h-4" />
-                      </div>
+                      </button>
+                      {project.links?.repoUrl && (
+                        <a
+                          href={project.links.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center gap-2 px-4 py-2 bg-indigo-600 rounded-full text-white font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-indigo-700"
+                        >
+                          <Github className="w-4 h-4" />
+                          {t.projects.viewCode}
+                        </a>
+                      )}
                     </div>
 
                     {/* Category badge */}
@@ -158,25 +177,68 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
-                      {projectData.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm mb-5 line-clamp-2 leading-relaxed">
-                      {projectData.description}
-                    </p>
+                  <div className="p-6 flex flex-col h-full">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                        {projectData.title}
+                      </h3>
+                      <p className="text-gray-400 text-sm mb-5 line-clamp-2 leading-relaxed">
+                        {projectData.description}
+                      </p>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.slice(0, 3).map(tag => (
-                        <span key={tag.label} className="tag">
-                          {tag.label}
-                        </span>
-                      ))}
-                      {project.tags.length > 3 && (
-                        <span className="tag text-gray-500">
-                          +{project.tags.length - 3}
-                        </span>
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.slice(0, 3).map(tag => (
+                          <span key={tag.label} className="tag">
+                            {tag.label}
+                          </span>
+                        ))}
+                        {project.tags.length > 3 && (
+                          <span className="tag text-gray-500">
+                            +{project.tags.length - 3}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3 pt-4 border-t border-white/10">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          setSelectedProject(project)
+                        }}
+                        className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors"
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                        {t.projects.viewDetails}
+                      </button>
+                      {project.links?.repoUrl && (
+                        <a
+                          href={project.links.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-colors border border-white/10 hover:border-white/20"
+                          title="GitHub"
+                          aria-label="GitHub"
+                        >
+                          <Github className="w-4 h-4" />
+                        </a>
+                      )}
+                      {project.links?.liveUrl && (
+                        <a
+                          href={project.links.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-colors border border-white/10 hover:border-white/20"
+                          title="Ver Demo"
+                          aria-label="Ver Demo"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
                       )}
                     </div>
                   </div>

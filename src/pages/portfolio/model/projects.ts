@@ -21,6 +21,10 @@ export const projects: Project[] = [
     overlayRightClass: 'text-[10px] font-mono text-tech-accent',
     overlayRightText: 'LIVE',
     scanDelay: undefined,
+    links: {
+      repoUrl: 'https://github.com/DeuxMachin/Portafolio',
+      liveUrl: 'https://edwardcontreras.me',
+    },
     details: {
       year: 2026,
       longDescription:
@@ -118,6 +122,9 @@ export const projects: Project[] = [
     overlayRightClass: 'text-[10px] font-mono text-tech-accent',
     overlayRightText: 'LIVE',
     scanDelay: undefined,
+    links: {
+      repoUrl: 'https://github.com/DeuxMachin/MiPortalVentas',
+    },
     details: {
       year: 2025,
       longDescription:
@@ -241,6 +248,9 @@ export const projects: Project[] = [
     overlayRightClass: 'text-[10px] font-mono text-tech-accent',
     overlayRightText: 'DESKTOP',
     scanDelay: '1s',
+    links: {
+      repoUrl: 'https://github.com/DeuxMachin/POS-LasCamelias',
+    },
     details: {
       year: 2025,
       longDescription:
@@ -309,6 +319,114 @@ export const projects: Project[] = [
         {
           title: 'Impresión',
           description: 'Formateo y envío de ticket ESC/POS para impresoras 58mm.',
+        },
+      ],
+    },
+  },
+  {
+    id: 'TOXINAS-01',
+    statusPing: false,
+    icon: 'fa-microscope',
+    title: 'Plataforma de Análisis de Toxinas Nav1.7',
+    description:
+      'Plataforma bioinformática para procesar y priorizar toxinas candidatas a inhibir el canal de sodio Nav1.7. Trabajo de título universitario que automatiza el análisis estructural de péptidos mediante grafos moleculares, métricas de centralidad y visualización 3D interactiva.',
+    tags: [
+      { label: 'Python', className: 'text-[10px] bg-slate-900 text-blue-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Flask', className: 'text-[10px] bg-slate-900 text-green-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Graphein', className: 'text-[10px] bg-slate-900 text-red-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Mol*', className: 'text-[10px] bg-slate-900 text-orange-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'SQLite', className: 'text-[10px] bg-slate-900 text-slate-300 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'NetworkX', className: 'text-[10px] bg-slate-900 text-cyan-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'BioPython', className: 'text-[10px] bg-slate-900 text-purple-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+    ],
+    meta: 'STATUS: Trabajo de Título Universitario',
+    overlayRightClass: 'text-[10px] font-mono text-tech-accent',
+    overlayRightText: 'RESEARCH',
+    scanDelay: '1.5s',
+    links: {
+      repoUrl: 'https://github.com/DeuxMachin/Proyecto-toxinas.',
+    },
+    details: {
+      year: '2025 a 2026' as any,
+      longDescription:
+        'La creciente necesidad de analgésicos selectivos no opioides ha consolidado a NaV1.7 como un blanco terapéutico clave en el tratamiento del dolor. Este trabajo de título presenta una plataforma bioinformática modular que automatiza el proceso completo de adquisición, normalización y análisis estructural de toxinas tipo knottin. El sistema integra filtrado farmacofórico basado en secuencia, descriptores topológicos obtenidos desde grafos moleculares y propiedades electrostáticas globales como la orientación del momento dipolar. Se procesaron 1308 péptidos maduros provenientes de UniProt, obteniéndose 44 candidatos compatibles con el modelo inhibitorio de NaV1.7.',
+      skills: [
+        {
+          title: 'Bioinformática Computacional',
+          description: 'Diseñé e implementé un pipeline completo para la adquisición automática de datos desde UniProt, normalización de estructuras PDB/AlphaFold y análisis estructural de péptidos tóxicos.',
+        },
+        {
+          title: 'Análisis de Grafos Moleculares',
+          description: 'Implementé la construcción de grafos moleculares usando Graphein y NetworkX, calculando métricas de centralidad (degree, betweenness, closeness, eigenvector) para identificar residuos clave en la estructura.',
+        },
+        {
+          title: 'Arquitectura en Capas',
+          description: 'Apliqué Clean Architecture / Ports & Adapters: capa de dominio (entidades, value objects), capa de aplicación (casos de uso), infraestructura (adaptadores SQLite, Graphein) e interfaces (Flask REST API + Web UI).',
+        },
+        {
+          title: 'Visualización Científica',
+          description: 'Integré Mol* para visualización 3D de estructuras proteicas con panel de métricas interactivo, modos de visualización de dipolos, puentes disulfuro y filtros basados en motivos estructurales.',
+        },
+      ],
+      features: [
+        {
+          title: 'Pipeline Automatizado UniProt → DB',
+          description: 'Búsqueda automática en UniProt, descarga de XML, extracción de péptidos, descarga y recorte de estructuras PDB/AlphaFold, e inserción en base de datos SQLite con normalización de metadatos.',
+        },
+        {
+          title: 'Análisis de Grafos Moleculares',
+          description: 'Construcción de grafos a nivel de residuo (CA) o átomo, con distancia umbral y separación secuencial configurables. Cálculo de métricas de centralidad y clustering para identificar residuos estructuralmente importantes.',
+        },
+        {
+          title: 'Filtrado Farmacofórico NaSpTx',
+          description: 'Implementación del motivo X1X2-S-WCKX3 para identificar péptidos con potencial actividad inhibidora sobre Nav1.7, con parámetros configurables de gap y requerimiento de pares hidrofóbicos.',
+        },
+        {
+          title: 'Análisis de Dipolos y Propiedades Electrostáticas',
+          description: 'Cálculo del momento dipolar global usando VMD/MDAnalysis, generación de archivos PSF con psfgen, y análisis de orientación dipolar para cada candidato.',
+        },
+        {
+          title: 'Interfaz Web Interactiva',
+          description: 'Aplicación Flask con visualización 3D mediante Mol*, panel de métricas en tiempo real, filtros de toxinas NaSpTx y modos de visualización de dipolos y puentes disulfuro.',
+        },
+        {
+          title: 'Base de Datos Estructurada',
+          description: 'SQLite con tablas normalizadas para proteínas, péptidos, familias y Nav1_7_InhibitorPeptides. Almacenamiento de PDB/PSF como blobs, normalización automática de IC50 a nM.',
+        },
+        {
+          title: 'Exportación y SAR',
+          description: 'Exportación de métricas por familia a Excel/CSV, análisis de relación estructura-actividad (SAR) uniendo métricas topológicas con actividad inhibidora (IC50).',
+        },
+        {
+          title: 'Generación de Artefactos',
+          description: 'Exportación de PDB filtrados, generación automatizada de PSF/PDB para análisis de dipolos, y creación opcional de JSON con anotaciones para cada accesión filtrado.',
+        },
+      ],
+      screenshots: [],
+      process: [
+        {
+          title: 'Investigación y Definición',
+          description: 'Revisión bibliográfica sobre Nav1.7 como blanco terapéutico, análisis de péptidos knottin inhibidores, y definición del motivo farmacofórico NaSpTx (X1X2-S-WCKX3). Diseño del pipeline bioinformático completo.',
+        },
+        {
+          title: 'Diseño de Arquitectura',
+          description: 'Definición de arquitectura en capas (Clean Architecture): dominio (entidades, value objects, servicios), aplicación (casos de uso), infraestructura (adaptadores) e interfaces (REST API + Web UI). Diseño del esquema de base de datos normalizado.',
+        },
+        {
+          title: 'Implementación del Pipeline',
+          description: 'Desarrollo del flujo automatizado: búsqueda en UniProt, descarga de XML, extracción de péptidos, descarga y recorte de PDB/AlphaFold, generación de PSF con VMD/psfgen, e inserción en SQLite.',
+        },
+        {
+          title: 'Análisis de Grafos y Métricas',
+          description: 'Implementación de la construcción de grafos moleculares con Graphein/NetworkX, cálculo de métricas de centralidad (degree, betweenness, closeness, eigenvector, clustering), y análisis de propiedades topológicas.',
+        },
+        {
+          title: 'Desarrollo de Interfaz Web',
+          description: 'Construcción de la aplicación Flask con integración de Mol* para visualización 3D, desarrollo de paneles interactivos de métricas, implementación de filtros NaSpTx y modos de visualización (dipolos, puentes disulfuro).',
+        },
+        {
+          title: 'Validación y Resultados',
+          description: 'Procesamiento de 1308 péptidos de UniProt, identificación de 44 candidatos compatibles con el modelo inhibitorio, validación de métricas estructurales, y generación de exportaciones por familia con análisis SAR.',
         },
       ],
     },
