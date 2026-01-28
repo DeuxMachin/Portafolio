@@ -1,5 +1,3 @@
-import type { IconType } from 'react-icons'
-
 export type ProjectView = 'grid' | 'list'
 
 export type ProjectTag = {
@@ -44,16 +42,4 @@ export type Project = {
   scanDelay?: string
   links?: ProjectLinks
   details?: ProjectDetails
-}
-
-export type TechLevel = 'Experto' | 'Avanzado' | 'Intermedio'
-
-export type TechCategory = 'Framework' | 'Lenguaje' | 'Herramienta' | 'Base de Datos'
-
-export type Tech = {
-  name: string
-  icon: IconType
-  color: string
-  level: TechLevel
-  category: TechCategory
 }

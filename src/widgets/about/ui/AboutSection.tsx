@@ -1,138 +1,169 @@
-import { FaDownload, FaCode, FaRocket, FaLightbulb } from 'react-icons/fa'
-import { about } from '../../../pages/portfolio/model/about'
+import { Code2, Briefcase, User, Monitor, Server, Wrench, Zap, Lightbulb, Download } from 'lucide-react'
+import { useI18n } from '../../../shared/i18n/I18nContext'
 
 export function AboutSection() {
+  const { t, lang } = useI18n()
+
+  const skills = [
+    {
+      name: t.about.frontend,
+      icon: <Monitor className="w-5 h-5" />,
+      items: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      name: t.about.backend,
+      icon: <Server className="w-5 h-5" />,
+      items: ['Node.js', 'Python', 'PostgreSQL', 'Supabase', 'SQLite', 'SQL'],
+      color: 'from-emerald-500 to-teal-500'
+    },
+    {
+      name: t.about.devops,
+      icon: <Wrench className="w-5 h-5" />,
+      items: ['Docker', 'Git', 'Vercel', 'WSL', 'Linux'],
+      color: 'from-orange-500 to-amber-500'
+    },
+  ]
+
+  const highlights = [
+    { label: t.about.focus, value: 'Full Stack & ML', icon: <Zap className="w-4 h-4" /> },
+    { label: t.about.mainStack, value: 'React + Python', icon: <Code2 className="w-4 h-4" /> },
+    { label: t.about.philosophy, value: lang === 'en' ? 'Learn by doing' : 'Aprender haciendo', icon: <Lightbulb className="w-4 h-4" /> },
+  ]
+
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-tech-dark via-slate-950 to-tech-dark relative overflow-hidden scroll-mt-24">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-1/4 w-72 h-72 bg-tech-neon rounded-full blur-[110px]"></div>
-        <div className="absolute bottom-20 right-1/4 w-72 h-72 bg-tech-accent rounded-full blur-[110px]"></div>
-      </div>
+    <section id="sobre-mi" className="py-24 relative">
+      {/* Background accent */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
 
-      {/* Animated Lines */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/2 w-[1px] h-24 bg-gradient-to-b from-transparent via-tech-neon/40 to-transparent"></div>
-        <div className="absolute bottom-0 left-1/3 w-[1px] h-32 bg-gradient-to-t from-transparent via-tech-accent/30 to-transparent"></div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
         <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-tech-neon"></div>
-            <i className="fa-solid fa-user-astronaut text-tech-neon text-xl animate-pulse"></i>
-            <h3 className="text-tech-neon font-mono text-xs tracking-[0.3em] uppercase">Sobre Mí</h3>
-            <i className="fa-solid fa-user-astronaut text-tech-neon text-xl animate-pulse"></i>
-            <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-tech-neon"></div>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            {about.greeting} SOY{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-tech-neon to-tech-accent">EDWARD</span>
+          <p className="text-indigo-400 text-sm font-semibold uppercase tracking-wider mb-3">
+            {t.about.sectionLabel}
+          </p>
+          <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">
+            {t.about.title}{' '}
+            <span className="gradient-text">{t.about.titleHighlight}</span>
           </h2>
-          <p className="text-slate-400 font-mono text-sm max-w-2xl mx-auto">
-            {about.shortBio}
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            {t.about.subtitle}
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Main Content Card */}
-          <div className="lg:col-span-3 relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-tech-neon/15 via-tech-accent/10 to-tech-neon/10 rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500"></div>
-            <div className="relative bg-slate-900/70 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 hover:border-tech-neon/40 transition-all duration-300">
-              {/* Corner Decorations */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-tech-neon/70 opacity-70"></div>
-              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-tech-neon/70 opacity-70"></div>
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-tech-neon/70 opacity-70"></div>
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-tech-neon/70 opacity-70"></div>
+        {/* Bento Grid - 3 columns */}
+        <div className="grid md:grid-cols-3 gap-6">
 
-              {/* Terminal Header */}
-              <div className="flex items-center gap-2 mb-6 pb-4 border-b border-slate-700/50">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+          {/* Featured Card - Skills (Spans 1 column) */}
+          <div className="bento-featured rounded-[2rem] p-8 flex flex-col justify-between min-h-[380px] relative group">
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-slate-500 font-mono text-xs ml-2">~/about-me/historia.md</span>
+                <span className="text-white/70 text-sm font-semibold uppercase tracking-wider">Skills</span>
               </div>
+              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+                {t.about.mySkills}
+              </h3>
+              <p className="text-white/70 text-sm leading-relaxed">
+                {t.about.skillsDescription}
+              </p>
+            </div>
 
-              {/* Title with animated underline */}
-              <div className="mb-6">
-                <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight">{about.name}</h3>
-                <div className="relative inline-block mt-2">
-                  <span className="text-tech-accent font-mono text-sm">{about.headline}</span>
-                  <div className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-tech-accent to-transparent"></div>
+            <div className="mt-8 relative z-10">
+              <div className="flex -space-x-2">
+                <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-indigo-500 shadow-lg">
+                  <Code2 className="w-5 h-5 text-white" />
+                </div>
+                <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-indigo-500 shadow-lg">
+                  <Briefcase className="w-5 h-5 text-white" />
+                </div>
+                <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-indigo-500 shadow-lg">
+                  <User className="w-5 h-5 text-white" />
                 </div>
               </div>
+            </div>
 
-              {/* Paragraphs with nice styling */}
-              <div className="space-y-4 text-slate-300 leading-relaxed">
-                {about.paragraphs.map((text, index) => (
-                  <div key={text} className="flex gap-3 group/p">
-                    <span className="text-tech-accent font-mono text-sm opacity-50 group-hover/p:opacity-100 transition-opacity mt-1">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <p className="flex-1">{text}</p>
-                  </div>
+            {/* Decorative */}
+            <Code2 className="absolute -bottom-8 -right-8 w-48 h-48 text-white/5 rotate-12 group-hover:rotate-0 transition-transform duration-700" />
+          </div>
+
+          {/* Main About Card - Spans 2 columns */}
+          <div className="md:col-span-2 bento-card rounded-[2rem] p-8 relative overflow-hidden">
+            {/* Decorative gradient */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-indigo-500/10 to-transparent rounded-full blur-3xl" />
+
+            <div className="relative z-10">
+              <h4 className="text-2xl font-bold text-white mb-1">Edward Mathias Contreras</h4>
+              <p className="text-indigo-400 text-sm font-semibold uppercase tracking-wider mb-6">{t.about.headline}</p>
+
+              <div className="space-y-4 text-gray-400 leading-relaxed mb-8">
+                {t.about.paragraphs.slice(0, 2).map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
                 ))}
               </div>
 
-              {/* Download CV Button */}
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a
-                  href={about.cv.href}
-                  download={about.cv.downloadFileName}
-                  className="group/btn inline-flex items-center gap-3 rounded-xl bg-gradient-to-r from-tech-accent to-tech-600 text-white font-bold px-6 py-3.5 hover:from-tech-accent hover:to-tech-500 transition-all duration-300 shadow-lg shadow-tech-accent/20 hover:shadow-tech-accent/30 hover:-translate-y-0.5"
-                >
-                  <FaDownload className="group-hover/btn:animate-bounce" />
-                  <span>Descargar mi CV</span>
-                </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-3 rounded-xl border-2 border-slate-600 text-slate-300 font-bold px-6 py-3.5 hover:border-emerald-500 hover:text-emerald-400 transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <span>Hablemos</span>
-                  <span className="text-lg">→</span>
-                </a>
-              </div>
+              <a
+                href="/CV.pdf"
+                download="Edward_Mathias_Contreras_CV.pdf"
+                className="btn-primary inline-flex"
+              >
+                <span className="flex items-center gap-2">
+                  <Download className="w-4 h-4" />
+                  {t.about.downloadCV}
+                </span>
+              </a>
             </div>
           </div>
 
-          {/* Side Cards */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Highlights Cards */}
-            {about.highlights.map((item, i) => {
-              const icons = [FaCode, FaRocket, FaLightbulb]
-              const Icon = icons[i % icons.length]
-              return (
-                <div
-                  key={item.label}
-                  className="group relative bg-slate-900/60 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-tech-accent/40 transition-all duration-300 hover:-translate-y-1"
-                  style={{ animationDelay: `${i * 100}ms` }}
-                >
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-tech-accent/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-tech-accent/10 border border-tech-accent/30 text-tech-accent group-hover:bg-tech-accent/15 transition-colors">
-                      <Icon className="text-xl" />
-                    </div>
-                    <div>
-                      <div className="text-slate-500 font-mono text-xs uppercase tracking-wider mb-1">{item.label}</div>
-                      <div className="text-white font-bold text-lg">{item.value}</div>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-
-            {/* Fun Fact Card */}
-            <div className="relative bg-gradient-to-br from-tech-accent/10 via-slate-900/60 to-tech-neon/10 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-              <div className="absolute top-2 right-2 text-2xl">💡</div>
-              <h4 className="text-tech-accent font-mono text-xs uppercase tracking-wider mb-2">Fun Fact</h4>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Creo que las mejores soluciones nacen cuando combinamos creatividad con lógica.
-                Por eso disfruto tanto programar — es como resolver puzzles infinitos.
+          {/* Stats Cards */}
+          {highlights.map((item, idx) => (
+            <div key={idx} className="bento-card rounded-[1.5rem] p-6 flex flex-col justify-center group hover:border-indigo-500/30 transition-colors">
+              <div className="flex items-center gap-2 text-indigo-400 mb-2">
+                {item.icon}
+                <span className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                  {item.label}
+                </span>
+              </div>
+              <p className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
+                {item.value}
               </p>
             </div>
+          ))}
+
+          {/* Skills Cards */}
+          {skills.map((skillGroup) => (
+            <div key={skillGroup.name} className="bento-card rounded-[1.5rem] p-6 group hover:border-white/20 transition-colors">
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`p-2.5 rounded-xl bg-gradient-to-br ${skillGroup.color} bg-opacity-20`}>
+                  <div className="text-white">
+                    {skillGroup.icon}
+                  </div>
+                </div>
+                <h3 className="font-bold text-white">{skillGroup.name}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {skillGroup.items.map(item => (
+                  <span key={item} className="tag hover:bg-white/10">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {/* Fun Fact Card */}
+          <div className="bento-card rounded-[1.5rem] p-6 bg-gradient-to-br from-emerald-500/10 via-transparent to-indigo-500/10 border-emerald-500/20">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-2xl">💡</span>
+              <span className="text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                {t.about.funFact}
+              </span>
+            </div>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              {t.about.funFactText}
+            </p>
           </div>
         </div>
       </div>

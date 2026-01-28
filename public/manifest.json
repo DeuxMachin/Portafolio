@@ -1,0 +1,31 @@
+{
+    "name": "Edward Mathias Contreras - Portfolio",
+    "short_name": "Edward Portfolio",
+    "description": "Portafolio profesional de Edward Mathias Contreras, Ingeniero Civil en Informática especializado en desarrollo Full Stack",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#050b14",
+    "theme_color": "#38bdf8",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "portfolio",
+        "technology",
+        "development"
+    ],
+    "lang": "es",
+    "dir": "ltr"
+}

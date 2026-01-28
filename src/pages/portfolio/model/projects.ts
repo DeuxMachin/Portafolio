@@ -2,6 +2,103 @@ import type { Project } from './types'
 
 export const projects: Project[] = [
   {
+    id: 'PORTFOLIO-01',
+    statusPing: true,
+    icon: 'fa-briefcase',
+    title: 'Portafolio Personal - Edward Contreras',
+    description:
+      'Portafolio web profesional desarrollado con React 19, TypeScript y Tailwind CSS. Implementa Feature-Sliced Design, pruebas unitarias con Vitest, E2E con Playwright y CI/CD con GitHub Actions.',
+    tags: [
+      { label: 'React 19', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'TypeScript', className: 'text-[10px] bg-slate-900 text-blue-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Tailwind CSS', className: 'text-[10px] bg-slate-900 text-cyan-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Vite', className: 'text-[10px] bg-slate-900 text-purple-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Vitest', className: 'text-[10px] bg-slate-900 text-yellow-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Playwright', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Vercel', className: 'text-[10px] bg-slate-900 text-slate-200 border border-slate-700 px-2 py-1 font-mono uppercase' },
+    ],
+    meta: 'STATUS: Live',
+    overlayRightClass: 'text-[10px] font-mono text-tech-accent',
+    overlayRightText: 'LIVE',
+    scanDelay: undefined,
+    details: {
+      year: 2026,
+      longDescription:
+        'Este proyecto es mi portafolio personal donde muestro mis trabajos y habilidades como desarrollador. Está construido con React 19, TypeScript y Tailwind CSS, usando Vite como herramienta de desarrollo. Quise aplicar buenas prácticas desde el inicio: implementé una arquitectura escalable con Feature-Sliced Design, agregué pruebas automáticas para asegurar calidad, configuré CI/CD para validar cada cambio, y lo desplegué en Vercel con optimizaciones de SEO y rendimiento. El objetivo era crear algo profesional pero sin complicaciones innecesarias.',
+      skills: [
+        {
+          title: 'Arquitectura Escalable',
+          description: 'Organicé el código con Feature-Sliced Design: cada pieza tiene su lugar (app, pages, widgets, shared) y las dependencias fluyen en un solo sentido. Esto hace que sea fácil agregar funcionalidades sin romper lo existente.',
+        },
+        {
+          title: 'Testing Integral',
+          description: 'Configuré pruebas unitarias con Vitest para los componentes principales (16 tests) y smoke tests E2E con Playwright (6 tests) para validar los flujos críticos. Todo está integrado en el CI/CD.',
+        },
+        {
+          title: 'Deployment y CI/CD',
+          description: 'Desplegué el sitio en Vercel con builds automáticos desde GitHub. Cada push ejecuta ESLint, pruebas unitarias y E2E en GitHub Actions antes de hacer merge, asegurando que nada roto llegue a producción.',
+        },
+        {
+          title: 'SEO y Performance',
+          description: 'Implementé meta tags Open Graph, Twitter Cards, Schema.org JSON-LD, sitemap.xml y robots.txt. El código está optimizado con lazy loading, code splitting automático de Vite y Lighthouse 95+.',
+        },
+      ],
+      features: [
+        {
+          title: 'Arquitectura Feature-Sliced',
+          description: 'El código está organizado en capas: app (bootstrap), pages (composición), widgets (componentes UI) y shared (utilidades comunes). Las dependencias van de arriba hacia abajo, nunca al revés.',
+        },
+        {
+          title: 'Internacionalización',
+          description: 'Soporte para español e inglés implementado con React Context. El idioma elegido se guarda en localStorage para que persista entre visitas. El cambio es instantáneo sin recargar la página.',
+        },
+        {
+          title: 'Suite de Testing Completa',
+          description: 'Vitest cubre los componentes clave (Navbar, Footer, Hero, About) con 16 tests unitarios. Playwright valida los flujos críticos con 6 smoke tests E2E. Todo se ejecuta en el CI antes de cada merge.',
+        },
+        {
+          title: 'SEO Optimizado',
+          description: 'Meta tags configurados para compartir en redes sociales (Open Graph, Twitter Cards), datos estructurados con Schema.org para Google, sitemap.xml para indexación y robots.txt para crawlers.',
+        },
+        {
+          title: 'CI/CD con GitHub Actions',
+          description: 'Cada push y pull request ejecuta automáticamente: análisis de código con ESLint, pruebas unitarias con Vitest y pruebas E2E con Playwright. Si algo falla, el merge se bloquea.',
+        },
+        {
+          title: 'PWA Ready',
+          description: 'Incluye manifest.json configurado para que el sitio pueda instalarse como aplicación en dispositivos móviles y de escritorio, con iconos y theme color definidos.',
+        },
+        {
+          title: 'Deploy en Vercel',
+          description: 'Desplegado en Vercel con builds automáticos desde la rama principal. El sitio está optimizado para producción con compresión, caché y CDN global para tiempos de carga rápidos.',
+        },
+      ],
+      screenshots: [],
+      process: [
+        {
+          title: 'Diseño de Arquitectura',
+          description: 'Empecé definiendo la estructura del proyecto con Feature-Sliced Design. Dividí la aplicación en capas claras: app para inicialización, pages para composición, widgets para componentes UI y shared para funcionalidades comunes como i18n.',
+        },
+        {
+          title: 'Desarrollo de Componentes',
+          description: 'Construí cada sección como un widget independiente: Navbar con navegación y cambio de idioma, Hero con presentación y CTA, Projects mostrando los trabajos, About con skills, Contact con formulario, y Footer con enlaces sociales.',
+        },
+        {
+          title: 'Implementación de Testing',
+          description: 'Configuré Vitest con jsdom para pruebas unitarias de componentes React. Cada widget principal tiene su suite de tests. Agregué Playwright para smoke tests E2E que validan la navegación, interacciones y flujos críticos del usuario.',
+        },
+        {
+          title: 'Setup de CI/CD',
+          description: 'Creé un workflow de GitHub Actions que se ejecuta en cada push. El pipeline valida calidad de código con ESLint, ejecuta todos los tests unitarios con Vitest y corre los tests E2E con Playwright. Instalé navegadores de Playwright en el CI para que todo funcione automáticamente.',
+        },
+        {
+          title: 'Optimización y Deploy',
+          description: 'Optimicé el sitio con lazy loading de imágenes, code splitting automático de Vite, meta tags para SEO, y manifest.json para PWA. Desplegué en Vercel configurando builds automáticos desde GitHub. El sitio está en producción con HTTPS, CDN y analytics.',
+        },
+      ],
+    },
+  },
+  {
     id: 'PV-01',
     statusPing: true,
     icon: 'fa-chart-line',

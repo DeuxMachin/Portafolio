@@ -1,453 +1,385 @@
-import { useEffect, useMemo, useState } from 'react'
-import type { Project, ProjectView } from '../../../pages/portfolio/model/types'
+import { useState } from 'react'
+import { ExternalLink, Github, X, Calendar, Layers, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import type { Project } from '../../../pages/portfolio/model/types'
+import { useI18n } from '../../../shared/i18n/I18nContext'
 
 type ProjectsSectionProps = {
   projects: Project[]
-  projectView: ProjectView
-  onChangeView: (view: ProjectView) => void
 }
 
-export function ProjectsSection({ projects, projectView, onChangeView }: ProjectsSectionProps) {
-  const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
-  const [carouselIndex, setCarouselIndex] = useState(0)
+type ProjectCategory = 'all' | 'web' | 'desktop' | 'mobile'
 
-  const activeProject = useMemo(
-    () => (activeProjectId ? projects.find((p) => p.id === activeProjectId) : undefined),
-    [activeProjectId, projects],
-  )
+export function ProjectsSection({ projects }: ProjectsSectionProps) {
+  const { t, lang, getProjectT } = useI18n()
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all')
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [activeScreenshot, setActiveScreenshot] = useState(0)
 
-  const closeModal = () => setActiveProjectId(null)
-
-  const openProject = (id: string) => {
-    setCarouselIndex(0)
-    setActiveProjectId(id)
+  const getCategory = (project: Project): ProjectCategory => {
+    if (project.id.includes('POS')) return 'desktop'
+    return 'web'
   }
 
-  useEffect(() => {
-    if (!activeProject) return
+  const filteredProjects = activeCategory === 'all'
+    ? projects
+    : projects.filter(p => getCategory(p) === activeCategory)
 
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeModal()
-      if (e.key === 'ArrowLeft') {
-        setCarouselIndex((i) => i - 1)
-      }
-      if (e.key === 'ArrowRight') {
-        setCarouselIndex((i) => i + 1)
+  const categories: { key: ProjectCategory; label: string }[] = [
+    { key: 'all', label: t.projects.all },
+    { key: 'web', label: t.projects.web },
+    { key: 'desktop', label: t.projects.desktop },
+  ]
+
+  // Get translated project data
+  const getProjectData = (project: Project) => {
+    const translated = getProjectT(project.id)
+    if (translated) {
+      return {
+        title: translated.title,
+        description: translated.description,
+        longDescription: translated.longDescription,
+        category: translated.category,
+        skills: translated.skills,
+        features: translated.features,
+        process: translated.process,
       }
     }
-
-    document.addEventListener('keydown', onKeyDown)
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-      document.body.style.overflow = prevOverflow
+    // Fallback to original data
+    return {
+      title: project.title,
+      description: project.description,
+      longDescription: project.details?.longDescription || project.description,
+      category: getCategory(project) === 'desktop' ? 'Desktop' : 'Web',
+      skills: project.details?.skills || [],
+      features: project.details?.features || [],
+      process: project.details?.process || [],
     }
-  }, [activeProject])
+  }
 
-  const activeScreenshots = activeProject?.details?.screenshots ?? []
-  const safeCarouselIndex =
-    activeScreenshots.length > 0
-      ? ((carouselIndex % activeScreenshots.length) + activeScreenshots.length) % activeScreenshots.length
-      : 0
-  const activeShot = activeScreenshots[safeCarouselIndex]
+  const handleCloseModal = () => {
+    setSelectedProject(null)
+    setActiveScreenshot(0)
+  }
 
-  const getStarBlocks = (p: Project) => {
-    const situation = p.description
+  const handlePrevScreenshot = () => {
+    if (!selectedProject?.details?.screenshots) return
+    setActiveScreenshot(prev =>
+      prev === 0 ? selectedProject.details!.screenshots!.length - 1 : prev - 1
+    )
+  }
 
-    const process = p.details?.process
-    const lastProcessDescription = process?.length ? process[process.length - 1]?.description : undefined
-
-    const solution =
-      p.details?.features?.[0]?.description ??
-      process?.[0]?.description ??
-      p.details?.longDescription ??
-      'Diseñé e implementé una solución orientada a performance, mantenibilidad y despliegue rápido.'
-
-    const result =
-      lastProcessDescription ??
-      p.meta ??
-      'Mejora de la experiencia y del flujo de trabajo del usuario.'
-
-    return { situation, solution, result }
+  const handleNextScreenshot = () => {
+    if (!selectedProject?.details?.screenshots) return
+    setActiveScreenshot(prev =>
+      prev === selectedProject.details!.screenshots!.length - 1 ? 0 : prev + 1
+    )
   }
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden scroll-mt-24 bg-gradient-to-b from-tech-dark via-slate-950 to-tech-dark">
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-tech-accent/20 rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none" />
-      <div
-        className="absolute bottom-0 right-1/4 w-96 h-96 bg-tech-neon/20 rounded-full blur-3xl opacity-30 animate-pulse pointer-events-none"
-        style={{ animationDelay: '2s' }}
-      />
+    <>
+      <section id="proyectos" className="py-24 relative">
+        {/* Background accent */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-black text-white mb-3">Proyectos Destacados</h2>
-            <p className="text-slate-400">
-              Casos de estudio donde convertí requerimientos reales en producto, cuidando diseño, performance y despliegue.
-            </p>
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+              <p className="text-indigo-400 text-sm font-semibold uppercase tracking-wider mb-3">Portfolio</p>
+              <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">{t.projects.title}</h2>
+              <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-emerald-500 rounded-full" />
+            </div>
+
+            {/* Category Filter - Glass effect */}
+            <div className="flex gap-1 p-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl">
+              {categories.map(cat => (
+                <button
+                  key={cat.key}
+                  type="button"
+                  onClick={() => setActiveCategory(cat.key)}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${activeCategory === cat.key
+                    ? 'bg-white text-gray-900 shadow-lg'
+                    : 'text-gray-400 hover:text-white'
+                    }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="flex gap-2 bg-slate-900/60 p-1 rounded-full border border-white/10">
-            <button
-              type="button"
-              onClick={() => onChangeView('grid')}
-              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all flex items-center gap-2 ${
-                projectView === 'grid'
-                  ? 'bg-tech-accent/15 text-tech-accent border border-tech-accent/30'
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              <i className="fa-solid fa-border-all text-xs" />
-              Grid
-            </button>
-            <button
-              type="button"
-              onClick={() => onChangeView('list')}
-              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all flex items-center gap-2 ${
-                projectView === 'list'
-                  ? 'bg-tech-accent/15 text-tech-accent border border-tech-accent/30'
-                  : 'text-slate-300 hover:text-white'
-              }`}
-            >
-              <i className="fa-solid fa-list text-xs" />
-              Lista
-            </button>
-          </div>
-        </div>
+          {/* Projects Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project, index) => {
+              const previewImage = project.details?.screenshots?.[0]
+              const projectData = getProjectData(project)
 
-        <div
-          className={
-            projectView === 'grid'
-              ? 'grid grid-cols-1 lg:grid-cols-2 gap-8'
-              : 'flex flex-col gap-6 max-w-5xl mx-auto'
-          }
-        >
-          {projects.map((p) => {
-            const canOpenDetails = Boolean(p.details)
-            const previewImage = p.details?.screenshots?.[0]
-            const star = getStarBlocks(p)
-
-            return (
-              <article
-                key={p.id}
-                className="glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-tech-accent/40 transition-colors group"
-              >
-                <div className="relative h-56 overflow-hidden border-b border-white/5">
-                  {previewImage ? (
-                    <img
-                      src={previewImage.src}
-                      alt={previewImage.alt}
-                      className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ) : (
-                    <div className="w-full h-full relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-950 to-tech-dark">
-                      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(#38bdf8 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                          <i className={`fa-solid ${p.icon} text-5xl text-slate-200 group-hover:text-tech-accent transition-colors duration-300`} />
+              return (
+                <article
+                  key={project.id}
+                  className="group card-hover card-shine bg-white/[0.02] border border-white/[0.06] rounded-[1.75rem] overflow-hidden cursor-pointer"
+                  onClick={() => setSelectedProject(project)}
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  {/* Image */}
+                  <div className="relative h-52 overflow-hidden">
+                    {previewImage ? (
+                      <img
+                        src={previewImage.src}
+                        alt={previewImage.alt}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+                          <Layers className="w-8 h-8 text-gray-600" />
                         </div>
                       </div>
-                    </div>
-                  )}
+                    )}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                  <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className="bg-black/60 backdrop-blur text-[10px] font-mono px-2 py-1 text-slate-200 border border-white/10 rounded">
-                      {p.id}
-                    </span>
-                    <span
-                      className={`text-[10px] font-mono px-2 py-1 rounded border border-white/10 bg-black/40 ${p.overlayRightClass}`}
-                    >
-                      {p.overlayRightText}
-                    </span>
-                    {p.statusPing ? <span className="w-2 h-2 rounded-full bg-tech-accent animate-pulse" /> : null}
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent opacity-60" />
+
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-gray-900 font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        {t.projects.viewDetails}
+                        <ArrowRight className="w-4 h-4" />
+                      </div>
+                    </div>
+
+                    {/* Category badge */}
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-gray-900/80 backdrop-blur-sm rounded-lg text-xs font-semibold text-white border border-white/10">
+                        {projectData.category}
+                      </span>
+                    </div>
                   </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                      {projectData.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm mb-5 line-clamp-2 leading-relaxed">
+                      {projectData.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, 3).map(tag => (
+                        <span key={tag.label} className="tag">
+                          {tag.label}
+                        </span>
+                      ))}
+                      {project.tags.length > 3 && (
+                        <span className="tag text-gray-500">
+                          +{project.tags.length - 3}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Project Detail Modal */}
+      {selectedProject && (() => {
+        const projectData = getProjectData(selectedProject)
+        const screenshots = selectedProject.details?.screenshots || []
+
+        return (
+          <div
+            className="modal-backdrop"
+            onClick={handleCloseModal}
+          >
+            <div
+              className="modal-content my-8"
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Modal Header with Image Carousel */}
+              <div className="relative h-64 md:h-80 overflow-hidden">
+                {screenshots.length > 0 ? (
+                  <>
+                    <img
+                      src={screenshots[activeScreenshot].src}
+                      alt={screenshots[activeScreenshot].alt}
+                      className="w-full h-full object-cover transition-opacity duration-300"
+                    />
+
+                    {/* Carousel Controls */}
+                    {screenshots.length > 1 && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={handlePrevScreenshot}
+                          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-900/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+                          aria-label={lang === 'en' ? 'Previous' : 'Anterior'}
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleNextScreenshot}
+                          className="absolute right-14 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-900/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+                          aria-label={lang === 'en' ? 'Next' : 'Siguiente'}
+                        >
+                          <ChevronRight className="w-5 h-5" />
+                        </button>
+
+                        {/* Dots indicator */}
+                        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
+                          {screenshots.map((_, idx) => (
+                            <button
+                              key={idx}
+                              type="button"
+                              onClick={() => setActiveScreenshot(idx)}
+                              className={`w-2 h-2 rounded-full transition-all ${idx === activeScreenshot
+                                  ? 'bg-white w-6'
+                                  : 'bg-white/40 hover:bg-white/60'
+                                }`}
+                              aria-label={`Screenshot ${idx + 1}`}
+                            />
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-indigo-900 to-gray-900 flex items-center justify-center">
+                    <Layers className="w-16 h-16 text-gray-600" />
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
+
+                {/* Close button */}
+                <button
+                  type="button"
+                  onClick={handleCloseModal}
+                  className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-gray-900/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/20 transition-colors"
+                  aria-label={lang === 'en' ? 'Close' : 'Cerrar'}
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Project title overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="px-3 py-1 bg-indigo-600 rounded-lg text-xs font-semibold text-white">
+                      {projectData.category} App
+                    </span>
+                    {selectedProject.details?.year && (
+                      <span className="flex items-center gap-1.5 text-gray-400 text-sm">
+                        <Calendar className="w-4 h-4" />
+                        {selectedProject.details.year}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-black text-white">
+                    {projectData.title}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-8 space-y-8">
+                {/* Description */}
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">{t.projects.description}</h4>
+                  <p className="text-gray-300 leading-relaxed">
+                    {projectData.longDescription}
+                  </p>
                 </div>
 
-                <div className="p-7">
-                  <div className="flex justify-between items-start gap-4 mb-6">
-                    <div className="min-w-0">
-                      <h3 className="text-2xl font-bold text-white group-hover:text-tech-accent transition-colors truncate">
-                        {p.title}
-                      </h3>
-                      <p className="text-sm text-slate-500 mt-1 font-mono">{p.meta}</p>
-                    </div>
-
-                    <div className="flex gap-2">
-                      {p.links?.repoUrl ? (
-                        <a
-                          href={p.links.repoUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
-                          aria-label="Ver repositorio"
-                          title="Ver código"
+                {/* Screenshot Thumbnails Grid */}
+                {screenshots.length > 1 && (
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{t.projects.screenshots}</h4>
+                    <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                      {screenshots.slice(0, 8).map((shot, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setActiveScreenshot(idx)}
+                          className={`aspect-video rounded-xl overflow-hidden border transition-all ${idx === activeScreenshot
+                              ? 'border-indigo-500 ring-2 ring-indigo-500/30'
+                              : 'border-white/10 hover:border-indigo-500/50'
+                            }`}
                         >
-                          <i className="fa-brands fa-github" />
-                        </a>
-                      ) : null}
-                      {p.links?.liveUrl ? (
-                        <a
-                          href={p.links.liveUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors"
-                          aria-label="Ver demo"
-                          title="Ver demo"
-                        >
-                          <i className="fa-solid fa-arrow-up-right-from-square" />
-                        </a>
-                      ) : null}
+                          <img
+                            src={shot.src}
+                            alt={shot.alt}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </button>
+                      ))}
                     </div>
                   </div>
+                )}
 
-                  <div className="space-y-4 text-sm text-slate-300">
-                    <div>
-                      <strong className="text-tech-neon block mb-1 flex items-center gap-2">
-                        <i className="fa-solid fa-circle-exclamation text-[12px]" /> Desafío (Situación)
-                      </strong>
-                      <p className="text-slate-300 leading-relaxed">{star.situation}</p>
-                    </div>
-
-                    <div className="bg-slate-950/60 border-l-4 border-tech-accent rounded p-4">
-                      <strong className="text-tech-accent block mb-1 flex items-center gap-2 font-mono text-xs">
-                        <i className="fa-solid fa-code" /> Solución (Ingeniería)
-                      </strong>
-                      <p className="text-slate-300 leading-relaxed text-sm">{star.solution}</p>
-                    </div>
-
-                    <div>
-                      <strong className="text-blue-400 block mb-1 flex items-center gap-2">
-                        <i className="fa-solid fa-arrow-trend-up text-[12px]" /> Resultado (Impacto)
-                      </strong>
-                      <p className="text-slate-300 leading-relaxed">{star.result}</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-7 flex flex-wrap gap-2">
-                    {p.tags.map((tag) => (
-                      <span
-                        key={`${p.id}-${tag.label}`}
-                        className="px-2 py-1 rounded text-xs bg-slate-950/30 border border-white/10 text-slate-300"
-                      >
+                {/* Technologies */}
+                <div>
+                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{t.projects.technologies}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tags.map(tag => (
+                      <span key={tag.label} className="tag">
                         {tag.label}
                       </span>
                     ))}
                   </div>
-
-                  <div className="mt-7 flex items-center justify-between gap-4">
-                    <div className="text-xs text-slate-500 font-mono">{canOpenDetails ? 'Caso de estudio disponible' : 'Resumen'}</div>
-                    {canOpenDetails ? (
-                      <button
-                        type="button"
-                        onClick={() => openProject(p.id)}
-                        className="bg-tech-accent/15 hover:bg-tech-accent/25 text-tech-accent border border-tech-accent/30 px-5 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2"
-                      >
-                        Ver detalle
-                        <i className="fa-solid fa-arrow-right" />
-                      </button>
-                    ) : null}
-                  </div>
                 </div>
-              </article>
-            )
-          })}
-        </div>
-      </div>
 
-      {activeProject?.details ? (
-        <div
-          className="fixed inset-0 z-[999] bg-black/70 backdrop-blur-sm flex items-start justify-center px-4 py-10 overflow-y-auto"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Detalles del proyecto ${activeProject.title}`}
-          onMouseDown={(e) => {
-            if (e.target === e.currentTarget) closeModal()
-          }}
-        >
-          <div className="w-full max-w-5xl cyber-card">
-            <div className="p-6 border-b border-tech-accent/20 flex items-start justify-between gap-4">
-              <div>
-                <h3 className="text-3xl md:text-4xl font-black text-white">{activeProject.title}</h3>
-                <div className="mt-3 flex items-center gap-3 text-slate-300 text-sm">
-                  {typeof activeProject.details.year === 'number' ? (
-                    <span className="inline-flex items-center gap-2 font-mono text-xs text-slate-300">
-                      <i className="fa-regular fa-calendar"></i>
-                      Proyecto desarrollado en {activeProject.details.year}
-                    </span>
-                  ) : null}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                {activeProject.links?.repoUrl ? (
-                  <a
-                    href={activeProject.links.repoUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-10 h-10 rounded bg-slate-900/70 border border-slate-700 flex items-center justify-center hover:border-tech-accent/60 transition-colors"
-                    aria-label="Repositorio"
-                  >
-                    <i className="fa-brands fa-github text-slate-200"></i>
-                  </a>
-                ) : null}
-                {activeProject.links?.liveUrl ? (
-                  <a
-                    href={activeProject.links.liveUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-10 h-10 rounded bg-slate-900/70 border border-slate-700 flex items-center justify-center hover:border-tech-accent/60 transition-colors"
-                    aria-label="Sitio en vivo"
-                  >
-                    <i className="fa-solid fa-arrow-up-right-from-square text-slate-200"></i>
-                  </a>
-                ) : null}
-                <button
-                  type="button"
-                  onClick={closeModal}
-                  className="w-10 h-10 rounded bg-slate-900/70 border border-slate-700 flex items-center justify-center hover:border-tech-accent/60 transition-colors"
-                  aria-label="Cerrar"
-                >
-                  <i className="fa-solid fa-xmark text-slate-200"></i>
-                </button>
-              </div>
-            </div>
-
-            <div className="p-6 space-y-10">
-              {activeProject.details.longDescription ? (
-                <p className="text-slate-300 leading-relaxed">{activeProject.details.longDescription}</p>
-              ) : null}
-
-              <div>
-                <h4 className="text-white font-bold text-lg mb-4">Tecnologías Utilizadas</h4>
-                <div className="flex flex-wrap gap-2">
-                  {activeProject.tags.map((tag) => (
-                    <span key={`${activeProject.id}-modal-${tag.label}`} className={tag.className}>
-                      {tag.label}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {activeProject.details.skills?.length ? (
-                <div>
-                  <h4 className="text-white font-bold text-lg mb-4">Habilidades Demostradas</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {activeProject.details.skills.map((s) => (
-                      <div key={`skill-${s.title}`} className="bg-slate-900/60 border border-slate-700 rounded p-4">
-                        <div className="text-white font-bold mb-1">{s.title}</div>
-                        <div className="text-slate-300 text-sm leading-relaxed">{s.description}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              {activeProject.details.features?.length ? (
-                <div>
-                  <h4 className="text-white font-bold text-lg mb-4">Características Principales</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {activeProject.details.features.map((f) => (
-                      <div key={`feature-${f.title}`} className="bg-slate-900/60 border border-slate-700 rounded p-4">
-                        <div className="text-white font-bold mb-1">{f.title}</div>
-                        <div className="text-slate-300 text-sm leading-relaxed">{f.description}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              <div>
-                <h4 className="text-white font-bold text-lg mb-4">Capturas del Proyecto</h4>
-                {activeProject.details.screenshots?.length ? (
-                  <div className="bg-slate-900/60 border border-slate-700 rounded p-3">
-                    <div className="relative overflow-hidden rounded">
-                      {activeShot ? (
-                        <img
-                          src={activeShot.src}
-                          alt={activeShot.alt}
-                          className="w-full h-auto rounded"
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      ) : null}
-
-                      <div className="absolute inset-x-0 top-0 p-2 flex items-center justify-between">
-                        <span className="bg-black/60 backdrop-blur text-[10px] font-mono px-2 py-1 text-slate-200 border border-slate-700 rounded">
-                          {safeCarouselIndex + 1}/{activeScreenshots.length}
-                        </span>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => setCarouselIndex((i) => i - 1)}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded bg-black/50 border border-slate-700 text-white hover:border-tech-accent/60 transition-colors"
-                        aria-label="Anterior"
-                      >
-                        <i className="fa-solid fa-chevron-left"></i>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setCarouselIndex((i) => i + 1)}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded bg-black/50 border border-slate-700 text-white hover:border-tech-accent/60 transition-colors"
-                        aria-label="Siguiente"
-                      >
-                        <i className="fa-solid fa-chevron-right"></i>
-                      </button>
+                {/* Skills */}
+                {projectData.skills.length > 0 && (
+                  <div>
+                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{t.projects.skillsShown}</h4>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {projectData.skills.map(skill => (
+                        <div key={skill.title} className="p-4 bg-white/[0.03] rounded-xl border border-white/[0.06] hover:border-indigo-500/30 transition-colors group">
+                          <h5 className="font-semibold text-white mb-1 group-hover:text-indigo-400 transition-colors">{skill.title}</h5>
+                          <p className="text-gray-400 text-sm leading-relaxed">{skill.description}</p>
+                        </div>
+                      ))}
                     </div>
-
-                    <div className="mt-3 flex items-center justify-center gap-2 flex-wrap">
-                      {activeScreenshots.map((_, idx) => {
-                        const isActive = idx === safeCarouselIndex
-                        return (
-                          <button
-                            key={`dot-${idx}`}
-                            type="button"
-                            onClick={() => setCarouselIndex(idx)}
-                            className={`h-2 w-2 rounded-full border transition-colors ${
-                              isActive
-                                ? 'bg-tech-accent border-tech-accent'
-                                : 'bg-slate-700 border-slate-600 hover:border-tech-accent/60'
-                            }`}
-                            aria-label={`Ir a captura ${idx + 1}`}
-                          />
-                        )
-                      })}
-                    </div>
-                  </div>
-                ) : (
-                  <div className="bg-slate-900/60 border border-slate-700 rounded p-6 text-slate-400 text-sm">
-                    Agrega tus capturas en <span className="font-mono">public/projects/...</span> para mostrarlas aquí.
                   </div>
                 )}
-              </div>
 
-              {activeProject.details.process?.length ? (
-                <div>
-                  <h4 className="text-white font-bold text-lg mb-4">Proceso de Desarrollo</h4>
-                  <div className="space-y-4">
-                    {activeProject.details.process.map((step) => (
-                      <div key={`process-${step.title}`} className="flex gap-3">
-                        <div className="mt-2 w-2 h-2 rounded-full bg-tech-accent/80 flex-shrink-0"></div>
-                        <div>
-                          <div className="text-white font-bold">{step.title}</div>
-                          <div className="text-slate-300 text-sm leading-relaxed">{step.description}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                {/* Links */}
+                <div className="flex flex-wrap gap-4 pt-4 border-t border-white/10">
+                  {selectedProject.links?.repoUrl && (
+                    <a
+                      href={selectedProject.links.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary flex items-center gap-2"
+                    >
+                      <Github className="w-5 h-5" />
+                      {t.projects.viewCode}
+                    </a>
+                  )}
+                  {selectedProject.links?.liveUrl && (
+                    <a
+                      href={selectedProject.links.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                    >
+                      <span className="flex items-center gap-2">
+                        <ExternalLink className="w-5 h-5" />
+                        {t.projects.viewDemo}
+                      </span>
+                    </a>
+                  )}
                 </div>
-              ) : null}
+              </div>
             </div>
           </div>
-        </div>
-      ) : null}
-    </section>
+        )
+      })()}
+    </>
   )
 }

@@ -1,92 +1,144 @@
+import { Github, Linkedin, Mail, ArrowRight, Sparkles } from 'lucide-react'
+import { useI18n } from '../../../shared/i18n/I18nContext'
+
 export function HeroSection() {
+  const { t } = useI18n()
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center perspective-container">
-      <div className="cyber-grid"></div>
+    <section id="inicio" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-1/4 left-10 w-2 h-2 bg-indigo-500 rounded-full animate-ping opacity-60" />
+      <div className="absolute top-1/3 right-20 w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping opacity-60" style={{ animationDelay: '0.5s' }} />
+      <div className="absolute bottom-1/4 left-1/4 w-1 h-1 bg-purple-500 rounded-full animate-ping opacity-60" style={{ animationDelay: '1s' }} />
 
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-tech-accent rounded-full animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-3 h-3 bg-purple-500 rounded-full animate-pulse-slow"></div>
-      </div>
+      {/* Floating geometric shapes */}
+      <div className="absolute top-20 right-1/4 w-32 h-32 border border-indigo-500/10 rounded-full animate-spin-slow" />
+      <div className="absolute bottom-32 left-20 w-24 h-24 border border-emerald-500/10 rotate-45 animate-float" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div className="order-2 lg:order-1 space-y-8 fade-in-up" style={{ animationDelay: '1s' }}>
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-tech-accent font-mono text-xs tracking-widest border border-tech-accent/30 px-2 py-1 rounded bg-tech-accent/10">
-              SYSTEM_ONLINE
-            </span>
-          </div>
+      <div className="max-w-6xl mx-auto px-6 py-16 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
 
-          <div className="relative">
-            <h2 className="text-xl md:text-2xl font-mono text-slate-400 mb-2">Ingeniero Civil en Informática</h2>
-            <h1 className="text-6xl md:text-8xl font-black leading-none text-white tracking-tighter">
-              EDWARD
-              <br />
-              <span className="text-stroke-accent relative inline-block">
-                CONTRERAS
-                <span
-                  className="absolute top-0 left-0 -ml-1 text-tech-accent opacity-50 animate-glitch mix-blend-screen"
-                  aria-hidden="true"
-                >
-                  CONTRERAS
-                </span>
+          {/* Content */}
+          <div className="flex-1 space-y-8 text-center lg:text-left animate-fade-up">
+            {/* Availability Badge */}
+            <div className="badge inline-flex">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-            </h1>
+              {t.hero.available}
+            </div>
+
+            {/* Main Heading */}
+            <div className="space-y-4">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+                <span className="text-white">{t.hero.greeting}</span>{' '}
+                <span className="gradient-text">{t.hero.name}</span>
+                <span className="text-white">.</span>
+              </h1>
+              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-400 leading-tight">
+                {t.hero.tagline}
+              </p>
+            </div>
+
+            {/* Description */}
+            <p className="text-gray-400 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up-delay">
+              {t.hero.description}
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4 animate-fade-up-delay">
+              <button
+                type="button"
+                onClick={() => document.getElementById('proyectos')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-primary flex items-center gap-2"
+              >
+                <span className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4" />
+                  {t.hero.viewProjects}
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-secondary"
+              >
+                {t.contact?.sendMessage || 'Contactar'}
+              </button>
+            </div>
+
+            {/* Social links */}
+            <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
+              <a
+                href="https://github.com/edwardcontreras"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-btn"
+                aria-label="GitHub"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="https://linkedin.com/in/edwardcontreras"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-btn"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="mailto:edward@example.com"
+                className="social-btn"
+                aria-label="Email"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
-          <div className="holo-card p-6 rounded-lg border-l-4 border-l-tech-accent max-w-lg">
-            <div className="font-mono text-xs text-slate-500 mb-2 border-b border-slate-700 pb-2 flex justify-between">
-              <span>&gt; EXEC_PROFILE_SUMMARY.EXE</span>
-              <span>CPU: 12%</span>
+          {/* Profile Image - Enhanced */}
+          <div className="relative animate-fade-up lg:animate-float">
+            {/* Orbit ring */}
+            <div className="absolute inset-0 -m-8 border border-indigo-500/20 rounded-[3rem] animate-spin-slow" />
+
+            {/* Profile container with animated gradient */}
+            <div className="profile-container">
+              <div className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-[1.75rem] overflow-hidden bg-gray-900">
+                <img
+                  src="/Perfil.webp"
+                  alt="Edward Contreras"
+                  className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
+                  loading="eager"
+                />
+
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none" />
+              </div>
             </div>
-            <p className="text-slate-300 leading-relaxed">
-              <span className="text-tech-accent">&gt;</span> Desarrollador apasionado por crear soluciones tecnológicas innovadoras y
-              experiencias digitales excepcionales. Especializado en desarrollo web{' '}
-              <span className="text-white font-bold">full-stack</span> con tecnologías modernas.
-            </p>
-            <div className="mt-4 flex gap-4">
-              <button
-                type="button"
-                onClick={() => document.getElementById('projects')?.scrollIntoView()}
-                className="px-6 py-2 bg-tech-600 hover:bg-tech-500 text-white font-bold text-sm tracking-wider clip-path-polygon transition-all"
-              >
-                INICIAR MISIÓN
-              </button>
-              <button
-                type="button"
-                onClick={() => document.getElementById('contact')?.scrollIntoView()}
-                className="px-6 py-2 border border-slate-600 hover:border-white text-slate-300 hover:text-white font-bold text-sm tracking-wider transition-all"
-              >
-                CONTACTO
-              </button>
+
+            {/* Floating badge */}
+            <div className="absolute -bottom-4 -right-4 px-4 py-2 bg-gray-900 border border-gray-700 rounded-xl shadow-xl">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                <span className="text-sm font-semibold text-white">Full Stack</span>
+              </div>
+            </div>
+
+            {/* Experience badge */}
+            <div className="absolute -top-4 -left-4 px-4 py-2 bg-indigo-600 rounded-xl shadow-xl">
+              <span className="text-sm font-bold text-white">{t.hero.yearsExp}</span>
             </div>
           </div>
         </div>
 
-        <div className="order-1 lg:order-2 flex justify-center items-center relative fade-in-up" style={{ animationDelay: '1.2s' }}>
-          <div className="relative w-80 h-80 md:w-96 md:h-96 flex items-center justify-center">
-            <div className="absolute inset-0 border border-slate-700 rounded-full"></div>
-            <div className="absolute inset-4 border-2 border-dashed border-tech-accent/30 rounded-full animate-spin-slow"></div>
-            <div className="absolute inset-12 border border-purple-500/40 rounded-full animate-spin-reverse-slow"></div>
-            <div className="absolute inset-0 rounded-full border-t-2 border-tech-accent opacity-50 animate-[spin_3s_linear_infinite]"></div>
-            <div className="w-48 h-48 bg-slate-900 rounded-full border-4 border-tech-900 shadow-[0_0_50px_rgba(56,189,248,0.4)] flex items-center justify-center relative z-10 overflow-hidden group">
-              <i className="fa-solid fa-user-astronaut text-7xl text-slate-200/50 transition-colors duration-500 absolute inset-0 m-auto w-fit h-fit z-10"></i>
-              <img
-                src="/Perfil.webp"
-                alt="Foto de Edward Contreras"
-                className="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-500 relative z-20"
-                decoding="async"
-                draggable={false}
-              />
-              <div
-                className="absolute top-0 left-0 w-full h-1 bg-tech-accent/50 blur-sm"
-                style={{ animation: 'scan 2s linear infinite' }}
-              ></div>
-            </div>
-            <div className="absolute -right-10 top-1/2 w-20 h-[1px] bg-slate-600"></div>
-            <div className="absolute -right-14 top-1/2 text-[10px] font-mono text-slate-500 transform rotate-90 origin-left">
-              DATA_CORE
-            </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2">
+          <span className="text-xs font-medium text-gray-500 uppercase tracking-widest">Scroll</span>
+          <div className="w-5 h-8 border-2 border-gray-600 rounded-full flex justify-center pt-1">
+            <div className="w-1 h-2 bg-gray-400 rounded-full animate-bounce" />
           </div>
         </div>
       </div>
