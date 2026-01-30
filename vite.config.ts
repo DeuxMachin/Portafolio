@@ -11,4 +11,23 @@ export default defineConfig({
     css: true,
     exclude: ['e2e/**', 'node_modules/**', 'dist/**', 'build/**'],
   },
+  build: {
+    // Optimize chunks for better caching
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'lucide-icons': ['lucide-react'],
+        },
+      },
+    },
+    // Reduce chunk size warnings threshold
+    chunkSizeWarningLimit: 1000,
+    // Use esbuild for faster minification
+    minify: 'esbuild',
+  },
+  // Optimize dependencies
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'lucide-react'],
+  },
 })

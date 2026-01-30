@@ -162,39 +162,39 @@ export const projects: Project[] = [
       ],
       screenshots: [
         {
-          src: '/proyects/miportalventas/Login.png',
+          src: '/proyects/miportalventas/Login.webp',
           alt: 'Login de MiPortalVentas',
         },
         {
-          src: '/proyects/miportalventas/Dashboard.png',
+          src: '/proyects/miportalventas/Dashboard.webp',
           alt: 'Dashboard de MiPortalVentas',
         },
         {
-          src: '/proyects/miportalventas/KPIVentas.png',
+          src: '/proyects/miportalventas/KPIVentas.webp',
           alt: 'KPI Ventas de MiPortalVentas',
         },
         {
-          src: '/proyects/miportalventas/Inventario.png',
+          src: '/proyects/miportalventas/Inventario.webp',
           alt: 'Inventario de MiPortalVentas',
         },
         {
-          src: '/proyects/miportalventas/Cotizaciones.png',
+          src: '/proyects/miportalventas/Cotizaciones.webp',
           alt: 'Cotizaciones de MiPortalVentas',
         },
         {
-          src: '/proyects/miportalventas/DetalleCotizacion.png',
+          src: '/proyects/miportalventas/DetalleCotizacion.webp',
           alt: 'Detalle de Cotización de MiPortalVentas',
         },
         {
-          src: '/proyects/miportalventas/Clientes.png',
+          src: '/proyects/miportalventas/Clientes.webp',
           alt: 'Clientes de MiPortalVentas',
         },
         {
-          src: '/proyects/miportalventas/ClienteDetalles.png',
+          src: '/proyects/miportalventas/ClienteDetalles.webp',
           alt: 'Detalle de Cliente de MiPortalVentas',
         },
         {
-          src: '/proyects/miportalventas/ReunionesControl.png',
+          src: '/proyects/miportalventas/ReunionesControl.webp',
           alt: 'Reuniones y Control de MiPortalVentas',
         },
       ],
@@ -309,6 +309,123 @@ export const projects: Project[] = [
         {
           title: 'Impresión',
           description: 'Formateo y envío de ticket ESC/POS para impresoras 58mm.',
+        },
+      ],
+    },
+  },
+  {
+    statusPing: false,
+    icon: 'fa-graduation-cap',
+    id: 'TESIS-01',
+    title: 'Trabajo de Título - Plataforma de Análisis de Toxinas Nav1.7',
+    description:
+      'Plataforma bioinformática modular para análisis estructural de toxinas peptídicas que modulan el canal de sodio Nav1.7. Combina grafos moleculares, métricas de centralidad, visualización 3D interactiva con Mol* y pipeline automatizado de procesamiento desde UniProt.',
+    tags: [
+      { label: 'Python 3.9', className: 'text-[10px] bg-slate-900 text-blue-300 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Flask', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Graphein', className: 'text-[10px] bg-slate-900 text-red-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Mol*', className: 'text-[10px] bg-slate-900 text-orange-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'NetworkX', className: 'text-[10px] bg-slate-900 text-purple-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'SQLite', className: 'text-[10px] bg-slate-900 text-cyan-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'VMD', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
+    ],
+    meta: 'STATUS: Trabajo de Título',
+    overlayRightClass: 'text-[10px] font-mono text-purple-400',
+    overlayRightText: 'BIOINFORMÁTICA',
+    scanDelay: '1.5s',
+    details: {
+      year: 2024,
+      longDescription:
+        'Plataforma bioinformática desarrollada como trabajo de título que automatiza el análisis estructural de toxinas peptídicas (tipo knottin) que modulan el canal de sodio Nav1.7, un blanco terapéutico clave para analgésicos no opioides. El sistema integra construcción de grafos moleculares (Graphein/NetworkX), cálculo de métricas topológicas avanzadas, visualización 3D con Mol*, y un pipeline completo desde búsqueda en UniProt hasta identificación de candidatos inhibidores. Procesa 1308 péptidos maduros, aplicando filtrado farmacofórico basado en el motivo NaSpTx (X1X2-S-WCKX3) y análisis de propiedades electrostáticas (momento dipolar), obteniendo 44 candidatos compatibles con el modelo inhibitorio. La arquitectura sigue Clean Architecture con separación en capas (dominio, aplicación, infraestructura, interfaces), base de datos SQLite normalizada, y API REST Flask con interfaz web interactiva.',
+      screenshots: [
+        { src: '/proyects/tesis/inicio.webp', alt: 'Plataforma - Pantalla de inicio' },
+        { src: '/proyects/tesis/familias.webp', alt: 'Vista de familias de toxinas' },
+        { src: '/proyects/tesis/grafos.webp', alt: 'Construcción de grafos moleculares' },
+        { src: '/proyects/tesis/visualizado.webp', alt: 'Visualización 3D con Mol* y grafo interactivo' },
+        { src: '/proyects/tesis/filtro.webp', alt: 'Filtrado farmacofórico por motivo NaSpTx' },
+        { src: '/proyects/tesis/metricas.webp', alt: 'Panel de métricas de centralidad y topología' },
+        { src: '/proyects/tesis/exportar.webp', alt: 'Exportación de resultados por familia' },
+      ],
+      skills: [
+        {
+          title: 'Bioinformática y Química Computacional',
+          description: 'Dominio de análisis estructural de proteínas: construcción de grafos moleculares desde PDB, cálculo de descriptores topológicos (centralidad de grado, betweenness, closeness, eigenvector), análisis de puentes disulfuro, orientación de momento dipolar y filtrado farmacofórico basado en secuencia.',
+        },
+        {
+          title: 'Arquitectura de Software Escalable',
+          description: 'Implementación de Clean Architecture (Ports & Adapters) con separación clara en capas: dominio (entidades, value objects), aplicación (casos de uso), infraestructura (adaptadores SQLite, Graphein, VMD) e interfaces HTTP (Flask, REST API v2). Sistema modular, testeable y mantenible.',
+        },
+        {
+          title: 'Pipeline de Procesamiento de Datos',
+          description: 'Desarrollo de flujo end-to-end: búsqueda automática en UniProt, descarga y parseo de XML, extracción de péptidos maduros, recorte de estructuras PDB/AlphaFold, normalización de datos de actividad (IC50 a nM), generación de PSF con VMD/psfgen, y exportación masiva por familias.',
+        },
+        {
+          title: 'Visualización Científica Interactiva',
+          description: 'Integración de Mol* (visor 3D de biomoléculas) con paneles de métricas dinámicos, grafos interactivos 2D/3D (Plotly), modos de visualización de dipolos y puentes disulfuro, y controles de granularidad (nivel residuo CA vs atómico) con parámetros configurables (distancia umbral, separación secuencial).',
+        },
+      ],
+      features: [
+        {
+          title: 'Grafos Moleculares con Graphein/NetworkX',
+          description: 'Construcción automática de grafos a partir de estructuras PDB con granularidad configurable (residuo CA o atómico), distancia umbral 6-12 Å, y separación secuencial para filtrar contactos triviales. Cálculo de métricas topológicas: degree, betweenness, closeness, eigenvector, clustering coefficient.',
+        },
+        {
+          title: 'API REST Flask con Clean Architecture',
+          description: 'Backend en Flask organizado en capas según principios de Clean Architecture. Endpoints REST v2 documentados: cálculo de grafos, exportación de métricas por péptido/familia, análisis de dipolos, listado de péptidos y familias, healthcheck. Sistema testeable y desacoplado.',
+        },
+        {
+          title: 'Pipeline Automatizado UniProt → DB → Artefactos',
+          description: 'Script run_full_pipeline.py que orquesta: búsqueda en UniProt, descarga XML, extracción de péptidos, inserción en SQLite, asociación de PDB/PSF, filtrado por motivo NaSpTx (gap_min/max, require_pair), generación de PSF/PDB para análisis de dipolos, y exportación opcional de JSON con anotaciones IA.',
+        },
+        {
+          title: 'Base de Datos SQLite Normalizada',
+          description: 'Esquema relacional con tablas Proteins, Peptides, Nav1_7_InhibitorPpeptides, familias y alias. Normalización automática de IC50 a nM (μM→nM, mM→nM). Almacenamiento de blobs PDB/PSF. Consultas optimizadas para exportación masiva por familia con metadatos y actividad.',
+        },
+        {
+          title: 'Visualización 3D con Mol* y Grafos Interactivos',
+          description: 'Interfaz web que integra Mol* para renderizado de estructuras 3D y panel paralelo de grafos 2D/3D interactivos (Plotly/JS). Modos de visualización: vectores dipolares, puentes disulfuro, combinados. Selección dinámica de péptidos, ajuste de parámetros de grafo y panel de métricas con identificación de residuos clave.',
+        },
+        {
+          title: 'Filtrado Farmacofórico NaSpTx',
+          description: 'Implementación del motivo inhibitorio X1X2-S-WCKX3 basado en literatura (Sharma et al., 2025). Filtrado configurable por gap_min/gap_max (separación entre residuos) y require_pair (exige par hidrofóbico). Exportación de PDB filtrados a pdbs/filtered/ para análisis posterior.',
+        },
+        {
+          title: 'Análisis de Propiedades Electrostáticas',
+          description: 'Cálculo de momento dipolar, centro geométrico y orientación vectorial usando MDAnalysis y VMD. Generación automática de PSF con psfgen para péptidos filtrados. Endpoint /v2/dipole para obtener magnitud, dirección y visualización de vectores dipolares.',
+        },
+        {
+          title: 'Exportación Avanzada por Familias',
+          description: 'Exportador a Excel/CSV con métricas de grafo, propiedades estructurales e IC50 normalizado por familia (μ-TRTX-H, μ-TRTX-C, κ-TRTX, etc.). Análisis de relación estructura-actividad (SAR). Herramienta /v2/export/family/<family_name> para datasets listos para publicación.',
+        },
+      ],
+      process: [
+        {
+          title: 'Investigación y Estado del Arte',
+          description: 'Revisión bibliográfica sobre Nav1.7 como blanco terapéutico, toxinas peptídicas tipo knottin, motivo farmacofórico NaSpTx, y estado de herramientas bioinformáticas fragmentadas. Definición de alcance: automatizar flujo completo de análisis estructural y priorización de candidatos inhibidores.',
+        },
+        {
+          title: 'Diseño de Arquitectura y Modelado',
+          description: 'Definición de arquitectura en capas (Clean Architecture) con separación de responsabilidades. Diseño del esquema de base de datos (MER) con normalización de IC50 y relaciones entre proteínas, péptidos, familias y estructuras. Diagramas de casos de uso y flujos de procesamiento.',
+        },
+        {
+          title: 'Implementación del Pipeline de Datos',
+          description: 'Desarrollo del flujo UniProt → DB: búsqueda async con aiohttp, parseo de XML (ElementTree), extracción de péptidos maduros (regex/logic), descarga de PDB/AlphaFold, recorte estructural (Biopython), y carga masiva a SQLite. Script run_full_pipeline.py con parámetros configurables y logging detallado.',
+        },
+        {
+          title: 'Desarrollo de Módulos de Análisis',
+          description: 'Implementación de adaptadores para Graphein (construcción de grafos CA/Atom), NetworkX (métricas de centralidad), VMD/MDAnalysis (cálculo de dipolos, generación de PSF). Servicios de dominio para filtrado NaSpTx, exportación por familias, y normalización de unidades.',
+        },
+        {
+          title: 'Construcción de API y Frontend',
+          description: 'Desarrollo de aplicación Flask v2 con controladores REST, blueprints modulares, manejo de errores y CORS. Templates Jinja con integración de Mol* (PDBeMolstar), Plotly para grafos, jQuery para controles dinámicos. CSS responsivo con dark theme científico. Healthcheck endpoint para monitoreo.',
+        },
+        {
+          title: 'Validación y Testing',
+          description: 'Suite de tests unitarios e integración con pytest. Scripts en tools/ para validación manual de componentes (métricas, exportaciones, filtros). Procesamiento de dataset completo (1308 péptidos) con análisis de tiempos por etapa. Validación cruzada de 44 candidatos filtrados contra literatura.',
+        },
+        {
+          title: 'Documentación y Resultados',
+          description: 'Elaboración de README técnico con arquitectura, pipeline, uso de API, esquema de BD y troubleshooting. Documentación de cada capa en src/*/README.md. Generación de resultados: candidatos priorizados, métricas por familia, exportaciones Excel, y análisis comparativo de motivos inhibitorios. Redacción de memoria de título.',
         },
       ],
     },

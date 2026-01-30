@@ -15,7 +15,7 @@ test.describe('Portfolio - Smoke Test', () => {
   test('navegación funciona correctamente', async ({ page }) => {
     await page.goto('/')
     
-    // Verifica que los enlaces de navegación existen (desktop + mobile duplican texto)
+    // Verifica que los enlaces de navegación existen 
     const nav = page.getByRole('navigation')
     await expect(nav.getByRole('link', { name: 'Inicio' }).first()).toBeVisible()
     await expect(nav.getByRole('link', { name: 'Proyectos' }).first()).toBeVisible()
