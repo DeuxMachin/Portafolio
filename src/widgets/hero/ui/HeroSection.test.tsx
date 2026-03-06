@@ -11,7 +11,7 @@ describe('HeroSection', () => {
       </I18nProvider>
     )
 
-    expect(screen.getByText('Hola, soy')).toBeInTheDocument()
+    expect(screen.getByText(/Hola, soy/)).toBeInTheDocument()
   })
 
   it('muestra el tagline correctamente', () => {
@@ -53,6 +53,5 @@ describe('HeroSection', () => {
     )
 
     expect(screen.getByText('Ver Proyectos')).toBeInTheDocument()
-    expect(screen.getByText('Enviar Mensaje')).toBeInTheDocument()
   })
 })

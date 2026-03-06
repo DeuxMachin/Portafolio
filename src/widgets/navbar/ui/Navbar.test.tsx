@@ -34,7 +34,7 @@ describe('Navbar', () => {
       </I18nProvider>
     )
 
-    const logoLink = screen.getByText('EC.').closest('a')
+    const logoLink = screen.getByText('edward.').closest('a')
     expect(logoLink).toHaveAttribute('href', '#inicio')
   })
 

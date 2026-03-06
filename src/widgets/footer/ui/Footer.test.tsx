@@ -11,8 +11,7 @@ describe('Footer', () => {
       </I18nProvider>
     )
     
-    // Verifica que el logo está presente
-    const logo = screen.getByText('EC.')
+    const logo = screen.getByText('edward.')
     expect(logo).toBeInTheDocument()
   })
 
@@ -34,7 +33,6 @@ describe('Footer', () => {
       </I18nProvider>
     )
     
-    // Verifica que los enlaces existen
     const githubLink = screen.getByLabelText('GitHub')
     const linkedinLink = screen.getByLabelText('LinkedIn')
     const twitterLink = screen.getByLabelText('Twitter')

@@ -34,16 +34,16 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled
-          ? 'bg-gray-950/80 backdrop-blur-xl border-b border-white/5 shadow-lg shadow-black/10'
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
+          ? 'bg-[#09090b]/90 backdrop-blur-md border-b border-zinc-800/50'
           : 'bg-transparent'
         }`}
       role="navigation"
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#inicio" className="text-xl font-black gradient-text hover:opacity-80 transition-opacity">
-          EC.
+        <a href="#inicio" className="font-heading text-lg font-bold text-zinc-100 hover:text-amber-400 transition-colors">
+          edward.
         </a>
 
         {/* Desktop Navigation */}
@@ -52,7 +52,7 @@ export function Navbar() {
             <a
               key={link.key}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-all"
+              className="px-3 py-2 text-sm text-zinc-500 hover:text-zinc-100 transition-colors"
             >
               {getNavLabel(link.key)}
             </a>
@@ -60,25 +60,23 @@ export function Navbar() {
         </div>
 
         {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-3">
-          {/* Language Toggle */}
+        <div className="hidden md:flex items-center gap-2">
           <button
             type="button"
             onClick={toggleLang}
-            className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-400 hover:text-white rounded-lg hover:bg-white/5 transition-all"
+            className="flex items-center gap-1.5 px-3 py-2 text-sm text-zinc-500 hover:text-zinc-100 transition-colors"
             aria-label="Cambiar idioma"
           >
-            <Globe className="w-4 h-4" />
-            <span className="uppercase font-semibold text-xs">{lang}</span>
+            <Globe className="w-3.5 h-3.5" />
+            <span className="uppercase font-medium text-xs">{lang}</span>
           </button>
 
-          {/* Download CV */}
           <a
             href="/CV.pdf"
             download="Edward_Mathias_Contreras_CV.pdf"
-            className="flex items-center gap-2 bg-white text-gray-900 px-5 py-2 rounded-xl text-sm font-bold hover:bg-gray-200 transition-all active:scale-95"
+            className="btn-secondary text-xs !py-2 !px-4"
           >
-            <Download className="w-4 h-4" />
+            <Download className="w-3.5 h-3.5" />
             {t.nav.downloadCV}
           </a>
         </div>
@@ -87,7 +85,7 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+          className="md:hidden w-10 h-10 rounded-lg border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-zinc-100 transition-colors"
           aria-expanded={isMobileMenuOpen}
           aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
         >
@@ -100,32 +98,31 @@ export function Navbar() {
         className={`md:hidden overflow-hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
           }`}
       >
-        <div className="px-6 py-4 space-y-1 bg-gray-950/95 backdrop-blur-xl border-t border-white/5">
+        <div className="px-6 py-4 space-y-1 bg-[#09090b]/95 backdrop-blur-md border-t border-zinc-800/50">
           {navLinks.map(link => (
             <a
               key={link.key}
               href={link.href}
               onClick={handleLinkClick}
-              className="block px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors"
+              className="block px-4 py-3 text-base text-zinc-400 hover:text-zinc-100 rounded-lg hover:bg-zinc-800/30 transition-colors"
             >
               {getNavLabel(link.key)}
             </a>
           ))}
 
-          {/* Language toggle in mobile */}
           <button
             type="button"
             onClick={() => { toggleLang(); handleLinkClick(); }}
-            className="flex items-center gap-2 w-full px-4 py-3 text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors"
+            className="flex items-center gap-2 w-full px-4 py-3 text-base text-zinc-400 hover:text-zinc-100 rounded-lg hover:bg-zinc-800/30 transition-colors"
           >
-            <Globe className="w-5 h-5 text-indigo-400" />
+            <Globe className="w-5 h-5 text-amber-400" />
             {lang === 'es' ? 'English' : 'Español'}
           </button>
 
           <a
             href="/CV.pdf"
             download="Edward_Mathias_Contreras_CV.pdf"
-            className="flex items-center gap-2 px-4 py-3 text-base font-semibold text-indigo-400 hover:bg-indigo-500/10 rounded-xl transition-colors"
+            className="flex items-center gap-2 px-4 py-3 text-base font-medium text-amber-400 hover:bg-amber-400/5 rounded-lg transition-colors"
           >
             <Download className="w-5 h-5" />
             {t.nav.downloadCV}

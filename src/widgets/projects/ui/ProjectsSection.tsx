@@ -30,7 +30,6 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
     { key: 'desktop', label: t.projects.desktop },
   ]
 
-  // Get translated project data
   const getProjectData = (project: Project) => {
     const translated = getProjectT(project.id)
     if (translated) {
@@ -44,7 +43,6 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         process: translated.process,
       }
     }
-    // Fallback to original data
     return {
       title: project.title,
       description: project.description,
@@ -78,28 +76,26 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <>
       <section id="proyectos" className="py-24 relative">
-        {/* Background accent */}
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
+        <div className="section-divider absolute top-0 left-0" />
 
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
             <div>
-              <p className="text-indigo-400 text-sm font-semibold uppercase tracking-wider mb-3">Portfolio</p>
-              <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">{t.projects.title}</h2>
-              <div className="h-1 w-24 bg-gradient-to-r from-indigo-500 to-emerald-500 rounded-full" />
+              <p className="text-amber-400 text-sm font-medium tracking-wide mb-3">Portfolio</p>
+              <h2 className="font-heading text-4xl lg:text-5xl font-bold text-zinc-100">{t.projects.title}</h2>
             </div>
 
-            {/* Category Filter - Glass effect */}
-            <div className="flex gap-1 p-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl">
+            {/* Category Filter */}
+            <div className="flex gap-1 p-1 bg-zinc-900 border border-zinc-800 rounded-lg">
               {categories.map(cat => (
                 <button
                   key={cat.key}
                   type="button"
                   onClick={() => setActiveCategory(cat.key)}
-                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${activeCategory === cat.key
-                    ? 'bg-white text-gray-900 shadow-lg'
-                    : 'text-gray-400 hover:text-white'
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeCategory === cat.key
+                    ? 'bg-zinc-100 text-zinc-900'
+                    : 'text-zinc-500 hover:text-zinc-200'
                     }`}
                 >
                   {cat.label}
@@ -109,137 +105,104 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => {
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {filteredProjects.map((project) => {
               const previewImage = project.details?.screenshots?.[0]
               const projectData = getProjectData(project)
 
               return (
                 <article
                   key={project.id}
-                  className="group card-hover card-shine bg-white/[0.02] border border-white/[0.06] rounded-[1.75rem] overflow-hidden cursor-pointer"
+                  className="card card-interactive overflow-hidden cursor-pointer group"
                   onClick={() => setSelectedProject(project)}
-                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {/* Image */}
-                  <div className="relative h-52 overflow-hidden">
+                  <div className="relative h-44 overflow-hidden">
                     {previewImage ? (
                       <img
                         src={previewImage.src}
                         alt={previewImage.alt}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-                          <Layers className="w-8 h-8 text-gray-600" />
-                        </div>
+                      <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
+                        <Layers className="w-8 h-8 text-zinc-700" />
                       </div>
                     )}
 
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/20 to-transparent opacity-60" />
-
-                    {/* Overlay on hover */}
-                    <div className="absolute inset-0 bg-indigo-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          setSelectedProject(project)
-                        }}
-                        className="flex items-center gap-2 px-4 py-2 bg-white rounded-full text-gray-900 font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-gray-100"
-                      >
-                        {t.projects.viewDetails}
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
-                      {project.links?.repoUrl && (
-                        <a
-                          href={project.links.repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center gap-2 px-4 py-2 bg-indigo-600 rounded-full text-white font-semibold text-sm transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-indigo-700"
-                        >
-                          <Github className="w-4 h-4" />
-                          {t.projects.viewCode}
-                        </a>
-                      )}
-                    </div>
-
                     {/* Category badge */}
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-gray-900/80 backdrop-blur-sm rounded-lg text-xs font-semibold text-white border border-white/10">
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2.5 py-1 bg-zinc-900/90 backdrop-blur-sm rounded-md text-xs font-medium text-zinc-300 border border-zinc-700/50">
                         {projectData.category}
                       </span>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-6 flex flex-col h-full">
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">
-                        {projectData.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm mb-5 line-clamp-2 leading-relaxed">
-                        {projectData.description}
-                      </p>
+                  <div className="p-5 space-y-3">
+                    <h3 className="text-base font-semibold text-zinc-100 group-hover:text-amber-400 transition-colors">
+                      {projectData.title}
+                    </h3>
+                    <p className="text-zinc-500 text-sm line-clamp-2 leading-relaxed">
+                      {projectData.description}
+                    </p>
 
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.slice(0, 3).map(tag => (
-                          <span key={tag.label} className="tag">
-                            {tag.label}
-                          </span>
-                        ))}
-                        {project.tags.length > 3 && (
-                          <span className="tag text-gray-500">
-                            +{project.tags.length - 3}
-                          </span>
-                        )}
-                      </div>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {project.tags.slice(0, 3).map(tag => (
+                        <span key={tag.label} className="tag">
+                          {tag.label}
+                        </span>
+                      ))}
+                      {project.tags.length > 3 && (
+                        <span className="tag text-zinc-600">
+                          +{project.tags.length - 3}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-3 pt-4 border-t border-white/10">
+                    {/* Action */}
+                    <div className="flex items-center gap-2 pt-3 border-t border-zinc-800/50">
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation()
                           setSelectedProject(project)
                         }}
-                        className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold transition-colors"
+                        className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-amber-400 transition-colors"
                       >
-                        <ArrowRight className="w-4 h-4" />
                         {t.projects.viewDetails}
+                        <ArrowRight className="w-3.5 h-3.5" />
                       </button>
-                      {project.links?.repoUrl && (
-                        <a
-                          href={project.links.repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-colors border border-white/10 hover:border-white/20"
-                          title="GitHub"
-                          aria-label="GitHub"
-                        >
-                          <Github className="w-4 h-4" />
-                        </a>
-                      )}
-                      {project.links?.liveUrl && (
-                        <a
-                          href={project.links.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition-colors border border-white/10 hover:border-white/20"
-                          title="Ver Demo"
-                          aria-label="Ver Demo"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
-                      )}
+                      <div className="ml-auto flex gap-1.5">
+                        {project.links?.repoUrl && (
+                          <a
+                            href={project.links.repoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="p-1.5 rounded-md text-zinc-600 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors"
+                            title="GitHub"
+                            aria-label="GitHub"
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        {project.links?.liveUrl && (
+                          <a
+                            href={project.links.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="p-1.5 rounded-md text-zinc-600 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors"
+                            title="Demo"
+                            aria-label="Ver Demo"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </article>
@@ -263,8 +226,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
               className="modal-content my-8"
               onClick={e => e.stopPropagation()}
             >
-              {/* Modal Header with Image Carousel */}
-              <div className="relative h-64 md:h-80 overflow-hidden">
+              {/* Modal Header with Image */}
+              <div className="relative h-56 md:h-72 overflow-hidden">
                 {screenshots.length > 0 ? (
                   <>
                     <img
@@ -273,36 +236,34 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                       className="w-full h-full object-cover transition-opacity duration-300"
                     />
 
-                    {/* Carousel Controls */}
                     {screenshots.length > 1 && (
                       <>
                         <button
                           type="button"
                           onClick={handlePrevScreenshot}
-                          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-900/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+                          className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-zinc-900/80 backdrop-blur-sm border border-zinc-700 flex items-center justify-center text-zinc-300 hover:text-zinc-100 transition-colors"
                           aria-label={lang === 'en' ? 'Previous' : 'Anterior'}
                         >
-                          <ChevronLeft className="w-5 h-5" />
+                          <ChevronLeft className="w-4 h-4" />
                         </button>
                         <button
                           type="button"
                           onClick={handleNextScreenshot}
-                          className="absolute right-14 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-900/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-gray-800 transition-colors"
+                          className="absolute right-14 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-zinc-900/80 backdrop-blur-sm border border-zinc-700 flex items-center justify-center text-zinc-300 hover:text-zinc-100 transition-colors"
                           aria-label={lang === 'en' ? 'Next' : 'Siguiente'}
                         >
-                          <ChevronRight className="w-5 h-5" />
+                          <ChevronRight className="w-4 h-4" />
                         </button>
 
-                        {/* Dots indicator */}
-                        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2">
+                        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex gap-1.5">
                           {screenshots.map((_, idx) => (
                             <button
                               key={idx}
                               type="button"
                               onClick={() => setActiveScreenshot(idx)}
-                              className={`w-2 h-2 rounded-full transition-all ${idx === activeScreenshot
-                                  ? 'bg-white w-6'
-                                  : 'bg-white/40 hover:bg-white/60'
+                              className={`w-1.5 h-1.5 rounded-full transition-all ${idx === activeScreenshot
+                                  ? 'bg-zinc-100 w-5'
+                                  : 'bg-zinc-500 hover:bg-zinc-400'
                                 }`}
                               aria-label={`Screenshot ${idx + 1}`}
                             />
@@ -312,70 +273,69 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     )}
                   </>
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-indigo-900 to-gray-900 flex items-center justify-center">
-                    <Layers className="w-16 h-16 text-gray-600" />
+                  <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
+                    <Layers className="w-12 h-12 text-zinc-700" />
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f11] via-[#0f0f11]/40 to-transparent" />
 
                 {/* Close button */}
                 <button
                   type="button"
                   onClick={handleCloseModal}
-                  className="absolute top-4 right-4 w-10 h-10 rounded-xl bg-gray-900/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-white/20 transition-colors"
+                  className="absolute top-3 right-3 w-9 h-9 rounded-lg bg-zinc-900/80 backdrop-blur-sm border border-zinc-700 flex items-center justify-center text-zinc-400 hover:text-zinc-100 transition-colors"
                   aria-label={lang === 'en' ? 'Close' : 'Cerrar'}
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                 </button>
 
-                {/* Project title overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="px-3 py-1 bg-indigo-600 rounded-lg text-xs font-semibold text-white">
-                      {projectData.category} App
+                {/* Title overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-2.5 py-1 bg-amber-500 rounded-md text-xs font-semibold text-zinc-900">
+                      {projectData.category}
                     </span>
                     {selectedProject.details?.year && (
-                      <span className="flex items-center gap-1.5 text-gray-400 text-sm">
-                        <Calendar className="w-4 h-4" />
+                      <span className="flex items-center gap-1 text-zinc-400 text-sm">
+                        <Calendar className="w-3.5 h-3.5" />
                         {selectedProject.details.year}
                       </span>
                     )}
                   </div>
-                  <h3 className="text-3xl md:text-4xl font-black text-white">
+                  <h3 className="font-heading text-2xl md:text-3xl font-bold text-zinc-100">
                     {projectData.title}
                   </h3>
                 </div>
               </div>
 
               {/* Modal Content */}
-              <div className="p-8 space-y-8">
-                {/* Description */}
+              <div className="p-6 space-y-6">
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">{t.projects.description}</h4>
-                  <p className="text-gray-300 leading-relaxed">
+                  <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">{t.projects.description}</h4>
+                  <p className="text-zinc-400 leading-relaxed text-sm">
                     {projectData.longDescription}
                   </p>
                 </div>
 
-                {/* Screenshot Thumbnails Grid */}
+                {/* Screenshot Thumbnails */}
                 {screenshots.length > 1 && (
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{t.projects.screenshots}</h4>
-                    <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                    <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">{t.projects.screenshots}</h4>
+                    <div className="grid grid-cols-4 md:grid-cols-5 gap-2">
                       {screenshots.slice(0, 8).map((shot, idx) => (
                         <button
                           key={idx}
                           type="button"
                           onClick={() => setActiveScreenshot(idx)}
-                          className={`aspect-video rounded-xl overflow-hidden border transition-all ${idx === activeScreenshot
-                              ? 'border-indigo-500 ring-2 ring-indigo-500/30'
-                              : 'border-white/10 hover:border-indigo-500/50'
+                          className={`aspect-video rounded-lg overflow-hidden border transition-all ${idx === activeScreenshot
+                              ? 'border-amber-500 ring-1 ring-amber-500/30'
+                              : 'border-zinc-800 hover:border-zinc-600'
                             }`}
                         >
                           <img
                             src={shot.src}
                             alt={shot.alt}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            className="w-full h-full object-cover"
                           />
                         </button>
                       ))}
@@ -385,8 +345,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
                 {/* Technologies */}
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{t.projects.technologies}</h4>
-                  <div className="flex flex-wrap gap-2">
+                  <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">{t.projects.technologies}</h4>
+                  <div className="flex flex-wrap gap-1.5">
                     {selectedProject.tags.map(tag => (
                       <span key={tag.label} className="tag">
                         {tag.label}
@@ -398,12 +358,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 {/* Skills */}
                 {projectData.skills.length > 0 && (
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{t.projects.skillsShown}</h4>
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3">{t.projects.skillsShown}</h4>
+                    <div className="grid md:grid-cols-2 gap-3">
                       {projectData.skills.map(skill => (
-                        <div key={skill.title} className="p-4 bg-white/[0.03] rounded-xl border border-white/[0.06] hover:border-indigo-500/30 transition-colors group">
-                          <h5 className="font-semibold text-white mb-1 group-hover:text-indigo-400 transition-colors">{skill.title}</h5>
-                          <p className="text-gray-400 text-sm leading-relaxed">{skill.description}</p>
+                        <div key={skill.title} className="card p-4 hover:border-zinc-700 transition-colors">
+                          <h5 className="text-sm font-semibold text-zinc-200 mb-1">{skill.title}</h5>
+                          <p className="text-zinc-500 text-xs leading-relaxed">{skill.description}</p>
                         </div>
                       ))}
                     </div>
@@ -411,15 +371,15 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 )}
 
                 {/* Links */}
-                <div className="flex flex-wrap gap-4 pt-4 border-t border-white/10">
+                <div className="flex flex-wrap gap-3 pt-3 border-t border-zinc-800">
                   {selectedProject.links?.repoUrl && (
                     <a
                       href={selectedProject.links.repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-secondary flex items-center gap-2"
+                      className="btn-secondary"
                     >
-                      <Github className="w-5 h-5" />
+                      <Github className="w-4 h-4" />
                       {t.projects.viewCode}
                     </a>
                   )}
@@ -430,10 +390,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                       rel="noopener noreferrer"
                       className="btn-primary"
                     >
-                      <span className="flex items-center gap-2">
-                        <ExternalLink className="w-5 h-5" />
-                        {t.projects.viewDemo}
-                      </span>
+                      <ExternalLink className="w-4 h-4" />
+                      {t.projects.viewDemo}
                     </a>
                   )}
                 </div>

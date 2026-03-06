@@ -9,16 +9,16 @@ export const projects: Project[] = [
     description:
       'Portafolio web profesional desarrollado con React 19, TypeScript y Tailwind CSS. Implementa Feature-Sliced Design, pruebas unitarias con Vitest, E2E con Playwright y CI/CD con GitHub Actions.',
     tags: [
-      { label: 'React 19', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'TypeScript', className: 'text-[10px] bg-slate-900 text-blue-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Tailwind CSS', className: 'text-[10px] bg-slate-900 text-cyan-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Vite', className: 'text-[10px] bg-slate-900 text-purple-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Vitest', className: 'text-[10px] bg-slate-900 text-yellow-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Playwright', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Vercel', className: 'text-[10px] bg-slate-900 text-slate-200 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'React 19', className: '' },
+      { label: 'TypeScript', className: '' },
+      { label: 'Tailwind CSS', className: '' },
+      { label: 'Vite', className: '' },
+      { label: 'Vitest', className: '' },
+      { label: 'Playwright', className: '' },
+      { label: 'Vercel', className: '' },
     ],
     meta: 'STATUS: Live',
-    overlayRightClass: 'text-[10px] font-mono text-tech-accent',
+    overlayRightClass: '',
     overlayRightText: 'LIVE',
     scanDelay: undefined,
     links: {
@@ -108,18 +108,18 @@ export const projects: Project[] = [
     icon: 'fa-chart-line',
     title: 'MiPortalVentas - Dashboard',
     description:
-      'Dashboard web para la gestión integral de ventas en el sector construcción. Muchas empresas de construcción tenían un problema...', 
+      'Dashboard web para la gestión integral de ventas en el sector construcción. Muchas empresas de construcción tenían un problema...',
     tags: [
-      { label: 'Next.js', className: 'text-[10px] bg-slate-900 text-white border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'React', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'TypeScript', className: 'text-[10px] bg-slate-900 text-blue-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Tailwind CSS', className: 'text-[10px] bg-slate-900 text-cyan-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Supabase', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'PostgreSQL', className: 'text-[10px] bg-slate-900 text-blue-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Vercel', className: 'text-[10px] bg-slate-900 text-slate-200 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Next.js', className: '' },
+      { label: 'React', className: '' },
+      { label: 'TypeScript', className: '' },
+      { label: 'Tailwind CSS', className: '' },
+      { label: 'Supabase', className: '' },
+      { label: 'PostgreSQL', className: '' },
+      { label: 'Vercel', className: '' },
     ],
     meta: 'STATUS: Destacado',
-    overlayRightClass: 'text-[10px] font-mono text-tech-accent',
+    overlayRightClass: '',
     overlayRightText: 'LIVE',
     scanDelay: undefined,
     links: {
@@ -150,13 +150,11 @@ export const projects: Project[] = [
       features: [
         {
           title: 'Liderazgo Scrum',
-          description:
-            'Guié al equipo con ceremonias cortas y claras, quitando bloqueos rápido y manteniendo foco en entregables cortos.',
+          description: 'Guié al equipo con ceremonias cortas y claras, quitando bloqueos rápido y manteniendo foco en entregables cortos.',
         },
         {
           title: 'Arquitectura Técnica',
-          description:
-            'Elegí Next.js + Supabase y documenté decisiones para que el equipo pudiera moverse rápido sin perder calidad.',
+          description: 'Elegí Next.js + Supabase y documenté decisiones para que el equipo pudiera moverse rápido sin perder calidad.',
         },
         {
           title: 'Gestión de Requisitos',
@@ -168,63 +166,32 @@ export const projects: Project[] = [
         },
       ],
       screenshots: [
-        {
-          src: '/proyects/miportalventas/Login.webp',
-          alt: 'Login de MiPortalVentas',
-        },
-        {
-          src: '/proyects/miportalventas/Dashboard.webp',
-          alt: 'Dashboard de MiPortalVentas',
-        },
-        {
-          src: '/proyects/miportalventas/KPIVentas.webp',
-          alt: 'KPI Ventas de MiPortalVentas',
-        },
-        {
-          src: '/proyects/miportalventas/Inventario.webp',
-          alt: 'Inventario de MiPortalVentas',
-        },
-        {
-          src: '/proyects/miportalventas/Cotizaciones.webp',
-          alt: 'Cotizaciones de MiPortalVentas',
-        },
-        {
-          src: '/proyects/miportalventas/DetalleCotizacion.webp',
-          alt: 'Detalle de Cotización de MiPortalVentas',
-        },
-        {
-          src: '/proyects/miportalventas/Clientes.webp',
-          alt: 'Clientes de MiPortalVentas',
-        },
-        {
-          src: '/proyects/miportalventas/ClienteDetalles.webp',
-          alt: 'Detalle de Cliente de MiPortalVentas',
-        },
-        {
-          src: '/proyects/miportalventas/ReunionesControl.webp',
-          alt: 'Reuniones y Control de MiPortalVentas',
-        },
+        { src: '/proyects/miportalventas/Login.webp', alt: 'Login de MiPortalVentas' },
+        { src: '/proyects/miportalventas/Dashboard.webp', alt: 'Dashboard de MiPortalVentas' },
+        { src: '/proyects/miportalventas/KPIVentas.webp', alt: 'KPI Ventas de MiPortalVentas' },
+        { src: '/proyects/miportalventas/Inventario.webp', alt: 'Inventario de MiPortalVentas' },
+        { src: '/proyects/miportalventas/Cotizaciones.webp', alt: 'Cotizaciones de MiPortalVentas' },
+        { src: '/proyects/miportalventas/DetalleCotizacion.webp', alt: 'Detalle de Cotización de MiPortalVentas' },
+        { src: '/proyects/miportalventas/Clientes.webp', alt: 'Clientes de MiPortalVentas' },
+        { src: '/proyects/miportalventas/ClienteDetalles.webp', alt: 'Detalle de Cliente de MiPortalVentas' },
+        { src: '/proyects/miportalventas/ReunionesControl.webp', alt: 'Reuniones y Control de MiPortalVentas' },
       ],
       process: [
         {
           title: 'Análisis y Planificación',
-          description:
-            'Escuché a los equipos de venta y obra, levanté lo esencial y armé una hoja de ruta sencilla pero clara.',
+          description: 'Escuché a los equipos de venta y obra, levanté lo esencial y armé una hoja de ruta sencilla pero clara.',
         },
         {
           title: 'Coordinación del Equipo',
-          description:
-            'Mantuvimos dailies breves y plannings acotados; mi foco fue destrabar al equipo y comunicar avances con stakeholders.',
+          description: 'Mantuvimos dailies breves y plannings acotados; mi foco fue destrabar al equipo y comunicar avances con stakeholders.',
         },
         {
           title: 'Supervisión Técnica',
-          description:
-            'Revisé las piezas críticas, validé que la lógica de negocio calzara con lo que pedían y mantuve el código legible.',
+          description: 'Revisé las piezas críticas, validé que la lógica de negocio calzara con lo que pedían y mantuve el código legible.',
         },
         {
           title: 'Despliegue y Optimización',
-          description:
-            'Coordiné el deploy en Vercel con chequeos mínimos de calidad y monitoreé el arranque para ajustar rápido.',
+          description: 'Coordiné el deploy en Vercel con chequeos mínimos de calidad y monitoreé el arranque para ajustar rápido.',
         },
       ],
     },
@@ -237,15 +204,15 @@ export const projects: Project[] = [
     description:
       'Sistema POS de escritorio en WPF (.NET 8) para ventas, inventario, boleta interna (no tributaria) y visualización de KPIs. Persistencia y consultas vía Supabase.',
     tags: [
-      { label: 'WPF', className: 'text-[10px] bg-slate-900 text-slate-200 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: '.NET 8', className: 'text-[10px] bg-slate-900 text-purple-300 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'C#', className: 'text-[10px] bg-slate-900 text-purple-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Supabase', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'PostgreSQL', className: 'text-[10px] bg-slate-900 text-blue-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'ESC/POS', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'WPF', className: '' },
+      { label: '.NET 8', className: '' },
+      { label: 'C#', className: '' },
+      { label: 'Supabase', className: '' },
+      { label: 'PostgreSQL', className: '' },
+      { label: 'ESC/POS', className: '' },
     ],
     meta: 'STATUS: Proyecto personal (solo dev)',
-    overlayRightClass: 'text-[10px] font-mono text-tech-accent',
+    overlayRightClass: '',
     overlayRightText: 'DESKTOP',
     scanDelay: '1s',
     links: {
@@ -324,73 +291,32 @@ export const projects: Project[] = [
     },
   },
   {
-<<<<<<< HEAD
-    id: 'TOXINAS-01',
+    id: 'TESIS-01',
     statusPing: false,
-    icon: 'fa-microscope',
-    title: 'Plataforma de Análisis de Toxinas Nav1.7',
+    icon: 'fa-graduation-cap',
+    title: 'Trabajo de Título - Plataforma de Análisis de Toxinas Nav1.7',
     description:
-      'Plataforma bioinformática para procesar y priorizar toxinas candidatas a inhibir el canal de sodio Nav1.7. Trabajo de título universitario que automatiza el análisis estructural de péptidos mediante grafos moleculares, métricas de centralidad y visualización 3D interactiva.',
+      'Plataforma bioinformática modular para análisis estructural de toxinas peptídicas que modulan el canal de sodio Nav1.7. Combina grafos moleculares, métricas de centralidad, visualización 3D interactiva con Mol* y pipeline automatizado de procesamiento desde UniProt.',
     tags: [
-      { label: 'Python', className: 'text-[10px] bg-slate-900 text-blue-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Flask', className: 'text-[10px] bg-slate-900 text-green-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Graphein', className: 'text-[10px] bg-slate-900 text-red-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Mol*', className: 'text-[10px] bg-slate-900 text-orange-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'SQLite', className: 'text-[10px] bg-slate-900 text-slate-300 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'NetworkX', className: 'text-[10px] bg-slate-900 text-cyan-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'BioPython', className: 'text-[10px] bg-slate-900 text-purple-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Python', className: '' },
+      { label: 'Flask', className: '' },
+      { label: 'Graphein', className: '' },
+      { label: 'Mol*', className: '' },
+      { label: 'NetworkX', className: '' },
+      { label: 'SQLite', className: '' },
+      { label: 'BioPython', className: '' },
     ],
-    meta: 'STATUS: Trabajo de Título Universitario',
-    overlayRightClass: 'text-[10px] font-mono text-tech-accent',
+    meta: 'STATUS: Trabajo de Título',
+    overlayRightClass: '',
     overlayRightText: 'RESEARCH',
     scanDelay: '1.5s',
     links: {
       repoUrl: 'https://github.com/DeuxMachin/Proyecto-toxinas.',
     },
     details: {
-      year: '2025 a 2026' as any,
+      year: 2025,
       longDescription:
-        'La creciente necesidad de analgésicos selectivos no opioides ha consolidado a NaV1.7 como un blanco terapéutico clave en el tratamiento del dolor. Este trabajo de título presenta una plataforma bioinformática modular que automatiza el proceso completo de adquisición, normalización y análisis estructural de toxinas tipo knottin. El sistema integra filtrado farmacofórico basado en secuencia, descriptores topológicos obtenidos desde grafos moleculares y propiedades electrostáticas globales como la orientación del momento dipolar. Se procesaron 1308 péptidos maduros provenientes de UniProt, obteniéndose 44 candidatos compatibles con el modelo inhibitorio de NaV1.7.',
-      skills: [
-        {
-          title: 'Bioinformática Computacional',
-          description: 'Diseñé e implementé un pipeline completo para la adquisición automática de datos desde UniProt, normalización de estructuras PDB/AlphaFold y análisis estructural de péptidos tóxicos.',
-        },
-        {
-          title: 'Análisis de Grafos Moleculares',
-          description: 'Implementé la construcción de grafos moleculares usando Graphein y NetworkX, calculando métricas de centralidad (degree, betweenness, closeness, eigenvector) para identificar residuos clave en la estructura.',
-        },
-        {
-          title: 'Arquitectura en Capas',
-          description: 'Apliqué Clean Architecture / Ports & Adapters: capa de dominio (entidades, value objects), capa de aplicación (casos de uso), infraestructura (adaptadores SQLite, Graphein) e interfaces (Flask REST API + Web UI).',
-        },
-        {
-          title: 'Visualización Científica',
-          description: 'Integré Mol* para visualización 3D de estructuras proteicas con panel de métricas interactivo, modos de visualización de dipolos, puentes disulfuro y filtros basados en motivos estructurales.',
-=======
-    statusPing: false,
-    icon: 'fa-graduation-cap',
-    id: 'TESIS-01',
-    title: 'Trabajo de Título - Plataforma de Análisis de Toxinas Nav1.7',
-    description:
-      'Plataforma bioinformática modular para análisis estructural de toxinas peptídicas que modulan el canal de sodio Nav1.7. Combina grafos moleculares, métricas de centralidad, visualización 3D interactiva con Mol* y pipeline automatizado de procesamiento desde UniProt.',
-    tags: [
-      { label: 'Python 3.9', className: 'text-[10px] bg-slate-900 text-blue-300 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Flask', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Graphein', className: 'text-[10px] bg-slate-900 text-red-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'Mol*', className: 'text-[10px] bg-slate-900 text-orange-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'NetworkX', className: 'text-[10px] bg-slate-900 text-purple-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'SQLite', className: 'text-[10px] bg-slate-900 text-cyan-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
-      { label: 'VMD', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
-    ],
-    meta: 'STATUS: Trabajo de Título',
-    overlayRightClass: 'text-[10px] font-mono text-purple-400',
-    overlayRightText: 'BIOINFORMÁTICA',
-    scanDelay: '1.5s',
-    details: {
-      year: 2024,
-      longDescription:
-        'Plataforma bioinformática desarrollada como trabajo de título que automatiza el análisis estructural de toxinas peptídicas (tipo knottin) que modulan el canal de sodio Nav1.7, un blanco terapéutico clave para analgésicos no opioides. El sistema integra construcción de grafos moleculares (Graphein/NetworkX), cálculo de métricas topológicas avanzadas, visualización 3D con Mol*, y un pipeline completo desde búsqueda en UniProt hasta identificación de candidatos inhibidores. Procesa 1308 péptidos maduros, aplicando filtrado farmacofórico basado en el motivo NaSpTx (X1X2-S-WCKX3) y análisis de propiedades electrostáticas (momento dipolar), obteniendo 44 candidatos compatibles con el modelo inhibitorio. La arquitectura sigue Clean Architecture con separación en capas (dominio, aplicación, infraestructura, interfaces), base de datos SQLite normalizada, y API REST Flask con interfaz web interactiva.',
+        'Plataforma bioinformática desarrollada como trabajo de título que automatiza el análisis estructural de toxinas peptídicas (tipo knottin) que modulan el canal de sodio Nav1.7, un blanco terapéutico clave para analgésicos no opioides. El sistema integra construcción de grafos moleculares (Graphein/NetworkX), cálculo de métricas topológicas avanzadas, visualización 3D con Mol*, y un pipeline completo desde búsqueda en UniProt hasta identificación de candidatos inhibidores. Procesa 1308 péptidos maduros, aplicando filtrado farmacofórico basado en el motivo NaSpTx (X1X2-S-WCKX3) y análisis de propiedades electrostáticas (momento dipolar), obteniendo 44 candidatos compatibles con el modelo inhibitorio.',
       screenshots: [
         { src: '/proyects/tesis/inicio.webp', alt: 'Plataforma - Pantalla de inicio' },
         { src: '/proyects/tesis/familias.webp', alt: 'Vista de familias de toxinas' },
@@ -416,70 +342,10 @@ export const projects: Project[] = [
         {
           title: 'Visualización Científica Interactiva',
           description: 'Integración de Mol* (visor 3D de biomoléculas) con paneles de métricas dinámicos, grafos interactivos 2D/3D (Plotly), modos de visualización de dipolos y puentes disulfuro, y controles de granularidad (nivel residuo CA vs atómico) con parámetros configurables (distancia umbral, separación secuencial).',
->>>>>>> b36c058f029a3b66a9d9921650c4ec834b341321
         },
       ],
       features: [
         {
-<<<<<<< HEAD
-          title: 'Pipeline Automatizado UniProt → DB',
-          description: 'Búsqueda automática en UniProt, descarga de XML, extracción de péptidos, descarga y recorte de estructuras PDB/AlphaFold, e inserción en base de datos SQLite con normalización de metadatos.',
-        },
-        {
-          title: 'Análisis de Grafos Moleculares',
-          description: 'Construcción de grafos a nivel de residuo (CA) o átomo, con distancia umbral y separación secuencial configurables. Cálculo de métricas de centralidad y clustering para identificar residuos estructuralmente importantes.',
-        },
-        {
-          title: 'Filtrado Farmacofórico NaSpTx',
-          description: 'Implementación del motivo X1X2-S-WCKX3 para identificar péptidos con potencial actividad inhibidora sobre Nav1.7, con parámetros configurables de gap y requerimiento de pares hidrofóbicos.',
-        },
-        {
-          title: 'Análisis de Dipolos y Propiedades Electrostáticas',
-          description: 'Cálculo del momento dipolar global usando VMD/MDAnalysis, generación de archivos PSF con psfgen, y análisis de orientación dipolar para cada candidato.',
-        },
-        {
-          title: 'Interfaz Web Interactiva',
-          description: 'Aplicación Flask con visualización 3D mediante Mol*, panel de métricas en tiempo real, filtros de toxinas NaSpTx y modos de visualización de dipolos y puentes disulfuro.',
-        },
-        {
-          title: 'Base de Datos Estructurada',
-          description: 'SQLite con tablas normalizadas para proteínas, péptidos, familias y Nav1_7_InhibitorPeptides. Almacenamiento de PDB/PSF como blobs, normalización automática de IC50 a nM.',
-        },
-        {
-          title: 'Exportación y SAR',
-          description: 'Exportación de métricas por familia a Excel/CSV, análisis de relación estructura-actividad (SAR) uniendo métricas topológicas con actividad inhibidora (IC50).',
-        },
-        {
-          title: 'Generación de Artefactos',
-          description: 'Exportación de PDB filtrados, generación automatizada de PSF/PDB para análisis de dipolos, y creación opcional de JSON con anotaciones para cada accesión filtrado.',
-        },
-      ],
-      screenshots: [],
-      process: [
-        {
-          title: 'Investigación y Definición',
-          description: 'Revisión bibliográfica sobre Nav1.7 como blanco terapéutico, análisis de péptidos knottin inhibidores, y definición del motivo farmacofórico NaSpTx (X1X2-S-WCKX3). Diseño del pipeline bioinformático completo.',
-        },
-        {
-          title: 'Diseño de Arquitectura',
-          description: 'Definición de arquitectura en capas (Clean Architecture): dominio (entidades, value objects, servicios), aplicación (casos de uso), infraestructura (adaptadores) e interfaces (REST API + Web UI). Diseño del esquema de base de datos normalizado.',
-        },
-        {
-          title: 'Implementación del Pipeline',
-          description: 'Desarrollo del flujo automatizado: búsqueda en UniProt, descarga de XML, extracción de péptidos, descarga y recorte de PDB/AlphaFold, generación de PSF con VMD/psfgen, e inserción en SQLite.',
-        },
-        {
-          title: 'Análisis de Grafos y Métricas',
-          description: 'Implementación de la construcción de grafos moleculares con Graphein/NetworkX, cálculo de métricas de centralidad (degree, betweenness, closeness, eigenvector, clustering), y análisis de propiedades topológicas.',
-        },
-        {
-          title: 'Desarrollo de Interfaz Web',
-          description: 'Construcción de la aplicación Flask con integración de Mol* para visualización 3D, desarrollo de paneles interactivos de métricas, implementación de filtros NaSpTx y modos de visualización (dipolos, puentes disulfuro).',
-        },
-        {
-          title: 'Validación y Resultados',
-          description: 'Procesamiento de 1308 péptidos de UniProt, identificación de 44 candidatos compatibles con el modelo inhibitorio, validación de métricas estructurales, y generación de exportaciones por familia con análisis SAR.',
-=======
           title: 'Grafos Moleculares con Graphein/NetworkX',
           description: 'Construcción automática de grafos a partir de estructuras PDB con granularidad configurable (residuo CA o atómico), distancia umbral 6-12 Å, y separación secuencial para filtrar contactos triviales. Cálculo de métricas topológicas: degree, betweenness, closeness, eigenvector, clustering coefficient.',
         },
@@ -540,7 +406,6 @@ export const projects: Project[] = [
         {
           title: 'Documentación y Resultados',
           description: 'Elaboración de README técnico con arquitectura, pipeline, uso de API, esquema de BD y troubleshooting. Documentación de cada capa en src/*/README.md. Generación de resultados: candidatos priorizados, métricas por familia, exportaciones Excel, y análisis comparativo de motivos inhibitorios. Redacción de memoria de título.',
->>>>>>> b36c058f029a3b66a9d9921650c4ec834b341321
         },
       ],
     },

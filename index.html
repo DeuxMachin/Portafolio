@@ -36,7 +36,7 @@
 
     <!-- PWA / Mobile -->
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#38bdf8" />
+    <meta name="theme-color" content="#09090b" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Edward Portfolio" />
@@ -58,10 +58,10 @@
     <link rel="preload" as="style" href="/src/index.css" />
     
     <!-- Fonts - Optimized with font-display swap and preload for critical fonts -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     </noscript>
     
     <!-- Font Awesome - Load asynchronously to avoid blocking -->
@@ -120,7 +120,7 @@
       !function(e){"use strict";var t=function(t,n,r){var o,i=e.document,c=i.createElement("link");if(n)o=n;else{var a=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=a[a.length-1]}var d=i.styleSheets;c.rel="stylesheet",c.href=t,c.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(c,n?o:o.nextSibling)});var s=function(e){for(var t=c.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){s(e)})};return c.addEventListener&&c.addEventListener("load",function(){this.media=r||"all"}),c.onloadcssdefined=s,s(function(){c.media!==r&&(c.media=r||"all")}),c};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
     </script>
   </head>
-  <body class="bg-tech-dark text-slate-100 font-sans antialiased selection:bg-tech-accent selection:text-tech-dark">
+  <body class="bg-[#09090b] text-zinc-200 font-sans antialiased">
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-tech-accent text-tech-dark px-4 py-2 rounded-lg font-bold z-[9999]">
       Saltar al contenido principal
