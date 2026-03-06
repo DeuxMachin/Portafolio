@@ -9,7 +9,7 @@ test.describe('Portfolio - Smoke Test', () => {
     
     // Verifica que el logo del navbar está visible (evita duplicados con footer)
     const nav = page.getByRole('navigation')
-    await expect(nav.getByRole('link', { name: 'EC.' })).toBeVisible()
+    await expect(nav.getByRole('link', { name: 'edward.' })).toBeVisible()
   })
 
   test('navegación funciona correctamente', async ({ page }) => {

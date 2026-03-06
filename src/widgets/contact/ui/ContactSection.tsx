@@ -1,4 +1,4 @@
-import { Mail, ChevronRight } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import { useI18n } from '../../../shared/i18n/I18nContext'
 
 export function ContactSection() {
