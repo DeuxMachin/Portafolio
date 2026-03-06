@@ -54,11 +54,22 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Critical CSS Preload -->
+    <link rel="preload" as="style" href="/src/index.css" />
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo16qeRV/fpbkUDPVDPDAoHLSjIkDHpEPQ8FDo3A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Fonts - Optimized with font-display swap and preload for critical fonts -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    </noscript>
+    
+    <!-- Font Awesome - Load asynchronously to avoid blocking -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </noscript>
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -101,6 +112,12 @@
         "name": "Edward Mathias Contreras"
       }
     }
+    </script>
+
+    <!-- Inline script to load stylesheets asynchronously -->
+    <script>
+      // Load non-critical CSS asynchronously
+      !function(e){"use strict";var t=function(t,n,r){var o,i=e.document,c=i.createElement("link");if(n)o=n;else{var a=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=a[a.length-1]}var d=i.styleSheets;c.rel="stylesheet",c.href=t,c.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(c,n?o:o.nextSibling)});var s=function(e){for(var t=c.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){s(e)})};return c.addEventListener&&c.addEventListener("load",function(){this.media=r||"all"}),c.onloadcssdefined=s,s(function(){c.media!==r&&(c.media=r||"all")}),c};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
     </script>
   </head>
   <body class="bg-tech-dark text-slate-100 font-sans antialiased selection:bg-tech-accent selection:text-tech-dark">
