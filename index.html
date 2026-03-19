@@ -14,6 +14,13 @@
     <meta name="language" content="Spanish" />
     <meta name="revisit-after" content="7 days" />
     <link rel="canonical" href="https://edwardcontreras.dev/" />
+    <link rel="alternate" hreflang="es" href="https://edwardcontreras.dev/" />
+    <link rel="alternate" hreflang="en" href="https://edwardcontreras.dev/" />
+    <link rel="alternate" hreflang="x-default" href="https://edwardcontreras.dev/" />
+
+    <!-- Geo -->
+    <meta name="geo.region" content="CL" />
+    <meta name="geo.placename" content="Chile" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -77,17 +84,25 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Edward Mathias Contreras",
+      "givenName": "Edward Mathias",
+      "familyName": "Contreras",
       "jobTitle": "Ingeniero Civil en Informática",
-      "description": "Desarrollador Full Stack especializado en React, TypeScript y Python",
+      "description": "Desarrollador Full Stack especializado en React, TypeScript y Python. Experiencia en machine learning, arquitecturas escalables y desarrollo de software de calidad.",
       "url": "https://edwardcontreras.dev",
-      "image": "https://edwardcontreras.dev/Perfil.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://edwardcontreras.dev/Perfil.webp",
+        "width": 400,
+        "height": 400
+      },
       "sameAs": [
         "https://github.com/edwardcontreras",
         "https://linkedin.com/in/edwardcontreras"
       ],
       "knowsAbout": [
-        "React", "TypeScript", "Python", "Next.js", "Node.js", 
-        "PostgreSQL", "Machine Learning", "Full Stack Development"
+        "React", "TypeScript", "Python", "Next.js", "Node.js",
+        "PostgreSQL", "Machine Learning", "Full Stack Development",
+        "Spring Boot", "Docker", "CI/CD", "Tailwind CSS"
       ],
       "alumniOf": {
         "@type": "CollegeOrUniversity",
@@ -95,8 +110,10 @@
       },
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "CL"
-      }
+        "addressCountry": "CL",
+        "addressRegion": "Región Metropolitana"
+      },
+      "email": "mailto:edwardcontreras@outlook.com"
     }
     </script>
 
@@ -104,12 +121,48 @@
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Edward Mathias Contreras Portfolio",
+      "name": "Edward Contreras — Portafolio",
       "url": "https://edwardcontreras.dev",
-      "description": "Portafolio profesional de desarrollo web y software",
+      "description": "Portafolio profesional de Edward Mathias Contreras, Ingeniero Civil en Informática y Desarrollador Full Stack.",
+      "inLanguage": ["es", "en"],
       "author": {
         "@type": "Person",
         "name": "Edward Mathias Contreras"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://edwardcontreras.dev/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Edward Mathias Contreras | Ingeniero Civil en Informática & Desarrollador Full Stack",
+      "url": "https://edwardcontreras.dev",
+      "description": "Portafolio profesional de Edward Mathias Contreras. Ingeniero Civil en Informática especializado en desarrollo Full Stack con React, TypeScript, Python y tecnologías cloud.",
+      "inLanguage": "es",
+      "isPartOf": {
+        "@type": "WebSite",
+        "url": "https://edwardcontreras.dev"
+      },
+      "about": {
+        "@type": "Person",
+        "name": "Edward Mathias Contreras"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://edwardcontreras.dev/"
+          }
+        ]
       }
     }
     </script>
