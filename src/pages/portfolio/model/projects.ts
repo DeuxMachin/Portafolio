@@ -5,6 +5,9 @@ export const projects: Project[] = [
     id: 'PORTFOLIO-01',
     statusPing: true,
     icon: 'fa-briefcase',
+    links: {
+      liveUrl: 'https://edwardcontreras.dev/',
+    },
     title: 'Portafolio Personal - Edward Contreras',
     description:
       'Portafolio web profesional desarrollado con React 19, TypeScript y Tailwind CSS. Implementa Feature-Sliced Design, pruebas unitarias con Vitest, E2E con Playwright y CI/CD con GitHub Actions.',
@@ -317,6 +320,10 @@ export const projects: Project[] = [
     statusPing: false,
     icon: 'fa-graduation-cap',
     id: 'TESIS-01',
+    links: {
+      repoUrl: 'https://github.com/Juaker1/Proyecto-toxinas',
+      liveUrl: 'https://tesis.brosdev.duckdns.org',
+    },
     title: 'Trabajo de Título - Plataforma de Análisis de Toxinas Nav1.7',
     description:
       'Plataforma bioinformática modular para análisis estructural de toxinas peptídicas que modulan el canal de sodio Nav1.7. Combina grafos moleculares, métricas de centralidad, visualización 3D interactiva con Mol* y pipeline automatizado de procesamiento desde UniProt.',

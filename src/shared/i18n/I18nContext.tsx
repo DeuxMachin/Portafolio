@@ -9,6 +9,7 @@ type Translations = {
         about: string
         contact: string
         downloadCV: string
+        certificates: string
     }
     hero: {
         available: string
@@ -60,9 +61,18 @@ type Translations = {
         haveIdea: string
         letsTalk: string
         email: string
+        emailCopied: string
     }
     footer: {
         madeWith: string
+    }
+    certificates: {
+        sectionLabel: string
+        title: string
+        titleHighlight: string
+        subtitle: string
+        openPdf: string
+        view: string
     }
 }
 
@@ -312,6 +322,7 @@ const translations: Record<Language, Translations> = {
             about: 'Sobre mí',
             contact: 'Contacto',
             downloadCV: 'Descargar CV',
+            certificates: 'Certificados',
         },
         hero: {
             available: 'Disponible para nuevos proyectos',
@@ -368,9 +379,18 @@ const translations: Record<Language, Translations> = {
             haveIdea: '¿Tienes una idea?',
             letsTalk: 'Hablemos',
             email: 'Email',
+            emailCopied: '¡Correo Copiado!',
         },
         footer: {
             madeWith: 'Hecho con ❤️ y React.',
+        },
+        certificates: {
+            sectionLabel: 'Formación Continua',
+            title: 'Mis',
+            titleHighlight: 'Certificados',
+            subtitle: 'Cursos, bootcamps y certificaciones que he completado a lo largo de mi camino como desarrollador.',
+            openPdf: 'Abrir PDF',
+            view: 'Ver',
         },
     },
     en: {
@@ -380,6 +400,7 @@ const translations: Record<Language, Translations> = {
             about: 'About',
             contact: 'Contact',
             downloadCV: 'Download CV',
+            certificates: 'Certificates',
         },
         hero: {
             available: 'Available for new projects',
@@ -436,9 +457,18 @@ const translations: Record<Language, Translations> = {
             haveIdea: 'Have an idea?',
             letsTalk: "Let's talk",
             email: 'Email',
+            emailCopied: 'Email Copied!',
         },
         footer: {
             madeWith: 'Made with ❤️ and React.',
+        },
+        certificates: {
+            sectionLabel: 'Continuous Learning',
+            title: 'My',
+            titleHighlight: 'Certificates',
+            subtitle: 'Courses, bootcamps and certifications I have completed throughout my journey as a developer.',
+            openPdf: 'Open PDF',
+            view: 'View',
         },
     },
 }

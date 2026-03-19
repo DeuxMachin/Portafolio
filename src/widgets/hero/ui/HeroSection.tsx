@@ -1,145 +1,153 @@
-import { Github, Linkedin, Mail, ArrowRight, Sparkles } from 'lucide-react'
+import { Github, Linkedin, Mail, ChevronRight, ArrowDown } from 'lucide-react'
 import { useI18n } from '../../../shared/i18n/I18nContext'
+import { projects } from '../../../pages/portfolio/model/projects'
+
+const TECH_STACK = [
+  'React', 'TypeScript', 'Python', 'Node.js', 'Tailwind CSS',
+  'PostgreSQL', 'Docker', 'Git', 'Vite', 'Next.js', 'Supabase', 'Linux',
+]
 
 export function HeroSection() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
 
   return (
-    <section id="inicio" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 left-10 w-2 h-2 bg-indigo-500 rounded-full animate-ping opacity-60" />
-      <div className="absolute top-1/3 right-20 w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping opacity-60" style={{ animationDelay: '0.5s' }} />
-      <div className="absolute bottom-1/4 left-1/4 w-1 h-1 bg-purple-500 rounded-full animate-ping opacity-60" style={{ animationDelay: '1s' }} />
+    <section id="inicio" className="min-h-screen flex flex-col justify-center relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 dot-pattern" />
 
-      {/* Floating geometric shapes */}
-      <div className="absolute top-20 right-1/4 w-32 h-32 border border-indigo-500/10 rounded-full animate-spin-slow" />
-      <div className="absolute bottom-32 left-20 w-24 h-24 border border-emerald-500/10 rotate-45 animate-float" />
+      <div className="max-w-6xl mx-auto px-6 w-full relative z-10 pt-24 pb-8">
+        {/* Main: Photo + Text */}
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-16">
+          {/* Photo — shows first on mobile */}
+          <div className="flex-shrink-0 order-1 lg:order-2 animate-fade-up">
+            <div className="relative">
+              <div className="photo-frame relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full">
+                <div className="absolute -inset-3 bg-blue-500/[0.06] rounded-full blur-xl" />
+                <img
+                  src="/Perfil.webp"
+                  alt="Edward Mathias Contreras"
+                  className="relative w-full h-full rounded-full object-cover border-2 border-white/10"
+                  loading="eager"
+                />
+              </div>
+              {/* Decorative dots */}
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
+              <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 bg-violet-500 rounded-full animate-pulse" />
+              <div className="absolute top-1/2 -right-5 w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            </div>
+          </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-16 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
-
-          {/* Content */}
-          <div className="flex-1 space-y-8 text-center lg:text-left animate-fade-up">
-            {/* Availability Badge */}
-            <div className="badge inline-flex">
+          {/* Text content */}
+          <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
+            {/* Availability badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 mb-8 animate-fade-up">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                <span className="animate-ping absolute h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              {t.hero.available}
+              <span className="text-emerald-400 text-xs font-semibold">
+                {t.hero.available}
+              </span>
             </div>
 
-            {/* Main Heading */}
-            <div className="space-y-4">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
-                <span className="text-white">{t.hero.greeting}</span>{' '}
-                <span className="gradient-text">{t.hero.name}</span>
-                <span className="text-white">.</span>
+            {/* Heading */}
+            <div className="animate-fade-up mb-6">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black tracking-[-0.04em] leading-[0.9]">
+                {t.hero.greeting}{' '}
+                <br className="hidden sm:block" />
+                <span className="text-gradient">{t.hero.name}</span>
+                <span className="text-violet-400">.</span>
               </h1>
-              <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-400 leading-tight">
-                {t.hero.tagline}
-              </p>
             </div>
+
+            {/* Tagline */}
+            <p className="text-lg sm:text-xl text-zinc-400 font-medium mb-4 animate-fade-up-delay leading-relaxed">
+              {t.hero.tagline}
+            </p>
 
             {/* Description */}
-            <p className="text-gray-400 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-up-delay">
+            <p className="text-base text-zinc-500 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed animate-fade-up-delay">
               {t.hero.description}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4 animate-fade-up-delay">
+            <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start animate-fade-up-delay-2">
               <button
                 type="button"
                 onClick={() => document.getElementById('proyectos')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary flex items-center gap-2"
+                className="group px-7 py-3.5 bg-blue-600 text-white rounded-xl font-bold text-sm flex items-center gap-2.5 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
               >
-                <span className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4" />
-                  {t.hero.viewProjects}
-                  <ArrowRight className="w-4 h-4" />
-                </span>
+                {t.hero.viewProjects}
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </button>
 
               <button
                 type="button"
                 onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-secondary"
+                className="px-7 py-3.5 border border-zinc-700 text-white rounded-xl font-bold text-sm hover:border-violet-500/40 hover:bg-violet-500/5 transition-all duration-300"
               >
                 {t.contact?.sendMessage || 'Contactar'}
               </button>
             </div>
 
             {/* Social links */}
-            <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
-              <a
-                href="https://github.com/edwardcontreras"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
+            <div className="flex items-center gap-3 mt-8 justify-center lg:justify-start animate-fade-up-delay-3">
+              <a href="https://github.com/DeuxMachin" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.06] text-zinc-500 hover:text-white hover:border-blue-500/30 transition-all">
+                <Github className="w-4 h-4" />
               </a>
-              <a
-                href="https://linkedin.com/in/edwardcontreras"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-btn"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
+              <a href="https://www.linkedin.com/in/edward-contreras-aqueveque-8339b9360/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.06] text-zinc-500 hover:text-white hover:border-blue-500/30 transition-all">
+                <Linkedin className="w-4 h-4" />
               </a>
-              <a
-                href="mailto:edward@example.com"
-                className="social-btn"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5" />
+              <a href="mailto:mathias.contreras.a@gmail.com" aria-label="Email" className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.06] text-zinc-500 hover:text-white hover:border-blue-500/30 transition-all">
+                <Mail className="w-4 h-4" />
               </a>
-            </div>
-          </div>
-
-          {/* Profile Image - Enhanced */}
-          <div className="relative animate-fade-up lg:animate-float">
-            {/* Orbit ring */}
-            <div className="absolute inset-0 -m-8 border border-indigo-500/20 rounded-[3rem] animate-spin-slow" />
-
-            {/* Profile container with animated gradient */}
-            <div className="profile-container">
-              <div className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-[1.75rem] overflow-hidden bg-gray-900">
-                <img
-                  src="/Perfil.webp"
-                  alt="Edward Contreras"
-                  className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700 hover:scale-105"
-                  loading="eager"
-                />
-
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent pointer-events-none" />
-              </div>
-            </div>
-
-            {/* Floating badge */}
-            <div className="absolute -bottom-4 -right-4 px-4 py-2 bg-gray-900 border border-gray-700 rounded-xl shadow-xl">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                <span className="text-sm font-semibold text-white">Full Stack</span>
-              </div>
-            </div>
-
-            {/* Experience badge */}
-            <div className="absolute -top-4 -left-4 px-4 py-2 bg-indigo-600 rounded-xl shadow-xl">
-              <span className="text-sm font-bold text-white">{t.hero.yearsExp}</span>
             </div>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2">
-          <span className="text-xs font-medium text-gray-300 uppercase tracking-widest">Scroll</span>
-          <div className="w-5 h-8 border-2 border-gray-500 rounded-full flex justify-center pt-1">
-            <div className="w-1 h-2 bg-gray-300 rounded-full animate-bounce" />
+        {/* Stats strip */}
+        <div className="section-divider mb-10 animate-fade-up-delay-2" />
+        <div className="grid grid-cols-3 gap-8 animate-fade-up-delay-2">
+          <div className="text-center lg:text-left">
+            <p className="text-3xl sm:text-4xl font-black text-white leading-none">+1</p>
+            <p className="text-zinc-600 text-[11px] font-bold uppercase tracking-wider mt-2">
+              {lang === 'en' ? 'Years Programming' : 'Años Programando'}
+            </p>
           </div>
+          <div className="text-center">
+            <p className="text-3xl sm:text-4xl font-black text-white leading-none">{projects.length}</p>
+            <p className="text-zinc-600 text-[11px] font-bold uppercase tracking-wider mt-2">
+              {lang === 'en' ? 'Projects Completed' : 'Proyectos Completados'}
+            </p>
+          </div>
+          <div className="text-center lg:text-right">
+            <p className="text-3xl sm:text-4xl font-black text-gradient leading-none">Full Stack</p>
+            <p className="text-zinc-600 text-[11px] font-bold uppercase tracking-wider mt-2">React + Python</p>
+          </div>
+        </div>
+
+        {/* Tech ticker */}
+        <div className="mt-16 overflow-hidden relative">
+          <div className="flex animate-marquee">
+            {[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
+              <span key={`${tech}-${i}`} className="mx-5 text-zinc-800 text-[11px] font-mono font-bold uppercase tracking-widest flex items-center gap-3 whitespace-nowrap">
+                <span className="w-1 h-1 bg-zinc-700 rounded-full flex-shrink-0" />
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="flex justify-center mt-8">
+          <button
+            type="button"
+            onClick={() => document.getElementById('proyectos')?.scrollIntoView({ behavior: 'smooth' })}
+            className="text-zinc-700 hover:text-zinc-500 transition-colors"
+            aria-label="Scroll down"
+          >
+            <ArrowDown className="w-5 h-5 animate-bounce" />
+          </button>
         </div>
       </div>
     </section>

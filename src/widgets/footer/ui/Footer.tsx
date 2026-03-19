@@ -12,26 +12,23 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="py-12 border-t border-white/5 relative">
-      {/* Background accent */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+    <footer className="py-12 border-t border-zinc-800/40">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Logo & Copyright */}
           <div className="flex flex-col md:flex-row items-center gap-4">
-            <a href="#inicio" className="text-2xl font-black gradient-text">
+            <a href="#inicio" className="text-xl font-black text-white hover:opacity-80 transition-opacity">
               EC.
             </a>
-            <span className="hidden md:block w-px h-5 bg-white/10" />
-            <p className="text-gray-500 text-sm flex items-center gap-1.5">
+            <span className="hidden md:block w-px h-5 bg-zinc-800" />
+            <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-zinc-600 flex items-center gap-1.5">
               © {currentYear} Edward Contreras · {lang === 'en' ? 'Made with' : 'Hecho con'}{' '}
-              <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
+              <Heart className="w-3 h-3 text-red-500 fill-red-500" />
             </p>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             {socialLinks.map(link => {
               const Icon = link.icon
               return (
@@ -40,10 +37,10 @@ export function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-btn"
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.03] border border-white/[0.06] text-zinc-500 hover:text-white hover:border-blue-500/30 transition-all duration-200"
                   aria-label={link.name}
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                 </a>
               )
             })}
