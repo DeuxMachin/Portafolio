@@ -3,8 +3,10 @@ import { useI18n } from '../../../shared/i18n/I18nContext'
 import { projects } from '../../../pages/portfolio/model/projects'
 
 const TECH_STACK = [
-  'React', 'TypeScript', 'Python', 'Node.js', 'Tailwind CSS',
-  'PostgreSQL', 'Docker', 'Git', 'Vite', 'Next.js', 'Supabase', 'Linux',
+  'Python', 'C#', 'TypeScript', 'JavaScript', 'SQL', 'R',
+  'REST APIs', 'Flask', 'Node.js', 'Express', '.NET 8',
+  'PostgreSQL', 'SQLite', 'Supabase', 'Pandas', 'NumPy',
+  'ETL pipelines', 'React', 'Next.js', 'Docker', 'Git', 'CI/CD', 'Nginx', 'VPS',
 ]
 
 export function HeroSection() {
@@ -109,7 +111,7 @@ export function HeroSection() {
         <div className="section-divider mb-10 animate-fade-up-delay-2" />
         <div className="grid grid-cols-3 gap-8 animate-fade-up-delay-2">
           <div className="text-center lg:text-left">
-            <p className="text-3xl sm:text-4xl font-black text-white leading-none">+1</p>
+            <p className="text-3xl sm:text-4xl font-black text-white leading-none">+2</p>
             <p className="text-zinc-600 text-[11px] font-bold uppercase tracking-wider mt-2">
               {lang === 'en' ? 'Years Programming' : 'Años Programando'}
             </p>

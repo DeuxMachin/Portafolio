@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { I18nProvider } from '../shared/i18n/I18nContext'
 import { PortfolioPage } from '../pages/portfolio/ui/PortfolioPage'
 import { ProjectPage } from '../pages/project-detail/ui/ProjectPage'
+import { CatsPage } from '../pages/cats/ui/CatsPage'
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<PortfolioPage />} />
           <Route path="/proyecto/:id" element={<ProjectPage />} />
+          <Route path="/gatos" element={<CatsPage />} />
         </Routes>
       </I18nProvider>
     </BrowserRouter>

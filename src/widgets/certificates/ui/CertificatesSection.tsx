@@ -1,4 +1,4 @@
-﻿import { Award } from 'lucide-react'
+import { Award, Download } from 'lucide-react'
 import { useI18n } from '../../../shared/i18n/I18nContext'
 
 type Certificate = {
@@ -23,6 +23,27 @@ const certificates: Certificate[] = [
     issuer: 'Santander',
     date: '2026',
     pdfPath: '/certificates/Metodolog%C3%ADaAgileSantander.pdf',
+  },
+  {
+    id: 'cert-python',
+    title: 'Python',
+    issuer: 'Kaggle',
+    date: '2026',
+    pdfPath: '/certificates/Edward%20Contreras%20-%20Python.pdf',
+  },
+  {
+    id: 'cert-pandas',
+    title: 'Pandas',
+    issuer: 'Kaggle',
+    date: '2026',
+    pdfPath: '/certificates/Edward%20Contreras%20-%20Pandas-2.pdf',
+  },
+  {
+    id: 'cert-advanced-sql',
+    title: 'Advanced SQL',
+    issuer: 'Kaggle',
+    date: '2026',
+    pdfPath: '/certificates/Edward%20Contreras%20-%20Advanced%20SQL-1.pdf',
   },
 ]
 
@@ -76,12 +97,23 @@ export function CertificatesSection() {
 
               {/* Info */}
               <div className="p-5">
-                <div className="flex items-start gap-3">
-                  <Award className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
-                  <div>
-                    <h3 className="text-white font-semibold text-sm leading-snug mb-1">{cert.title}</h3>
-                    <p className="text-zinc-500 text-[11px]">{cert.issuer} · {cert.date}</p>
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-3 min-w-0">
+                    <Award className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
+                    <div className="min-w-0">
+                      <h3 className="text-white font-semibold text-sm leading-snug mb-1">{cert.title}</h3>
+                      <p className="text-zinc-500 text-[11px]">{cert.issuer} · {cert.date}</p>
+                    </div>
                   </div>
+
+                  <a
+                    href={cert.pdfPath}
+                    download
+                    aria-label={`Descargar certificado ${cert.title}`}
+                    className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-zinc-400 transition-colors hover:border-blue-400/40 hover:text-blue-300"
+                  >
+                    <Download className="h-3.5 w-3.5" />
+                  </a>
                 </div>
               </div>
             </div>
