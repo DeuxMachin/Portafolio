@@ -9,8 +9,8 @@ type ProjectsSectionProps = {
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const { t, lang, getProjectT } = useI18n()
 
-  const featuredProject = projects.find(p => p.id === 'TESIS-01')
-  const secondaryProjects = projects.filter(p => p.id !== 'TESIS-01')
+  const featuredProject = projects.find(p => p.id === 'PV-01')
+  const secondaryProjects = projects.filter(p => p.id !== 'PV-01')
 
   const getProjectData = (project: Project) => {
     const translated = getProjectT(project.id)

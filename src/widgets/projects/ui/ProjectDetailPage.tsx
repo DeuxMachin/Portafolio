@@ -1,5 +1,5 @@
-﻿import { useState, useEffect } from 'react'
-import { ExternalLink, Github, Calendar, ChevronLeft, ChevronRight, Layers, Globe } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ExternalLink, Github, Calendar, ChevronLeft, ChevronRight, Layers, Globe, Maximize2, X } from 'lucide-react'
 import type { Project } from '../../../pages/portfolio/model/types'
 import { useI18n } from '../../../shared/i18n/I18nContext'
 
@@ -11,6 +11,7 @@ export function ProjectDetailPage({ project }: Props) {
   const { t, lang, toggleLang, getProjectT } = useI18n()
   const [activeScreenshot, setActiveScreenshot] = useState(0)
   const [scrolled, setScrolled] = useState(false)
+  const [isZoomed, setIsZoomed] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -123,6 +124,16 @@ export function ProjectDetailPage({ project }: Props) {
             />
             {/* Overlay: dark at top (for navbar legibility) + strong dark at bottom (for text) */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0b] via-[#0a0a0b]/40 to-[#0a0a0b]/20" />
+            
+            {/* Expand Button */}
+            <button
+              type="button"
+              onClick={() => setIsZoomed(true)}
+              className="absolute top-20 right-8 p-3 rounded-xl bg-black/40 backdrop-blur-md border border-white/10 text-white/70 hover:text-white hover:bg-black/60 transition-all z-20 group"
+              title={lang === 'en' ? 'Expand image' : 'Expandir imagen'}
+            >
+              <Maximize2 className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            </button>
           </>
         ) : (
           <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
@@ -360,6 +371,50 @@ export function ProjectDetailPage({ project }: Props) {
           </aside>
         </div>
       </div>
+
+      {/* ── Photo Zoom Modal ── */}
+      {isZoomed && screenshots.length > 0 && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm animate-in fade-in duration-300"
+          onClick={() => setIsZoomed(false)}
+        >
+          <button
+            type="button"
+            className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all z-[110]"
+            onClick={(e) => { e.stopPropagation(); setIsZoomed(false); }}
+          >
+            <X className="w-6 h-6" />
+          </button>
+          
+          <div className="relative w-full h-full p-4 md:p-12 flex items-center justify-center">
+            <img
+              src={screenshots[activeScreenshot].src}
+              alt={screenshots[activeScreenshot].alt}
+              className="max-w-full max-h-full object-contain shadow-2xl rounded-sm animate-in zoom-in-95 duration-300"
+              onClick={(e) => e.stopPropagation()}
+            />
+            
+            {screenshots.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); prevScreenshot(); }}
+                  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); nextScreenshot(); }}
+                  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

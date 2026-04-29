@@ -7,6 +7,7 @@ type Translations = {
         home: string
         projects: string
         about: string
+        experience: string
         contact: string
         downloadCV: string
         certificates: string
@@ -73,6 +74,21 @@ type Translations = {
         subtitle: string
         openPdf: string
         view: string
+    }
+    experience: {
+        sectionLabel: string
+        title: string
+        titleHighlight: string
+        freelance: {
+            title: string
+            subtitle: string
+            items: string[]
+        }
+        support: {
+            title: string
+            subtitle: string
+            items: string[]
+        }
     }
 }
 
@@ -312,6 +328,62 @@ export const projectTranslations: Record<string, Record<Language, ProjectTransla
             ],
         },
     },
+    'CATALOG-01': {
+        es: {
+            title: 'Sistema de Catálogo de Productos',
+            description: 'Catálogo web con panel administrativo completo, desarrollado con arquitectura modular (FSD + capas), enfocado en escalabilidad y mantenibilidad.',
+            longDescription: 'Sistema de catálogo de productos desarrollado con arquitectura modular (FSD + capas). Incluye interfaz pública para navegación de productos y panel administrativo completo para gestión de contenido. Permite crear, editar y publicar productos, gestionar categorías, controlar imágenes y mantener un historial de acciones administrativas. Todo dentro de una arquitectura diseñada para escalar.',
+            category: 'Web',
+            skills: [
+                { title: 'Arquitectura Escalable (FSD + Capas)', description: 'Implementé Feature-Sliced Design combinado con capas internas (domain, application, infrastructure) para separar responsabilidades y mejorar mantenibilidad.' },
+                { title: 'Repository Pattern', description: 'Aplicué separación de lectura y escritura, desacoplando lógica de negocio de la fuente de datos.' },
+                { title: 'Casos de Uso Independientes', description: 'Definí use-cases para cada acción del sistema, facilitando testing y escalabilidad.' },
+                { title: 'Validación mediante DTOs', description: 'Implementé DTOs sin dependencias externas, asegurando consistencia entre frontend y backend.' },
+            ],
+            features: [
+                { title: 'Interfaz Pública', description: 'Navegación por categorías, búsqueda y filtros avanzados, visualización de productos con detalle técnico, galería de imágenes optimizadas.' },
+                { title: 'Panel Administrativo', description: 'Creación y edición de productos, gestión de categorías, control de visibilidad (publicar/ocultar), gestión de imágenes con validaciones, historial de acciones (auditoría).' },
+                { title: 'Autenticación Segura', description: 'Sistema de autenticación integrado con Supabase para acceso protegido al panel administrativo.' },
+                { title: 'Manejo de Estado Global', description: 'Gestión centralizada del estado de la aplicación para consistencia y rendimiento.' },
+                { title: 'Validaciones Consistentes', description: 'Reglas de negocio centralizadas como políticas para garantizar coherencia en toda la aplicación.' },
+                { title: 'Sistema de Auditoría', description: 'Registro de todas las acciones administrativas para trazabilidad y control.' },
+            ],
+            process: [
+                { title: 'Análisis de Requisitos', description: 'Levantamiento de necesidades del cliente: gestión de productos, categorías, imágenes y control administrativo.' },
+                { title: 'Diseño de Arquitectura', description: 'Definición de arquitectura modular (FSD + capas): feature → domain → application → infrastructure.' },
+                { title: 'Implementación Frontend', description: 'Construcción de interfaz pública con navegación intuitiva y panel administrativo con controles completos.' },
+                { title: 'Desarrollo Backend', description: 'APIs REST con Repository Pattern, DTOs para validación, políticas centralizadas y sistema de auditoría.' },
+                { title: 'Testing e Integración', description: 'Suite de tests unitarios con Vitest, integración continua con GitHub Actions, deployment en producción.' },
+            ],
+        },
+        en: {
+            title: 'Product Catalog System',
+            description: 'Web catalog with complete admin panel, developed with modular architecture (FSD + layers), focused on scalability and maintainability.',
+            longDescription: 'Product catalog system developed with modular architecture (FSD + layers). Includes public interface for product navigation and complete admin panel for content management. Allows creating, editing and publishing products, managing categories, controlling images and maintaining administrative action history. All within an architecture designed to scale.',
+            category: 'Web',
+            skills: [
+                { title: 'Scalable Architecture (FSD + Layers)', description: 'I implemented Feature-Sliced Design combined with internal layers (domain, application, infrastructure) to separate concerns and improve maintainability.' },
+                { title: 'Repository Pattern', description: 'Applied read/write separation, decoupling business logic from data source.' },
+                { title: 'Independent Use Cases', description: 'Defined use-cases for each system action, facilitating testing and scalability.' },
+                { title: 'DTO Validation', description: 'Implemented DTOs without external dependencies, ensuring consistency between frontend and backend.' },
+            ],
+            features: [
+                { title: 'Public Interface', description: 'Category navigation, advanced search and filters, product visualization with technical details, optimized image gallery.' },
+                { title: 'Admin Panel', description: 'Product creation and editing, category management, visibility control (publish/hide), image management with validations, action history (audit).' },
+                { title: 'Secure Authentication', description: 'Authentication system integrated with Supabase for protected access to admin panel.' },
+                { title: 'Global State Management', description: 'Centralized application state management for consistency and performance.' },
+                { title: 'Consistent Validations', description: 'Centralized business rules as policies to ensure coherence throughout the application.' },
+                { title: 'Audit System', description: 'Recording of all administrative actions for traceability and control.' },
+            ],
+            process: [
+                { title: 'Requirements Analysis', description: 'Gathering client needs: product management, categories, images, and administrative control.' },
+                { title: 'Architecture Design', description: 'Definition of modular architecture (FSD + layers): feature → domain → application → infrastructure.' },
+                { title: 'Frontend Implementation', description: 'Construction of public interface with intuitive navigation and admin panel with complete controls.' },
+                { title: 'Backend Development', description: 'REST APIs with Repository Pattern, DTOs for validation, centralized policies, and audit system.' },
+                { title: 'Testing & Integration', description: 'Unit test suite with Vitest, continuous integration with GitHub Actions, production deployment.' },
+            ],
+        },
+    },
 }
 
 const translations: Record<Language, Translations> = {
@@ -320,6 +392,7 @@ const translations: Record<Language, Translations> = {
             home: 'Inicio',
             projects: 'Proyectos',
             about: 'Sobre mí',
+            experience: 'Experiencia',
             contact: 'Contacto',
             downloadCV: 'Descargar CV',
             certificates: 'Certificados',
@@ -328,10 +401,10 @@ const translations: Record<Language, Translations> = {
             available: 'Disponible para nuevos proyectos',
             greeting: 'Hola, soy',
             name: 'Edward',
-            tagline: 'Construyo experiencias digitales que realmente funcionan.',
-            description: 'Dev Full Stack con foco en apps web modernas y escalables. Me gusta que el código sea limpio, que las cosas funcionen bien y que el usuario no sufra.',
-            viewProjects: 'Ver Proyectos',
-            yearsExp: '+1 años exp.',
+            tagline: 'Construyo sistemas web que mejoran la productividad de negocios reales',
+            description: 'Fullstack developer enfocado en backend, dashboards y automatización. Trabajo con React, TypeScript y Supabase para crear soluciones que optimizan ventas, inventario y operaciones.\n\nHe desarrollado sistemas usados por clientes reales para gestionar cotizaciones, productos y procesos internos.',
+            viewProjects: 'Ver proyectos reales',
+            yearsExp: '+3 años exp.',
         },
         projects: {
             title: 'Proyectos Destacados',
@@ -351,31 +424,31 @@ const translations: Record<Language, Translations> = {
             sectionLabel: 'Sobre Mí',
             title: 'Sobre',
             titleHighlight: 'Mí',
-            subtitle: 'Dev Full Stack con ganas de construir cosas que importen. ML y datos también me interesan.',
+            subtitle: 'Soy desarrollador fullstack enfocado en crear sistemas que realmente se usan.',
             mySkills: 'Lo que sé hacer',
-            skillsDescription: 'Clean code, patrones de diseño y pensar en escalabilidad desde el día uno.',
-            focus: 'Enfoque',
+            skillsDescription: 'Arquitectura escalable, APIs confiables, automatización y optimización de flujos de trabajo.',
+            focus: 'En qué me enfoco',
             mainStack: 'Stack Principal',
             philosophy: 'Filosofía',
-            funFact: 'Fun Fact',
-            funFactText: 'Las mejores soluciones salen cuando mezclas creatividad con lógica. Y café.',
+            funFact: 'Especialidad',
+            funFactText: 'No construyo interfaces bonitas. Construyo sistemas que negocios reales usan para vender, inventariar y automatizar procesos.',
             frontend: 'Frontend',
             backend: 'Backend',
             devops: 'DevOps & Tools',
             downloadCV: 'Descargar CV',
             headline: 'Ingeniero Civil en Informática',
             paragraphs: [
-                'Me gusta construir cosas. Desde chico me llamó la atención entender cómo funcionan las cosas por debajo, y eso me llevó a la programación.',
-                'Ahora me muevo en desarrollo full stack, pero lo que más me emociona es cuando puedo combinar código con datos. Machine learning y ciencia de datos son temas en los que paso bastante tiempo experimentando con Python.',
-                'Creo que la mejor forma de aprender es haciendo. Cada proyecto es una oportunidad para probar algo nuevo, ya sea una tecnología, un patrón de diseño o una forma diferente de resolver un problema.',
-                'Cuando no estoy programando, probablemente estoy aprendiendo sobre alguna tech nueva o pensando en la próxima idea para construir.',
+                'Soy desarrollador fullstack enfocado en crear sistemas que realmente se usan.',
+                'He trabajado con clientes reales desarrollando soluciones que mejoran sus procesos de venta, gestión e inventario.',
+                'Me interesa especialmente el backend, la arquitectura y la optimización de flujos de trabajo, creando aplicaciones que no solo funcionan, sino que aportan valor real.',
+                'Mis proyectos no son portfolios lindos. Son sistemas en uso, con clientes reales pagando por ellos, resolviendo problemas concretos en sus negocios.',
             ],
         },
         contact: {
-            title: '¿Trabajamos',
-            titleHighlight: 'juntos',
-            description: 'Estoy abierto a nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente, escribeme y lo conversamos.',
-            sendMessage: 'Enviar Mensaje',
+            title: '¿Tienes un proyecto',
+            titleHighlight: 'o quieres trabajar conmigo',
+            description: '¿Tienes un proyecto en mente? Estoy disponible para nuevas oportunidades de desarrollo fullstack focalizadas en soluciones reales.',
+            sendMessage: 'Contactarme',
             haveIdea: '¿Tienes una idea?',
             letsTalk: 'Hablemos',
             email: 'Email',
@@ -392,12 +465,38 @@ const translations: Record<Language, Translations> = {
             openPdf: 'Abrir PDF',
             view: 'Ver',
         },
+        experience: {
+            sectionLabel: 'Recorrido',
+            title: 'Mi',
+            titleHighlight: 'Experiencia',
+            freelance: {
+                title: '💻 Freelance Developer',
+                subtitle: 'Desarrollo de soluciones web para clientes reales',
+                items: [
+                    '+3 proyectos entregados y en uso',
+                    'Sistemas de cotización, dashboards y catálogos',
+                    'Desarrollo de soluciones adaptadas a cada negocio',
+                    'Mejora de procesos internos y productividad',
+                ],
+            },
+            support: {
+                title: '🏢 Soporte TI — Santo Tomas Temuco',
+                subtitle: 'Soporte técnico nivel 1 y 2 en entorno real',
+                items: [
+                    'Resolución de incidencias técnicas',
+                    'Gestión de redes y cableado estructurado',
+                    'Configuración y mantenimiento de equipos',
+                    'Trabajo directo con usuarios y sistemas reales',
+                ],
+            },
+        },
     },
     en: {
         nav: {
             home: 'Home',
             projects: 'Projects',
             about: 'About',
+            experience: 'Experience',
             contact: 'Contact',
             downloadCV: 'Download CV',
             certificates: 'Certificates',
@@ -469,6 +568,31 @@ const translations: Record<Language, Translations> = {
             subtitle: 'Courses, bootcamps and certifications I have completed throughout my journey as a developer.',
             openPdf: 'Open PDF',
             view: 'View',
+        },
+        experience: {
+            sectionLabel: 'Journey',
+            title: 'My',
+            titleHighlight: 'Experience',
+            freelance: {
+                title: '💻 Freelance Developer',
+                subtitle: 'Web solutions development for real clients',
+                items: [
+                    '+3 delivered projects in use',
+                    'Quote systems, dashboards, and catalogs',
+                    'Custom solutions tailored to each business',
+                    'Internal process improvement and productivity',
+                ],
+            },
+            support: {
+                title: '🏢 IT Support — Santo Tomas Temuco',
+                subtitle: 'Level 1 and 2 technical support in real environment',
+                items: [
+                    'Technical incident resolution',
+                    'Network management and structured cabling',
+                    'Equipment configuration and maintenance',
+                    'Direct work with users and real systems',
+                ],
+            },
         },
     },
 }

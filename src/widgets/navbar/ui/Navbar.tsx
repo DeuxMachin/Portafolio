@@ -6,6 +6,7 @@ const navLinks = [
   { key: 'home', href: '#inicio' },
   { key: 'projects', href: '#proyectos' },
   { key: 'about', href: '#sobre-mi' },
+  { key: 'experience', href: '#experiencia' },
   { key: 'certificates', href: '#certificados' },
   { key: 'contact', href: '#contacto' },
 ] as const
@@ -28,6 +29,7 @@ export function Navbar() {
       case 'home': return t.nav.home
       case 'projects': return t.nav.projects
       case 'about': return t.nav.about
+      case 'experience': return t.nav.experience
       case 'certificates': return t.nav.certificates
       case 'contact': return t.nav.contact
       default: return key

@@ -2,6 +2,7 @@ import { Navbar } from '../../../widgets/navbar/ui/Navbar'
 import { HeroSection } from '../../../widgets/hero/ui/HeroSection'
 import { ProjectsSection } from '../../../widgets/projects/ui/ProjectsSection'
 import { AboutSection } from '../../../widgets/about/ui/AboutSection'
+import { ExperienceSection } from '../../../widgets/experience/ui/ExperienceSection'
 import { CertificatesSection } from '../../../widgets/certificates/ui/CertificatesSection'
 import { ContactSection } from '../../../widgets/contact/ui/ContactSection'
 import { Footer } from '../../../widgets/footer/ui/Footer'
@@ -17,6 +18,8 @@ export function PortfolioPage() {
       <ProjectsSection projects={projects} />
 
       <AboutSection />
+
+      <ExperienceSection />
 
       <CertificatesSection />
 

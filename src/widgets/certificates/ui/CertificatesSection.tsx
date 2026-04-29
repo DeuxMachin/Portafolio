@@ -14,14 +14,14 @@ const certificates: Certificate[] = [
     id: 'cert-claude-ia',
     title: 'Claude IA',
     issuer: 'Anthropic',
-    date: '2025',
+    date: '2026',
     pdfPath: '/certificates/ClaudeIA.pdf',
   },
   {
     id: 'cert-agile-santander',
     title: 'Metodologia Agile',
     issuer: 'Santander',
-    date: '2024',
+    date: '2026',
     pdfPath: '/certificates/Metodolog%C3%ADaAgileSantander.pdf',
   },
 ]

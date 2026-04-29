@@ -16,7 +16,7 @@ export function AboutSection() {
     {
       name: t.about.backend,
       icon: <Server className="w-4 h-4" />,
-      items: ['Node.js', 'Python', 'PostgreSQL', 'Supabase', 'SQLite', 'SQL'],
+      items: ['Node.js', 'Supabase', 'PostgreSQL', 'APIs', 'Python', 'Arquitectura'],
       accent: 'accent-emerald',
       tagColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
       iconColor: 'text-emerald-400',
@@ -24,14 +24,14 @@ export function AboutSection() {
     {
       name: t.about.devops,
       icon: <Wrench className="w-4 h-4" />,
-      items: ['Docker', 'Git', 'Vercel', 'WSL', 'Linux'],
+      items: ['Git', 'Vercel', 'Docker', 'WSL', 'Linux', 'Vitest'],
       accent: 'accent-amber',
       tagColor: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
       iconColor: 'text-amber-400',
     },
   ]
 
-  const learningItems = ['Spring Boot', 'Kafka', 'Go', 'LLM']
+  const learningItems = ['WPF', '.NET', 'Testing', 'JWT', 'Autenticación']
 
   return (
     <section id="sobre-mi" className="py-28 relative">

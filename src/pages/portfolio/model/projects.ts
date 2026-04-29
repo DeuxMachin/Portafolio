@@ -437,4 +437,105 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    statusPing: false,
+    icon: 'fa-box',
+    id: 'CATALOG-01',
+    links: {
+      repoUrl: 'https://github.com',
+      liveUrl: 'https://demo.com',
+    },
+    title: 'Sistema de Catálogo de Productos',
+    description:
+      'Catálogo web con panel administrativo completo, desarrollado con arquitectura modular (FSD + capas), enfocado en escalabilidad y mantenibilidad.',
+    tags: [
+      { label: 'Next.js', className: 'text-[10px] bg-slate-900 text-white border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'React', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'TypeScript', className: 'text-[10px] bg-slate-900 text-blue-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Tailwind CSS', className: 'text-[10px] bg-slate-900 text-cyan-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Supabase', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'Vitest', className: 'text-[10px] bg-slate-900 text-yellow-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
+      { label: 'GitHub Actions', className: 'text-[10px] bg-slate-900 text-slate-200 border border-slate-700 px-2 py-1 font-mono uppercase' },
+    ],
+    meta: 'STATUS: En producción',
+    overlayRightClass: 'text-[10px] font-mono text-tech-accent',
+    overlayRightText: 'WEB',
+    scanDelay: undefined,
+    details: {
+      year: 2025,
+      longDescription:
+        'Sistema de catálogo de productos desarrollado con arquitectura modular (FSD + capas). Incluye interfaz pública para navegación de productos y panel administrativo completo para gestión de contenido. Permite crear, editar y publicar productos, gestionar categorías, controlar imágenes y mantener un historial de acciones administrativas. Todo dentro de una arquitectura diseñada para escalar.',
+      skills: [
+        {
+          title: 'Arquitectura Escalable (FSD + Capas)',
+          description: 'Implementé Feature-Sliced Design combinado con capas internas (domain, application, infrastructure) para separar responsabilidades y mejorar mantenibilidad.',
+        },
+        {
+          title: 'Repository Pattern',
+          description: 'Aplicué separación de lectura y escritura, desacoplando lógica de negocio de la fuente de datos.',
+        },
+        {
+          title: 'Casos de Uso Independientes',
+          description: 'Definí use-cases para cada acción del sistema, facilitando testing y escalabilidad.',
+        },
+        {
+          title: 'Validación mediante DTOs',
+          description: 'Implementé DTOs sin dependencias externas, asegurando consistencia entre frontend y backend.',
+        },
+      ],
+      features: [
+        {
+          title: 'Interfaz Pública',
+          description: 'Navegación por categorías, búsqueda y filtros avanzados, visualización de productos con detalle técnico, galería de imágenes optimizadas.',
+        },
+        {
+          title: 'Panel Administrativo',
+          description: 'Creación y edición de productos, gestión de categorías, control de visibilidad (publicar/ocultar), gestión de imágenes con validaciones, historial de acciones (auditoría).',
+        },
+        {
+          title: 'Autenticación Segura',
+          description: 'Sistema de autenticación integrado con Supabase para acceso protegido al panel administrativo.',
+        },
+        {
+          title: 'Manejo de Estado Global',
+          description: 'Gestión centralizada del estado de la aplicación para consistencia y rendimiento.',
+        },
+        {
+          title: 'Validaciones Consistentes',
+          description: 'Reglas de negocio centralizadas como políticas para garantizar coherencia en toda la aplicación.',
+        },
+        {
+          title: 'Sistema de Auditoría',
+          description: 'Registro de todas las acciones administrativas para trazabilidad y control.',
+        },
+      ],
+      screenshots: [
+        { src: '/proyects/CatalogoMiPortal/1.png', alt: 'Vista principal del catálogo' },
+        { src: '/proyects/CatalogoMiPortal/2.png', alt: 'Panel administrativo - Gestión de productos' },
+        { src: '/proyects/CatalogoMiPortal/3.png', alt: 'Detalle de producto y edición' },
+      ],
+      process: [
+        {
+          title: 'Análisis de Requisitos',
+          description: 'Levantamiento de necesidades del cliente: gestión de productos, categorías, imágenes y control administrativo.',
+        },
+        {
+          title: 'Diseño de Arquitectura',
+          description: 'Definición de arquitectura modular (FSD + capas): feature → domain → application → infrastructure.',
+        },
+        {
+          title: 'Implementación Frontend',
+          description: 'Construcción de interfaz pública con navegación intuitiva y panel administrativo con controles completos.',
+        },
+        {
+          title: 'Desarrollo Backend',
+          description: 'APIs REST con Repository Pattern, DTOs para validación, políticas centralizadas y sistema de auditoría.',
+        },
+        {
+          title: 'Testing e Integración',
+          description: 'Suite de tests unitarios con Vitest, integración continua con GitHub Actions, deployment en producción.',
+        },
+      ],
+    },
+  },
 ]
