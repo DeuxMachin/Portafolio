@@ -10,7 +10,7 @@ export const projects: Project[] = [
     },
     title: 'Portafolio Personal - Edward Contreras',
     description:
-      'Portafolio web profesional desarrollado con React 19, TypeScript y Tailwind CSS. Implementa Feature-Sliced Design, pruebas unitarias con Vitest, E2E con Playwright y CI/CD con GitHub Actions.',
+      'Portafolio profesional desarrollado con React 19, TypeScript y Tailwind CSS para presentar proyectos reales con una experiencia rápida, clara y mantenible. Implementa arquitectura Feature-Sliced, testing automatizado, CI/CD y optimizaciones de SEO para convertir el sitio en una vitrina técnica confiable.',
     tags: [
       { label: 'React 19', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
       { label: 'TypeScript', className: 'text-[10px] bg-slate-900 text-blue-500 border border-slate-700 px-2 py-1 font-mono uppercase' },
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     details: {
       year: 2026,
       longDescription:
-        'Este proyecto es mi portafolio personal donde muestro mis trabajos y habilidades como desarrollador. Está construido con React 19, TypeScript y Tailwind CSS, usando Vite como herramienta de desarrollo. Quise aplicar buenas prácticas desde el inicio: implementé una arquitectura escalable con Feature-Sliced Design, agregué pruebas automáticas para asegurar calidad, configuré CI/CD para validar cada cambio, y lo desplegué en Vercel con optimizaciones de SEO y rendimiento. El objetivo era crear algo profesional pero sin complicaciones innecesarias.',
+        'Este portafolio fue desarrollado para resolver una necesidad concreta: presentar mi experiencia, proyectos y habilidades de forma profesional, ordenada y fácil de mantener. Construí una aplicación con React 19, TypeScript, Tailwind CSS y Vite, aplicando Feature-Sliced Design para separar responsabilidades, pruebas unitarias y E2E para reducir regresiones, CI/CD para validar cada cambio y despliegue en Vercel con optimizaciones de SEO y rendimiento. El resultado es una plataforma personal escalable, preparada para crecer con nuevos proyectos y con un flujo de actualización más eficiente frente a un sitio estático tradicional.',
       skills: [
         {
           title: 'Arquitectura Escalable',
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     icon: 'fa-chart-line',
     title: 'MiPortalVentas - Dashboard',
     description:
-      'Dashboard web para la gestión integral de ventas en el sector construcción. Muchas empresas de construcción tenían un problema...', 
+      'Dashboard web para empresas del sector construcción que centraliza ventas, cotizaciones, clientes, inventario y seguimiento de obras. La solución reemplazó procesos manuales y entregó mayor visibilidad operativa, mejorando la eficiencia del flujo comercial en un rango estimado de 50% a 70%.', 
     tags: [
       { label: 'Next.js', className: 'text-[10px] bg-slate-900 text-white border border-slate-700 px-2 py-1 font-mono uppercase' },
       { label: 'React', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
@@ -124,11 +124,11 @@ export const projects: Project[] = [
     details: {
       year: 2025,
       longDescription:
-        'Dashboard web para la gestión integral de ventas en el sector construcción. Muchas empresas de construcción tenían un problema común: seguimiento manual, cotizaciones desperdiciadas y poca visibilidad del estado de cada obra. Como Scrum Master y responsable del diseño técnico, lideré la creación de un dashboard que resolviera esto y ofreciera un flujo de trabajo claro y centralizado.',
+        'MiPortalVentas es un dashboard web creado para mejorar la gestión comercial en empresas del sector construcción. El problema principal era la falta de control sobre cotizaciones, clientes, inventario y avances por obra: gran parte del seguimiento se hacía de forma manual, con información dispersa y poca trazabilidad. Como Scrum Master y responsable del diseño técnico, lideré la definición del flujo de trabajo, la arquitectura con Next.js y Supabase, y la construcción de una plataforma centralizada para ventas, KPIs, reuniones de control y seguimiento operativo. El impacto fue una mejora estimada de 50% a 70% en eficiencia del proceso comercial, reduciendo reprocesos y entregando información más clara para la toma de decisiones.',
       skills: [
         {
           title: 'Liderazgo Técnico',
-          description: 'Tomé decisiones de stack y dejé guías simples para que el equipo avanzara sin fricción.',
+          description: 'Definí decisiones de stack, criterios de arquitectura y guías de implementación para que el equipo avanzara con una base técnica consistente.',
         },
         {
           title: 'Gestión Ágil',
@@ -136,7 +136,7 @@ export const projects: Project[] = [
         },
         {
           title: 'Análisis de Requisitos',
-          description: 'Escuché a ventas y obra, y convertí sus pedidos en historias claras.',
+          description: 'Levanté necesidades de ventas y obra, transformándolas en historias accionables orientadas a resolver problemas reales del flujo comercial.',
         },
         {
           title: 'Calidad de Código',
@@ -152,11 +152,11 @@ export const projects: Project[] = [
         {
           title: 'Arquitectura Técnica',
           description:
-            'Elegí Next.js + Supabase y documenté decisiones para que el equipo pudiera moverse rápido sin perder calidad.',
+            'Elegí Next.js + Supabase y documenté decisiones clave para centralizar datos, acelerar desarrollo y mantener una base escalable.',
         },
         {
           title: 'Gestión de Requisitos',
-          description: 'Traduje lo que pedían obra a obra en historias accionables y priorizadas con los dueños.',
+          description: 'Convertí necesidades operativas en historias priorizadas, enfocadas en reducir seguimiento manual y mejorar visibilidad por obra.',
         },
         {
           title: 'Calidad y Testing',
@@ -205,7 +205,7 @@ export const projects: Project[] = [
         {
           title: 'Análisis y Planificación',
           description:
-            'Escuché a los equipos de venta y obra, levanté lo esencial y armé una hoja de ruta sencilla pero clara.',
+            'Escuché a los equipos de venta y obra, identifiqué los puntos de fricción y armé una hoja de ruta enfocada en centralizar información crítica.',
         },
         {
           title: 'Coordinación del Equipo',
@@ -220,7 +220,7 @@ export const projects: Project[] = [
         {
           title: 'Despliegue y Optimización',
           description:
-            'Coordiné el deploy en Vercel con chequeos mínimos de calidad y monitoreé el arranque para ajustar rápido.',
+            'Coordiné el deploy en Vercel, validé los flujos críticos y ajusté la plataforma para sostener un uso operativo más rápido y confiable.',
         },
       ],
     },
@@ -231,7 +231,7 @@ export const projects: Project[] = [
     id: 'POS-02',
     title: 'Camelias POS - Punto de Venta (WPF)',
     description:
-      'Sistema POS de escritorio en WPF (.NET 8) para ventas, inventario, boleta interna (no tributaria) y visualización de KPIs. Persistencia y consultas vía Supabase.',
+      'Sistema POS de escritorio en WPF (.NET 8) para operar ventas, controlar inventario, emitir boletas internas e interpretar KPIs. Digitaliza tareas de caja y stock, reduciendo trabajo manual y proyectando una mejora operativa de 50% a 70%.',
     tags: [
       { label: 'WPF', className: 'text-[10px] bg-slate-900 text-slate-200 border border-slate-700 px-2 py-1 font-mono uppercase' },
       { label: '.NET 8', className: 'text-[10px] bg-slate-900 text-purple-300 border border-slate-700 px-2 py-1 font-mono uppercase' },
@@ -247,7 +247,7 @@ export const projects: Project[] = [
     details: {
       year: 2025,
       longDescription:
-        'Camelias POS es un sistema de Punto de Venta desarrollado en WPF (.NET 8), diseñado y construido íntegramente por mí. Permite operar ventas (carrito, edición de ítems, cobro), controlar inventario (productos, precios, stock), generar una boleta interna (no tributaria) e imprimir ticket térmico 58mm mediante ESC/POS. La persistencia y consultas se realizan contra una base de datos en Supabase (PostgreSQL), además de incluir paneles de KPIs y exportación a CSV para respaldo.',
+        'Camelias POS es un sistema de Punto de Venta desarrollado en WPF (.NET 8) para resolver problemas comunes de negocios pequeños: ventas registradas manualmente, control de stock poco preciso y falta de métricas para tomar decisiones. Diseñé y construí una solución de escritorio que permite operar ventas con carrito, editar ítems, registrar cobros, administrar productos, precios y stock, generar boletas internas no tributarias e imprimir tickets térmicos de 58mm mediante ESC/POS. La información se persiste en Supabase (PostgreSQL), con paneles de KPIs y exportación a CSV para respaldo. El sistema apunta a reducir errores operativos, acelerar la atención en caja y mejorar la eficiencia del control interno en un rango estimado de 50% a 70%.',
       screenshots: [
         { src: '/proyects/lascamelias/1.webp', alt: 'Camelias POS - Captura 1' },
         { src: '/proyects/lascamelias/2.webp', alt: 'Camelias POS - Captura 2' },
@@ -259,7 +259,7 @@ export const projects: Project[] = [
       skills: [
         {
           title: 'Diseño y Desarrollo End-to-End',
-          description: 'Construcción completa del sistema: UI, lógica de negocio e integración de datos.',
+          description: 'Construcción completa del sistema: interfaz de caja, lógica de negocio, persistencia, reportes e integración con impresión térmica.',
         },
         {
           title: 'Integración con Supabase',
@@ -271,17 +271,17 @@ export const projects: Project[] = [
         },
         {
           title: 'KPIs y Reportes',
-          description: 'Métricas de ventas y vistas para apoyar decisiones operativas.',
+          description: 'Métricas de ventas y vistas operativas para detectar comportamiento comercial, respaldar datos y tomar mejores decisiones.',
         },
       ],
       features: [
         {
           title: 'Venta',
-          description: 'Armado de carrito, edición de ítems, cobro y registro de transacciones.',
+          description: 'Armado de carrito, edición de ítems, cobro y registro de transacciones para acelerar la atención y reducir errores manuales.',
         },
         {
           title: 'Inventario',
-          description: 'Administración de productos, precios y stock.',
+          description: 'Administración de productos, precios y stock para mantener mayor control sobre disponibilidad y reposición.',
         },
         {
           title: 'Boleta interna',
@@ -299,7 +299,7 @@ export const projects: Project[] = [
       process: [
         {
           title: 'Definición de alcance',
-          description: 'Enfoqué el sistema en venta, inventario, boleta interna y reportes operativos.',
+          description: 'Enfoqué el sistema en las tareas de mayor impacto para el negocio: venta, inventario, boleta interna y reportes operativos.',
         },
         {
           title: 'Implementación UI (WPF)',
@@ -326,7 +326,7 @@ export const projects: Project[] = [
     },
     title: 'Trabajo de Título - Plataforma de Análisis de Toxinas Nav1.7',
     description:
-      'Plataforma bioinformática modular para análisis estructural de toxinas peptídicas que modulan el canal de sodio Nav1.7. Combina grafos moleculares, métricas de centralidad, visualización 3D interactiva con Mol* y pipeline automatizado de procesamiento desde UniProt.',
+      'Plataforma bioinformática para automatizar el análisis estructural de toxinas peptídicas asociadas al canal Nav1.7. Centraliza búsqueda, procesamiento, grafos moleculares, métricas y visualización 3D, reduciendo trabajo manual de investigación y acelerando la priorización de candidatos.',
     tags: [
       { label: 'Python 3.9', className: 'text-[10px] bg-slate-900 text-blue-300 border border-slate-700 px-2 py-1 font-mono uppercase' },
       { label: 'Flask', className: 'text-[10px] bg-slate-900 text-green-400 border border-slate-700 px-2 py-1 font-mono uppercase' },
@@ -343,7 +343,7 @@ export const projects: Project[] = [
     details: {
       year: 2024,
       longDescription:
-        'Plataforma bioinformática desarrollada como trabajo de título que automatiza el análisis estructural de toxinas peptídicas (tipo knottin) que modulan el canal de sodio Nav1.7, un blanco terapéutico clave para analgésicos no opioides. El sistema integra construcción de grafos moleculares (Graphein/NetworkX), cálculo de métricas topológicas avanzadas, visualización 3D con Mol*, y un pipeline completo desde búsqueda en UniProt hasta identificación de candidatos inhibidores. Procesa 1308 péptidos maduros, aplicando filtrado farmacofórico basado en el motivo NaSpTx (X1X2-S-WCKX3) y análisis de propiedades electrostáticas (momento dipolar), obteniendo 44 candidatos compatibles con el modelo inhibitorio. La arquitectura sigue Clean Architecture con separación en capas (dominio, aplicación, infraestructura, interfaces), base de datos SQLite normalizada, y API REST Flask con interfaz web interactiva.',
+        'Esta plataforma bioinformática fue desarrollada como trabajo de título para resolver un problema de investigación: el análisis estructural de toxinas peptídicas asociadas al canal de sodio Nav1.7 requería herramientas fragmentadas, pasos manuales y poca trazabilidad entre datos, estructuras y métricas. Construí un sistema modular que automatiza el flujo desde la búsqueda en UniProt hasta la identificación de candidatos inhibidores, integrando grafos moleculares con Graphein/NetworkX, métricas topológicas avanzadas, visualización 3D con Mol* y análisis de propiedades electrostáticas. La plataforma procesa 1308 péptidos maduros, aplica filtrado farmacofórico basado en el motivo NaSpTx (X1X2-S-WCKX3) y obtiene 44 candidatos compatibles con el modelo inhibitorio. Su arquitectura Clean Architecture, base SQLite normalizada y API REST Flask permiten repetir análisis con mayor consistencia, reduciendo de forma estimada entre 50% y 70% el esfuerzo manual frente a un flujo de investigación tradicional.',
       screenshots: [
         { src: '/proyects/tesis/inicio.webp', alt: 'Plataforma - Pantalla de inicio' },
         { src: '/proyects/tesis/familias.webp', alt: 'Vista de familias de toxinas' },
@@ -364,7 +364,7 @@ export const projects: Project[] = [
         },
         {
           title: 'Pipeline de Procesamiento de Datos',
-          description: 'Desarrollo de flujo end-to-end: búsqueda automática en UniProt, descarga y parseo de XML, extracción de péptidos maduros, recorte de estructuras PDB/AlphaFold, normalización de datos de actividad (IC50 a nM), generación de PSF con VMD/psfgen, y exportación masiva por familias.',
+          description: 'Desarrollo de flujo end-to-end para automatizar búsqueda en UniProt, parseo XML, extracción de péptidos maduros, recorte estructural, normalización de actividad, generación de PSF y exportación por familias.',
         },
         {
           title: 'Visualización Científica Interactiva',
@@ -382,7 +382,7 @@ export const projects: Project[] = [
         },
         {
           title: 'Pipeline Automatizado UniProt → DB → Artefactos',
-          description: 'Script run_full_pipeline.py que orquesta: búsqueda en UniProt, descarga XML, extracción de péptidos, inserción en SQLite, asociación de PDB/PSF, filtrado por motivo NaSpTx (gap_min/max, require_pair), generación de PSF/PDB para análisis de dipolos, y exportación opcional de JSON con anotaciones IA.',
+          description: 'Script run_full_pipeline.py que orquesta búsqueda en UniProt, descarga XML, extracción de péptidos, inserción en SQLite, asociación de PDB/PSF, filtrado por motivo NaSpTx, generación de artefactos para análisis de dipolos y exportación de resultados.',
         },
         {
           title: 'Base de Datos SQLite Normalizada',
@@ -428,7 +428,7 @@ export const projects: Project[] = [
         },
         {
           title: 'Validación y Testing',
-          description: 'Suite de tests unitarios e integración con pytest. Scripts en tools/ para validación manual de componentes (métricas, exportaciones, filtros). Procesamiento de dataset completo (1308 péptidos) con análisis de tiempos por etapa. Validación cruzada de 44 candidatos filtrados contra literatura.',
+          description: 'Suite de tests unitarios e integración con pytest, scripts de validación para métricas, exportaciones y filtros, procesamiento del dataset completo de 1308 péptidos y validación cruzada de 44 candidatos contra literatura.',
         },
         {
           title: 'Documentación y Resultados',
@@ -447,7 +447,7 @@ export const projects: Project[] = [
     },
     title: 'Sistema de Catálogo de Productos',
     description:
-      'Catálogo web con panel administrativo completo, desarrollado con arquitectura modular (FSD + capas), enfocado en escalabilidad y mantenibilidad.',
+      'Catálogo web con panel administrativo para publicar, editar y controlar productos, categorías e imágenes desde una plataforma centralizada. Reemplaza gestión manual de contenido y mejora la eficiencia operativa del negocio en un rango estimado de 50% a 70%.',
     tags: [
       { label: 'Next.js', className: 'text-[10px] bg-slate-900 text-white border border-slate-700 px-2 py-1 font-mono uppercase' },
       { label: 'React', className: 'text-[10px] bg-slate-900 text-tech-accent border border-slate-700 px-2 py-1 font-mono uppercase' },
@@ -464,11 +464,11 @@ export const projects: Project[] = [
     details: {
       year: 2025,
       longDescription:
-        'Sistema de catálogo de productos desarrollado con arquitectura modular (FSD + capas). Incluye interfaz pública para navegación de productos y panel administrativo completo para gestión de contenido. Permite crear, editar y publicar productos, gestionar categorías, controlar imágenes y mantener un historial de acciones administrativas. Todo dentro de una arquitectura diseñada para escalar.',
+        'Este sistema de catálogo de productos fue desarrollado para negocios que necesitaban mostrar su oferta de forma ordenada y administrar contenido sin depender de cambios manuales en el sitio. El problema era la gestión dispersa de productos, categorías, imágenes y estados de publicación, lo que hacía más lento actualizar el catálogo y aumentaba el riesgo de errores. Implementé una solución web con arquitectura modular (FSD + capas), interfaz pública para navegación de productos y un panel administrativo completo para crear, editar, publicar u ocultar productos, gestionar categorías, validar imágenes y mantener historial de acciones. El resultado es una plataforma más mantenible, trazable y preparada para escalar, con una mejora estimada de 50% a 70% en eficiencia para tareas de administración de catálogo.',
       skills: [
         {
           title: 'Arquitectura Escalable (FSD + Capas)',
-          description: 'Implementé Feature-Sliced Design combinado con capas internas (domain, application, infrastructure) para separar responsabilidades y mejorar mantenibilidad.',
+          description: 'Implementé Feature-Sliced Design combinado con capas internas para separar responsabilidades, mejorar mantenibilidad y facilitar nuevas funcionalidades.',
         },
         {
           title: 'Repository Pattern',
@@ -486,11 +486,11 @@ export const projects: Project[] = [
       features: [
         {
           title: 'Interfaz Pública',
-          description: 'Navegación por categorías, búsqueda y filtros avanzados, visualización de productos con detalle técnico, galería de imágenes optimizadas.',
+          description: 'Navegación por categorías, búsqueda, filtros avanzados, detalles técnicos y galería optimizada para facilitar la exploración de productos.',
         },
         {
           title: 'Panel Administrativo',
-          description: 'Creación y edición de productos, gestión de categorías, control de visibilidad (publicar/ocultar), gestión de imágenes con validaciones, historial de acciones (auditoría).',
+          description: 'Creación y edición de productos, gestión de categorías, control de visibilidad, validación de imágenes e historial de acciones para reducir trabajo manual y mejorar trazabilidad.',
         },
         {
           title: 'Autenticación Segura',
@@ -517,7 +517,7 @@ export const projects: Project[] = [
       process: [
         {
           title: 'Análisis de Requisitos',
-          description: 'Levantamiento de necesidades del cliente: gestión de productos, categorías, imágenes y control administrativo.',
+          description: 'Levantamiento de necesidades del cliente para convertir la gestión manual de productos, categorías e imágenes en un flujo administrativo claro.',
         },
         {
           title: 'Diseño de Arquitectura',

@@ -401,7 +401,7 @@ const translations: Record<Language, Translations> = {
             available: 'Disponible para nuevos proyectos',
             greeting: 'Hola, soy',
             name: 'Edward',
-            tagline: 'Construyo sistemas web que mejoran la productividad de negocios reales',
+            tagline: 'Desarrollador Full Stack que disfruta transformar ideas en realidad',
             description: 'Fullstack developer enfocado en backend, dashboards y automatización. Trabajo con React, TypeScript y Supabase para crear soluciones que optimizan ventas, inventario y operaciones.\n\nHe desarrollado sistemas usados por clientes reales para gestionar cotizaciones, productos y procesos internos.',
             viewProjects: 'Ver proyectos reales',
             yearsExp: '+2 años exp.',
@@ -438,12 +438,12 @@ const translations: Record<Language, Translations> = {
             downloadCV: 'Descargar CV',
             headline: 'Ingeniero Civil en Informática',
             paragraphs: [
-                'Soy desarrollador fullstack, pero me siento mas comodo trabajando en backend y analisis de datos.',
-                'Me gusta construir sistemas escalables y eficientes. Creo que esa forma de pensar viene desde que empece a estudiar ingenieria en informatica.',
-                'Cuento con experiencia trabajando con clientes reales, identificando sus necesidades y construyendo soluciones que les aporten valor para sus negocios y que crezcan.',
-                'Ademas de la programacion, me interesa mucho el analisis de datos y el machine learning. Al principio fue raro, porque antes no me gustaban mucho las matematicas, pero ahora es una de las areas que mas disfruto aprender.',
-                'Los proyectos freelance que he realizado han dejado satisfechos a mis clientes, y gracias a eso sigo apoyandolos con soporte tecnico y mejoras.',
-                'Y para mostrar un lado mas personal: me gustan mucho los gatos. Tengo cuatro, y si quieres conocerlos, deje una pequena galeria en otra pagina.'
+                'Empecé en el desarrollo casi por casualidad. Cuando entré a la universidad, pensaba que programar era hacer juegos o armar computadores, pero rápidamente descubrí que era algo muy distinto.',
+                'Con el paso de los semestres empecé a disfrutar la lógica, las matemáticas y el análisis detrás de cada problema. Algo que antes no me gustaba terminó convirtiéndose en una de las partes que más me motivan.',
+                'Ahí fue cuando realmente me enganché con el desarrollo: entendí que no se trata solo de escribir código, sino de analizar problemas y construir soluciones desde cero.',
+                'Actualmente trabajo en proyectos freelance como desarrollador fullstack, participando en todo el proceso: base de datos, lógica, backend y frontend. Eso me ha ayudado a entender los sistemas de forma completa.',
+                'Me interesa seguir creciendo especialmente en backend y data science, áreas donde puedo aplicar más lógica, análisis y matemáticas para resolver problemas reales.',
+                'Para mostrar un lado más personal: también dejé una galería con mis gatos. Si quieres conocerlos, puedes ir a verla.'
             ],
         },
         contact: {

@@ -105,7 +105,12 @@ export function AboutSection() {
 
               <div className="space-y-3 text-zinc-400 text-[15px] leading-relaxed mb-8">
                 {t.about.paragraphs.map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
+                  <p
+                    key={idx}
+                    className={idx === t.about.paragraphs.length - 1 ? 'font-semibold text-violet-200' : undefined}
+                  >
+                    {paragraph}
+                  </p>
                 ))}
               </div>
 
