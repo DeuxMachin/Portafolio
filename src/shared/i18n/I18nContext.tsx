@@ -79,15 +79,20 @@ type Translations = {
         sectionLabel: string
         title: string
         titleHighlight: string
+        description: string
         freelance: {
             title: string
             subtitle: string
-            items: string[]
+            company: string
+            achievements: string[]
+            tech: string[]
         }
         support: {
             title: string
             subtitle: string
-            items: string[]
+            company: string
+            achievements: string[]
+            tech: string[]
         }
     }
 }
@@ -471,25 +476,31 @@ const translations: Record<Language, Translations> = {
             sectionLabel: 'Recorrido',
             title: 'Mi',
             titleHighlight: 'Experiencia',
+            description: 'Desde soporte técnico hasta desarrollo full stack freelance. Cada paso me enseñó algo nuevo sobre cómo construir software que funciona.',
             freelance: {
-                title: ' Freelance Developer',
+                title: 'Freelance Developer',
                 subtitle: 'Desarrollo de soluciones web para clientes reales',
-                items: [
-                    '+3 proyectos entregados y en uso',
-                    'Sistemas de cotización, dashboards y catálogos',
-                    'Desarrollo de soluciones adaptadas a cada negocio',
-                    'Mejora de procesos internos y productividad',
+                company: 'Independiente · Remoto',
+                achievements: [
+                    '+3 proyectos entregados y en uso por clientes reales',
+                    'Sistemas de cotización, dashboards y catálogos web',
+                    'Desarrollo full stack con arquitectura modular y escalable',
+                    'Soluciones adaptadas a cada negocio: desde POS hasta paneles admin',
+                    'Mejora de procesos internos y productividad operativa',
                 ],
+                tech: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Supabase', '.NET 8', 'SQL'],
             },
             support: {
-                title: ' Soporte TI — Santo Tomas Temuco',
+                title: 'Soporte TI',
                 subtitle: 'Soporte técnico nivel 1 y 2 en entorno real',
-                items: [
-                    'Resolución de incidencias técnicas',
-                    'Gestión de redes y cableado estructurado',
-                    'Configuración y mantenimiento de equipos',
-                    'Trabajo directo con usuarios y sistemas reales',
+                company: 'Santo Tomás · Temuco',
+                achievements: [
+                    'Resolución de incidencias técnicas nivel 1 y 2',
+                    'Gestión de redes, cableado estructurado y conectividad',
+                    'Configuración y mantenimiento de equipos informáticos',
+                    'Trabajo directo con usuarios y sistemas en producción',
                 ],
+                tech: ['Redes', 'Hardware', 'Windows', 'Active Directory', 'Help Desk'],
             },
         },
     },
@@ -575,25 +586,31 @@ const translations: Record<Language, Translations> = {
             sectionLabel: 'Journey',
             title: 'My',
             titleHighlight: 'Experience',
+            description: 'From IT support to freelance full stack development. Every step taught me something new about building software that works.',
             freelance: {
-                title: '💻 Freelance Developer',
+                title: 'Freelance Developer',
                 subtitle: 'Web solutions development for real clients',
-                items: [
-                    '+3 delivered projects in use',
-                    'Quote systems, dashboards, and catalogs',
-                    'Custom solutions tailored to each business',
-                    'Internal process improvement and productivity',
+                company: 'Independent · Remote',
+                achievements: [
+                    '+3 projects delivered and in use by real clients',
+                    'Quote systems, dashboards, and web catalogs',
+                    'Full stack development with modular, scalable architecture',
+                    'Solutions tailored to each business: from POS to admin panels',
+                    'Internal process improvement and operational productivity',
                 ],
+                tech: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Supabase', '.NET 8', 'SQL'],
             },
             support: {
-                title: '🏢 IT Support — Santo Tomas Temuco',
+                title: 'IT Support',
                 subtitle: 'Level 1 and 2 technical support in real environment',
-                items: [
-                    'Technical incident resolution',
-                    'Network management and structured cabling',
-                    'Equipment configuration and maintenance',
-                    'Direct work with users and real systems',
+                company: 'Santo Tomás · Temuco',
+                achievements: [
+                    'Level 1 & 2 technical incident resolution',
+                    'Network management, structured cabling, and connectivity',
+                    'Computer equipment configuration and maintenance',
+                    'Direct work with users and production systems',
                 ],
+                tech: ['Networking', 'Hardware', 'Windows', 'Active Directory', 'Help Desk'],
             },
         },
     },
